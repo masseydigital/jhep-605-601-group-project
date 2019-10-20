@@ -44,3 +44,13 @@ Game data shall be hosted in an AWS Dynamo DB database.  This data includes game
 ### Unity Test
 
 This folder contains all resources required to build the Unity test project for Clue-Less.  The server instance shall be a .Net standalone application and the web clients are WebGL builds.
+
+Unity Version: 2019.2.0
+
+#### Scenes
+
+DatabaseTest: Test scene for DynamoDB connection and table interaction
+
+Gameboard: Front-end gameboard application
+
+LoadingScreen: Loading screen for the player when they start the game

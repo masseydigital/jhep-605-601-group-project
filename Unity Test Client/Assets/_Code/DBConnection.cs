@@ -10,7 +10,7 @@ using Amazon.Runtime;
 using Amazon;
 using TMPro;
 
-public class RetrieveGameData : MonoBehaviour
+public class DBConnection : MonoBehaviour
 {
     public int id=0;
     public string theme;
@@ -31,6 +31,7 @@ public class RetrieveGameData : MonoBehaviour
     // Initialize the Amazon Cognito credentials provider
     CognitoAWSCredentials credentials;
 
+    // The region our DB is in
     private RegionEndpoint _DynamoRegion
     {
         get { return RegionEndpoint.GetBySystemName(region); }
@@ -40,12 +41,14 @@ public class RetrieveGameData : MonoBehaviour
     private void Awake()
     {
         gameData = new GameData();
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        // 
+        // This is required to utilize SDK
         UnityInitializer.AttachToGameObject(this.gameObject);
 
         // change the http client...
@@ -83,7 +86,8 @@ public class RetrieveGameData : MonoBehaviour
     // This method should be used to verify DynamoDB connection
     public void DescribeTable()
     {
-        displayText.text += ("\n*** Retrieving Table Information ***\n");
+        if(displayText != null)
+            displayText.text += ("\n*** Retrieving Table Information ***\n");
 
         var request = new DescribeTableRequest
         {
@@ -94,19 +98,21 @@ public class RetrieveGameData : MonoBehaviour
         {
             if(result.Exception != null)
             {
-                displayText.text += result.Exception.Message;
+                if (displayText != null)
+                    displayText.text += result.Exception.Message;
                 Debug.Log(result.Exception);
                 return;
             }
 
             var response = result.Response;
             TableDescription description = response.Table;
-            displayText.text += ("Name: " + description.TableName + "\n");
-            displayText.text += ("# of items: " + description.ItemCount + "\n");
-            displayText.text += ("Provision Throughput (reads/sec): " +
-                description.ProvisionedThroughput.ReadCapacityUnits + "\n");
-            displayText.text += ("Provision Throughput (reads/sec): " +
-                description.ProvisionedThroughput.WriteCapacityUnits + "\n");
+            if (displayText != null)
+                displayText.text += ("Name: " + description.TableName + "\n");
+                displayText.text += ("# of items: " + description.ItemCount + "\n");
+                displayText.text += ("Provision Throughput (reads/sec): " +
+                    description.ProvisionedThroughput.ReadCapacityUnits + "\n");
+                displayText.text += ("Provision Throughput (reads/sec): " +
+                    description.ProvisionedThroughput.WriteCapacityUnits + "\n");
         }, null);
 
     }
@@ -142,10 +148,12 @@ public class RetrieveGameData : MonoBehaviour
         _context.SaveAsync(newGameData, (result) =>
         {
             if (result.Exception == null)
-                displayText.text += @"Game Data Saved";
+                if (displayText != null)
+                    displayText.text += @"Game Data Saved";
             else
             {
-                displayText.text += ("LoadAsync error" + result.Exception.Message);
+                if (displayText != null)
+                    displayText.text += ("LoadAsync error" + result.Exception.Message);
                 Debug.LogException(result.Exception);
                 return;
             }
@@ -154,7 +162,7 @@ public class RetrieveGameData : MonoBehaviour
 
     // This method retrieves data from the table
     // pass id, retrieve character names, room names, and weapon names
-    private void RetrieveData(int id)
+    public void RetrieveData(int id)
     {
         string displayMessage = "";
 
@@ -166,22 +174,32 @@ public class RetrieveGameData : MonoBehaviour
         {
         if (result.Exception != null)
         {
-            displayMessage += ("LoadAsync error" + result.Exception.Message);
+                if (displayText != null)
+                    displayMessage += ("LoadAsync error" + result.Exception.Message);
             Debug.LogException(result.Exception);
             return;
         }
 
-        gameData = result.Result as GameData;
+            gameData = result.Result as GameData;
 
-        characterNames = gameData.characterNames;
-        roomNames = gameData.roomNames;
-        weaponNames = gameData.weaponNames;
-        theme = gameData.theme;
+            characterNames = gameData.characterNames;
+            roomNames = gameData.roomNames;
+            weaponNames = gameData.weaponNames;
+            theme = gameData.theme;
 
-        displayMessage += "Successfully completed loading game data";
+            GameManager.gameData = gameData;
 
-            displayText.text += displayMessage;
+            displayMessage += "Successfully completed loading game data";
+
+            if (displayText != null)
+                displayText.text += displayMessage;
          
         }, null);
+    }
+
+    // This method updates data in a table
+    private void UpdateData(int id)
+    {
+        //TODO: Add update functionality
     }
 }
