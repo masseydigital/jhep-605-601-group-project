@@ -11,6 +11,7 @@ public class GameboardUi : MonoBehaviour
 
     public TextMeshProUGUI playerNameText;
     public TextMeshProUGUI debugAccuseText;
+    public TextMeshProUGUI resultText;
 
     // Start is called before the first frame update
     void Start()
@@ -56,5 +57,21 @@ public class GameboardUi : MonoBehaviour
         debugAccuseText.text = $"Accusing: {characterDropdown.options[characterDropdown.value].text} " +
             $"in {roomDropdown.options[roomDropdown.value].text} " +
             $"with a {weaponDropdown.options[weaponDropdown.value].text}";
+
+        bool win = GameManager.instance.CheckWin(
+            characterDropdown.options[characterDropdown.value].text,
+            roomDropdown.options[roomDropdown.value].text,
+            weaponDropdown.options[weaponDropdown.value].text);
+
+        if(win)
+        {
+            resultText.text = "WINNER!";
+            resultText.color = Color.green;
+        }
+        else
+        {
+            resultText.text = "Try Again!";
+            resultText.color = Color.red;
+        }
     }
 }

@@ -1,0 +1,95 @@
+{
+	{
+  "characterNames": [
+    "Col Mustard",
+    "Miss Scarlet",
+    "Mr Green",
+    "Mrs Peacock",
+    "Mrs White",
+    "Prof Plum"
+  ],
+  "id": "0",
+  "roomNames": [
+    "Ball Room",
+    "Billiard Room",
+    "Conservatory",
+    "Dining Room",
+    "Hall",
+    "Kitchen",
+    "Library",
+    "Lounge",
+    "Study"
+  ],
+  "theme": "default",
+  "weaponNames": [
+    "axe",
+    "goblet",
+    "knife",
+    "lead pipe",
+    "pistol",
+    "rope"
+  ]
+	}
+	{
+  "characterNames": [
+    "Black Widow",
+    "Captain America",
+    "Hawkeye",
+    "Hulk",
+    "Iron Man",
+    "Thor"
+  ],
+  "id": "1",
+  "roomNames": [
+    "Mulitverse",
+    "Knowhere",
+    "New York City",
+    "Nine Realms",
+    "Sanctuary",
+    "Stark Tower",
+    "Titan",
+    "Vormir",
+    "Wakanda"
+  ],
+  "theme": "marvel",
+  "weaponNames": [
+    "Arc Blast",
+    "Arrows",
+    "Infinity Stones",
+    "Mjolnir",
+    "Shield",
+    "Web Slingers"
+  ]
+}
+{
+  "characterNames": [
+    "Boba Fett",
+    "Chewbacca",
+    "Darth Vader",
+    "Emperor Palpatine",
+    "Han Solo",
+    "Luke Skywalker"
+  ],
+  "id": "2",
+  "roomNames": [
+    "Alderaan",
+    "Dagobah",
+    "Death Star",
+    "Endor",
+    "Hoth",
+    "Kashyyyk",
+    "Mustafar",
+    "Tatooine",
+    "Yavin IV"
+  ],
+  "theme": "star wars",
+  "weaponNames": [
+    "Blaster",
+    "Bowcaster",
+    "Electricity",
+    "Flamethrower",
+    "Lightsaber",
+    "Vibroblade"
+  ]
+}
+}

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: s_gamedata
+  m_EditorClassIdentifier: Assembly-CSharp::GameDataTest
+  id: 2
+  theme: Star Wars
+  characters: {fileID: 11400000, guid: 81202feef9ae75b4cb609808ba3788c4, type: 2}
+  rooms: {fileID: 11400000, guid: 3f7fca964a67e87409420a2e1468edbc, type: 2}
+  weapons: {fileID: 11400000, guid: e47472b4ac00db8428de4d7c88214076, type: 2}

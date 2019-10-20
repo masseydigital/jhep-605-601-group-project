@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: TestDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::DatabaseTest
+  database:
+  - {fileID: 11400000, guid: c77fff7996e351b4ebd7c1f57c669a48, type: 2}
+  - {fileID: 11400000, guid: 91b9ea014cecc74498e1a9216d6b692a, type: 2}
+  - {fileID: 11400000, guid: c4ab679c180bcb04a947495b94eb2563, type: 2}

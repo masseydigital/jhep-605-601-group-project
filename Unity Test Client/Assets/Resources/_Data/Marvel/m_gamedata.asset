@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: m_gamedata
+  m_EditorClassIdentifier: Assembly-CSharp::GameDataTest
+  id: 1
+  theme: Marvel
+  characters: {fileID: 11400000, guid: 81bbf7a9f502a1e4293574d8c198c673, type: 2}
+  rooms: {fileID: 11400000, guid: 486e4ee0ad43b854c90456f13189009f, type: 2}
+  weapons: {fileID: 11400000, guid: 743a74a8e21ceda47a0204f503ae18f2, type: 2}

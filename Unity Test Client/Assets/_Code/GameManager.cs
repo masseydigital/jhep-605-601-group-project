@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
 
     private DBConnection database;
 
+    private string goalCharacter;
+    private string goalRoom;
+    private string goalWeapon;
+
     private void Awake()
     {
         instance = this;
@@ -28,12 +32,35 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         LoadGameData();
+
+        SelectRandomWinConditions();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    // Select a random set of win conditions for testing
+    public void SelectRandomWinConditions()
+    {
+        goalCharacter = gameData.characterNames[Random.Range(0, gameData.characterNames.Count)];
+        goalRoom = gameData.roomNames[Random.Range(0, gameData.roomNames.Count)];
+        goalWeapon = gameData.weaponNames[Random.Range(0, gameData.weaponNames.Count)];
+    }
+
+    //Check to see if we won
+    public bool CheckWin(string chr, string room, string wpn)
+    {
+        if(goalCharacter == chr && goalRoom == room && goalWeapon == wpn)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     // Loads all of the game data on start

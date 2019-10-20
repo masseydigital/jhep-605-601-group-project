@@ -27,6 +27,8 @@ This game is a simplified version of the popular board game, Clue®.  The main s
 
 The client application for clue-less is what users use when they access the Clue-Less from their client computer.
 
+To try out the current release of the client app, go to https://dev4286.d2cd3xkl3svzop.amplifyapp.com/
+
 ### Server Application
 
 The server application for Clue-Less manages connections between clients and the server for instances of the games.  It manages the game state and logic for each game of Clue-Less.

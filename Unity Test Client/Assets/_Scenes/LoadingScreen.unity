@@ -282,6 +282,7 @@ MonoBehaviour:
   weaponNames: []
   roomNames: []
   displayText: {fileID: 0}
+  testDatabase: {fileID: 11400000, guid: f4ae40de437731c44b7bc40f84a4a33a, type: 2}
 --- !u!4 &219290026
 Transform:
   m_ObjectHideFlags: 0
