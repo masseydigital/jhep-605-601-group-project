@@ -49,6 +49,8 @@ This folder contains all resources required to build the Unity test project for 
 
 Unity Version: 2019.2.0
 
+Download Link: https://unity3d.com/get-unity/download?thank-you=update&download_nid=62773&os=Win
+
 #### Scenes
 
 DatabaseTest: Test scene for DynamoDB connection and table interaction

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomManager : MonoBehaviour
+public class Location : MonoBehaviour
 {
+    public List<string> rowNames;
+
     // Start is called before the first frame update
     void Start()
     {
