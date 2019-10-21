@@ -15,4 +15,9 @@ public class Suggestion : MonoBehaviour
     {
         
     }
+
+    public void test()
+    {
+        Debug.Log("Inside suggestion... Test\n");
+    }
 }
