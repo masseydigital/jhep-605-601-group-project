@@ -15,4 +15,9 @@ public class Proof : MonoBehaviour
     {
         
     }
+
+    public void test()
+    {
+        Debug.Log("Inside proof... Test\n");
+    }
 }

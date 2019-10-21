@@ -15,4 +15,9 @@ public class Broadcast : MonoBehaviour
     {
         
     }
+
+    public void test()
+    {
+        Debug.Log("Inside broadcast... Test\n");
+    }
 }

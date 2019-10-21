@@ -15,4 +15,9 @@ public class Accusation : MonoBehaviour
     {
         
     }
+
+    public void test()
+    {
+        Debug.Log("Inside accusation... Test\n");
+    }
 }
