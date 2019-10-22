@@ -11,16 +11,11 @@ using UnityEngine;
     // Start is called before the first frame update
     void Start()
     {
-        //Debug.Log("Hello world\n");
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKeyUp("w"))
-        {
-            Debug.Log("You hit the w key\n");
-        }*/
     }
 
     public bool move(int row, int column)
@@ -47,10 +42,11 @@ using UnityEngine;
             }
         }
 
+        Broadcast.Instance.EnqueueMsg("MSG_FROM_LOCATION: " + "player tried to use a secret passage!\n");
         return true;
     }
 
-    public  void test()
+    public void test()
     {
         //Debug.Log("Inside location... Test ... calling move\n");
         //Player player = new Player();
