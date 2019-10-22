@@ -25,13 +25,13 @@ using UnityEngine;
 
     public bool move(int row, int column)
     {
-        string msg = " Tried to move to " + row.ToString() + " " + column.ToString();
+        string msg = "Tried to move to row:" + row.ToString() + " column:" + column.ToString();
         Debug.Log(msg);
         // TODO: Logic that updates location
 
         // passing the message up to broadcast...
         //broadcast = GameObject.Find("Broadcast");
-        Broadcast.Instance.EnqueueMsg(msg);
+        Broadcast.Instance.EnqueueMsg("MSG_FROM_LOCATION: "+msg);
         return true;
     }
 
@@ -52,7 +52,7 @@ using UnityEngine;
 
     public  void test()
     {
-        Debug.Log("Inside location... Test ... calling move\n");
+        //Debug.Log("Inside location... Test ... calling move\n");
         //Player player = new Player();
         //player.name = "testPlayer" + Random.Range(0, 100).ToString();
         move(Random.Range(0, maxRow), Random.Range(0, maxColumn));
