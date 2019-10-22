@@ -11,17 +11,28 @@ using UnityEngine;
     // Start is called before the first frame update
     void Start()
     {
-
-        Debug.Log("Hello world\n");
+        //Debug.Log("Hello world\n");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp("w"))
+        /*if (Input.GetKeyUp("w"))
         {
             Debug.Log("You hit the w key\n");
-        }
+        }*/
+    }
+
+    public bool move(int row, int column)
+    {
+        string msg = " Tried to move to " + row.ToString() + " " + column.ToString();
+        Debug.Log(msg);
+        // TODO: Logic that updates location
+
+        // passing the message up to broadcast...
+        //broadcast = GameObject.Find("Broadcast");
+        Broadcast.Instance.EnqueueMsg(msg);
+        return true;
     }
 
     // Returns True if successfully used secret passage; false otherwise
@@ -41,7 +52,10 @@ using UnityEngine;
 
     public  void test()
     {
-        Debug.Log("Inside location... Test\n");
+        Debug.Log("Inside location... Test ... calling move\n");
+        //Player player = new Player();
+        //player.name = "testPlayer" + Random.Range(0, 100).ToString();
+        move(Random.Range(0, maxRow), Random.Range(0, maxColumn));
     }
 
 
