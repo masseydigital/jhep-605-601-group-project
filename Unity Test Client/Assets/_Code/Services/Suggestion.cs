@@ -5,7 +5,7 @@ using UnityEngine;
 public class Suggestion : MonoBehaviour
 {
 
-    string character = "Miss Scarlett";
+    string character = "Miss Scarlet";
     string location = "Kitchen";
     string weapon = "Knife";
 
