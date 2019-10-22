@@ -20,4 +20,9 @@ public class Broadcast : MonoBehaviour
     {
         Debug.Log("Inside broadcast... Test\n");
     }
+                        
+    void print(string action, string description)
+    {
+        Debug.Log("Broadcast: " + action + "action with " + description + " description.\n");
+    }
 }

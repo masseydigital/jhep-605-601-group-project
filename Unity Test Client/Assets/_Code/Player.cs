@@ -8,6 +8,7 @@ using UnityEngine.Networking.Types;
 
 public class Player : NetworkBehaviour
 {
+    Broadcast broadcast;
     // Start is called before the first frame update
     void Start()
     {
