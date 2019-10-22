@@ -1,9 +1,14 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Suggestion : MonoBehaviour
 {
+
+    string character = "Miss Scarlett";
+    string location = "Kitchen";
+    string weapon = "Knife";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +21,17 @@ public class Suggestion : MonoBehaviour
         
     }
 
-    public void test()
-    {
-        Debug.Log("Inside suggestion... Test\n");
-    }
-
     public bool makeSuggestion(string character, string weapon, string location)
     {
-        // do suggestion stuff here
+        string msg = "A suggestion has been made for " + character + " in the " + location + " with the " + weapon + ".";
+        Debug.Log(msg);
+        Broadcast.Instance.EnqueueMsg("MSG_FROM_SUGGESTION: " + msg);
         return true;
+    }
+
+    public void test()
+    {
+        //Debug.Log("A suggestion has been made... Test\n");
+        makeSuggestion(character, weapon, location);
     }
 }
