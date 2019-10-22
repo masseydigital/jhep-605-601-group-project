@@ -20,4 +20,10 @@ public class Suggestion : MonoBehaviour
     {
         Debug.Log("Inside suggestion... Test\n");
     }
+
+    public bool makeSuggestion(string character, string weapon, string location)
+    {
+        // do suggestion stuff here
+        return true;
+    }
 }

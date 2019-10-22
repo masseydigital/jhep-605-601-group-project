@@ -20,4 +20,10 @@ public class Accusation : MonoBehaviour
     {
         Debug.Log("Inside accusation... Test\n");
     }
+
+    public bool makeAccusation(string accuser, string character, string room, string weapon)
+    {
+        //accusation stuff here
+        return true;
+    }
 }

@@ -20,4 +20,10 @@ public class Proof : MonoBehaviour
     {
         Debug.Log("Inside proof... Test\n");
     }
+
+    public bool makeProof(string player, string item)
+    {
+        //makeProof stuff here
+        return true;
+    }
 }
