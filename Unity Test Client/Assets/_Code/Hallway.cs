@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public class Hallway : MonoBehaviour
 {
-    public int row;
-    public int column;
-    public string locationName;
+    public int room1Row;
+    public int room1Column;
+    public int room2Row;
+    public int room2Column;
     public Player player;
 
     // Start is called before the first frame update

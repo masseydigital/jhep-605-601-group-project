@@ -4,7 +4,8 @@ using UnityEngine;
 
  public class Location : MonoBehaviour
 {
-    public List<Position> positions = new List<Position>();
+    public List<Room> rooms = new List<Room>();
+    public List<Hallway> hallways = new List<Hallway>();
     public const int maxRow = 3;
     public const int maxColumn = 3;
 
@@ -52,55 +53,6 @@ using UnityEngine;
         //Player player = new Player();
         //player.name = "testPlayer" + Random.Range(0, 100).ToString();
         move(Random.Range(0, maxRow), Random.Range(0, maxColumn));
-    }
-
-
-    public class Position
-    {
-        public int row;
-        public int column;
-        public string locationName;
-        public Player player;
-
-        /*public int getRow()
-        {
-            return row;
-        }
-
-        public int getColumn()
-        {
-            return column;
-        }
-
-        public string getLocationName()
-        {
-            return locationName;
-        }
-
-        private Player getPlayer()
-        {
-            return player;
-        }
-
-        private void setRow(int newRow)
-        {
-            row = newRow;
-        }
-
-        private void setColumn(int newColumn)
-        {
-            column = newColumn;
-        }
-
-        private void setLocationName(string newLocationName)
-        {
-            locationName = newLocationName;
-        }
-
-        private void setPlayer(Player newPlayer)
-        {
-            player = newPlayer;
-        }*/
     }
 
 }
