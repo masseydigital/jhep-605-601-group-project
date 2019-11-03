@@ -6,7 +6,7 @@ public class Room : MonoBehaviour
 {
     public int row;
     public int column;
-    public string locationName;
+    public string roomName;
     public Player player;
 
     // Start is called before the first frame update

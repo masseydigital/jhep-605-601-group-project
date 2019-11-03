@@ -10,6 +10,7 @@ public class Player : NetworkBehaviour
 {
     Broadcast broadcast;
     public string playerName;
+    public int winLose;
     private List<string> characters;
     private List<string> locations;
     private List<string> weapons;

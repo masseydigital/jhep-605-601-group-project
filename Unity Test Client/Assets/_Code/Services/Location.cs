@@ -19,7 +19,7 @@ using UnityEngine;
     {
     }
 
-    public bool move(int row, int column)
+    public bool move(Player player, Room destinationRoom, Hallway destinationHallway)
     {
         string msg = "Tried to move to row:" + row.ToString() + " column:" + column.ToString();
         Debug.Log(msg);
@@ -32,7 +32,7 @@ using UnityEngine;
     }
 
     // Returns True if successfully used secret passage; false otherwise
-    public bool useSecretPassage(Player player)
+    public bool useSecretPassage(Player player, Room destinationRoom)
     {
         Debug.Log("You tried to use a secret passage...\n");
         foreach (Position pos in positions)
