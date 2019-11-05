@@ -77,3 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7695f05e9a013478e29e720178a4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: Player
+  msg_input: {fileID: 0}
+  playerName_input: {fileID: 0}
+  playerName_Tmpro: {fileID: 0}

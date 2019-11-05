@@ -64,4 +64,3 @@ Gameboard: Front-end gameboard application
 LoadingScreen: Loading screen for the player when they start the game
 
 ServerTest: Test for client/server communication testing
-
