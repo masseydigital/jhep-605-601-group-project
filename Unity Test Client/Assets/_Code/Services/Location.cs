@@ -4,7 +4,8 @@ using UnityEngine;
 
  public class Location : MonoBehaviour
 {
-    public List<Position> positions = new List<Position>();
+    public List<Room> rooms = new List<Room>();
+    public List<Hallway> hallways = new List<Hallway>();
     public const int maxRow = 3;
     public const int maxColumn = 3;
 
@@ -18,7 +19,7 @@ using UnityEngine;
     {
     }
 
-    public bool move(int row, int column)
+    public bool move(Player player, Room destinationRoom, Hallway destinationHallway)
     {
         string msg = "Tried to move to row:" + row.ToString() + " column:" + column.ToString();
         Debug.Log(msg);
@@ -31,7 +32,7 @@ using UnityEngine;
     }
 
     // Returns True if successfully used secret passage; false otherwise
-    public bool useSecretPassage(Player player)
+    public bool useSecretPassage(Player player, Room destinationRoom)
     {
         Debug.Log("You tried to use a secret passage...\n");
         foreach (Position pos in positions)
@@ -52,55 +53,6 @@ using UnityEngine;
         //Player player = new Player();
         //player.name = "testPlayer" + Random.Range(0, 100).ToString();
         move(Random.Range(0, maxRow), Random.Range(0, maxColumn));
-    }
-
-
-    public class Position
-    {
-        public int row;
-        public int column;
-        public string locationName;
-        public Player player;
-
-        /*public int getRow()
-        {
-            return row;
-        }
-
-        public int getColumn()
-        {
-            return column;
-        }
-
-        public string getLocationName()
-        {
-            return locationName;
-        }
-
-        private Player getPlayer()
-        {
-            return player;
-        }
-
-        private void setRow(int newRow)
-        {
-            row = newRow;
-        }
-
-        private void setColumn(int newColumn)
-        {
-            column = newColumn;
-        }
-
-        private void setLocationName(string newLocationName)
-        {
-            locationName = newLocationName;
-        }
-
-        private void setPlayer(Player newPlayer)
-        {
-            player = newPlayer;
-        }*/
     }
 
 }

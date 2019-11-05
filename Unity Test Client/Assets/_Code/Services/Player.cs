@@ -13,6 +13,7 @@ public class Player : NetworkBehaviour
 {
     Broadcast broadcast;
     [SyncVar(hook = "OnPlayerNameChanged")] public string playerName;
+    public int winLose;
     private List<string> characters;
     private List<string> locations;
     private List<string> weapons;
