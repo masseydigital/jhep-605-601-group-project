@@ -9,6 +9,10 @@ using UnityEngine;
     public const int maxRow = 3;
     public const int maxColumn = 3;
 
+    //TODO: FIX THIS
+    int row;
+    int column;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +39,9 @@ using UnityEngine;
     public bool useSecretPassage(Player player, Room destinationRoom)
     {
         Debug.Log("You tried to use a secret passage...\n");
-        foreach (Position pos in positions)
+        //foreach (Position pos in positions)
         {
-            if(pos.player == player)
+            //if(pos.player == player)
             {
                 // TODO: check diagonals and see if there's an open position
             }
@@ -52,7 +56,7 @@ using UnityEngine;
         //Debug.Log("Inside location... Test ... calling move\n");
         //Player player = new Player();
         //player.name = "testPlayer" + Random.Range(0, 100).ToString();
-        move(Random.Range(0, maxRow), Random.Range(0, maxColumn));
+        //move(Random.Range(0, maxRow), Random.Range(0, maxColumn));
     }
 
 }
