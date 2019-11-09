@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameboardUi : MonoBehaviour
@@ -12,6 +13,14 @@ public class GameboardUi : MonoBehaviour
     public TextMeshProUGUI playerNameText;
     public TextMeshProUGUI debugAccuseText;
     public TextMeshProUGUI resultText;
+
+    public Image playerAccuseImage;
+    public Image roomAccuseImage;
+    public Image weaponAccuseImage;
+
+    public ImageOptions playerImages;
+    public ImageOptions roomImages;
+    public ImageOptions weaponImages;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +41,7 @@ public class GameboardUi : MonoBehaviour
     // Gives the player a random name
     public void SetPlayerName()
     {
-        playerNameText.text = GameManager.gameData.characterNames[Random.Range(0, GameManager.gameData.characterNames.Count)];
+        //playerNameText.text = GameManager.gameData.characterNames[Random.Range(0, GameManager.gameData.characterNames.Count)];
     }
 
     // Fills the dropdowns
@@ -45,6 +54,33 @@ public class GameboardUi : MonoBehaviour
         characterDropdown.AddOptions(GameManager.gameData.characterNames);
         weaponDropdown.AddOptions(GameManager.gameData.weaponNames);
         roomDropdown.AddOptions(GameManager.gameData.roomNames);
+    }
+
+    /// <summary>
+    /// Updates the room image based on the current dropdown select
+    /// This is triggered when a player selects a new room
+    /// </summary>
+    public void UpdateRoomImage()
+    {
+        roomAccuseImage.sprite = roomImages.images[roomDropdown.value];
+    }
+
+    /// <summary>
+    /// Updates the weapon image based on the current dropdown select
+    /// This is triggered when a player selects a new weapon
+    /// </summary>
+    public void UpdateWeaponImage()
+    {
+        weaponAccuseImage.sprite = weaponImages.images[weaponDropdown.value];
+    }
+
+    /// <summary>
+    /// Updates the player image based on the current dropdown select
+    /// This is triggered when a player selects a new player
+    /// </summary>
+    public void UpdatePlayerImage()
+    {
+        playerAccuseImage.sprite = playerImages.images[characterDropdown.value];
     }
 
     //Performs accuse action
