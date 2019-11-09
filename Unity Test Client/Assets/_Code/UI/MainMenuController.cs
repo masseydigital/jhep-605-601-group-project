@@ -9,9 +9,12 @@ public class MainMenuController : MonoBehaviour
     public DBConnection dataRet;
     public TMP_Dropdown theme_dropdown;
     public TMP_InputField playerName_input;
+    public TMP_InputField serverName_input;
+    public TMP_InputField serverPort_input;
 
     public PlayerData playerData;
     public RandomNameGenerator nameGenerator;
+    public GameServer server;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +31,6 @@ public class MainMenuController : MonoBehaviour
 
     public void FindGame()
     {
-        
         SceneManager.LoadScene(1);
     }
 
@@ -40,6 +42,16 @@ public class MainMenuController : MonoBehaviour
 
     public void UpdateName()
     {
-        playerData.playerName = playerName_input.text;
+        server.playerName = playerName_input.text;
+    }
+
+    public void UpdateIpAddress()
+    {
+        server.networkAddress = serverName_input.text;            
+    }
+
+    public void UpdatePortNumber()
+    {
+        server.networkPort = int.Parse(serverPort_input.text);
     }
 }
