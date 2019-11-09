@@ -6,8 +6,8 @@ using UnityEngine;
 {
     public List<Room> rooms = new List<Room>();
     public List<Hallway> hallways = new List<Hallway>();
-    public const int maxRow = 3;
-    public const int maxColumn = 3;
+    public const int maxRow = MAX_GAMEBOARD_ROWS;
+    public const int maxColumn = MAX_GAMEBOARD_COLS;
 
     //TODO: FIX THIS
     int row;

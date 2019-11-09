@@ -2,21 +2,75 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CaseFile : MonoBehaviour
+public static class CaseFile : MonoBehaviour
 {
-    private string character;
-    private string room;
-    private string weapon;
+    private static string mCharacter;
+    private static string mRoom;
+    private static string mWeapon;
 
-    // Start is called before the first frame update
-    void Start()
+    public static bool setCharacter(string character)
     {
-        
+        mCharacter = character;
+        return true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public static bool setRoom(string room)
     {
-        
+        mRoom = room;
+        return true;
+    }
+
+    public static bool setWeapon(string weapon)
+    {
+        mWeapon = weapon;
+        return true;
+    }
+
+    public static bool compareAll(string character, string room, string weapon)
+    {
+        if (mCharacter.Equals(character) && mRoom.Equals(room) && mWeapon.Equals(weapon))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static bool compareCharacter(string character)
+    {
+        if (mCharacter.Equals(character))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static bool compareRoom(string room)
+    {
+        if (mRoom.Equals(room))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static bool compareWeapon(string weapon)
+    {
+        if (mWeapon.Equals(weapon))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
