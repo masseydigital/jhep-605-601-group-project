@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
     {
         for(int i=0; i<characterObjs.Count; i++)
         {
-            characterObjs[i].GetComponent<TextMeshProUGUI>().text = gameData.characterNames[i];
+            //characterObjs[i].GetComponent<TextMeshProUGUI>().text = gameData.characterNames[i];
         }
     }
 
