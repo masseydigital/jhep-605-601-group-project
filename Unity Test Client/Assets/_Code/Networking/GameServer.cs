@@ -13,11 +13,6 @@ public class GameServer : NetworkManager
 
     public string playerName;
 
-    public void Update()
-    {
-
-    }
-
     public void ServerStart()
     {
         StartServer();

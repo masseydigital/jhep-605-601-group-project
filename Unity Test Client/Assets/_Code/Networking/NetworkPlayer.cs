@@ -9,6 +9,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar(hook = "OnPlayerIdChanged")] public int id;
 
     public GameServer server;
+    public GameboardUi gameUi;
 
     public void Awake()
     {
@@ -17,26 +18,52 @@ public class NetworkPlayer : NetworkBehaviour
 
     public void Start()
     {
+        gameUi = GameObject.Find("Game Manager").GetComponent<GameboardUi>();
+
         // We only want to control our own session
         if (!isLocalPlayer)
-            return;
+        {
+            // But we want to set up the board for all
+            gameUi.ShowPlayerBar(id);
+            gameUi.UpdatePlayerName(id, playerName);
+            gameUi.ShowPlayerMarker(id);
+        }
+        else
+        {
+            // Get our local network manager (server)
+            server = GameObject.Find("NetworkManager").GetComponent<GameServer>();
 
-        // Get our local network manager (server)
-        server = GameObject.Find("NetworkManager").GetComponent<GameServer>();
+            gameUi.ShowPlayerBar(id);
+            gameUi.UpdatePlayerName(id, playerName);
+            gameUi.ShowPlayerMarker(id);
 
-        // Sync the names across the network
-        Cmd_ChangePlayerName(server.playerName);
+            // Sync the names across the network
+            Cmd_ChangePlayerName(server.playerName);
+        }
     }
 
     public void Update()
     {
+        // If we do not have local control over the player
         if (!isLocalPlayer)
-            return;
+        {
+            gameUi.ShowPlayerBar(id);
+            gameUi.UpdatePlayerName(id, playerName);
+            gameUi.ShowPlayerMarker(id);
+        }
+        else
+        {
+            gameUi.ShowPlayerBar(id);
+            gameUi.UpdatePlayerName(id, playerName);
+            gameUi.ShowPlayerMarker(id);
+        }   
     }
 
     [Command]
     void Cmd_ChangePlayerName(string n)
     {
+        gameObject.name = $"{n}";
+
         Debug.Log($"Cmd_ChangePlayerName {n}");
 
         playerName = n;

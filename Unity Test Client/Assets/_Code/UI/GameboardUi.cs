@@ -22,6 +22,10 @@ public class GameboardUi : MonoBehaviour
     public ImageOptions roomImages;
     public ImageOptions weaponImages;
 
+    // The bars in the upper left
+    public List<GameObject> playerBars;
+    public List<GameObject> playerMarkers;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +85,51 @@ public class GameboardUi : MonoBehaviour
     public void UpdatePlayerImage()
     {
         playerAccuseImage.sprite = playerImages.images[characterDropdown.value];
+    }
+
+    /// <summary>
+    /// Shows the given player bar
+    /// </summary>
+    /// <param name="id"></param>
+    public void ShowPlayerBar(int id)
+    {
+        playerBars[id].SetActive(true);
+    }
+
+    /// <summary>
+    /// Hides the given player bar
+    /// </summary>
+    /// <param name="id"></param>
+    public void HidePlayerMarker(int id)
+    {
+        playerMarkers[id].SetActive(false);
+    }
+
+    /// <summary>
+    /// Shows the given player bar
+    /// </summary>
+    /// <param name="id"></param>
+    public void ShowPlayerMarker(int id)
+    {
+        playerMarkers[id].SetActive(true);
+    }
+
+    /// <summary>
+    /// Hides the given player bar
+    /// </summary>
+    /// <param name="id"></param>
+    public void HidePlayerBar(int id)
+    {
+        playerBars[id].SetActive(false);
+    }
+
+    /// <summary>
+    /// Updates the player name for the given character
+    /// </summary>
+    /// <param name="id"></param>
+    public void UpdatePlayerName(int id, string pname)
+    {
+        playerBars[id].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = pname;
     }
 
     //Performs accuse action
