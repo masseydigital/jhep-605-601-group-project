@@ -74,9 +74,9 @@ public class GameManagerService : MonoBehaviour
 
             return true;
         }
-        // The player is not in the game
         else
         {
+            // The player is not in the game
             return false;
         }
     }
