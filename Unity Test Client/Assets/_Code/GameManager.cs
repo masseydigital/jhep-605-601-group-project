@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     private string goalCharacter;
     private string goalRoom;
     private string goalWeapon;
+    private Deck deck;
+    private CaseFile file;
 
     private void Awake()
     {
@@ -48,6 +50,8 @@ public class GameManager : MonoBehaviour
         goalCharacter = gameData.characterNames[Random.Range(0, gameData.characterNames.Count)];
         goalRoom = gameData.roomNames[Random.Range(0, gameData.roomNames.Count)];
         goalWeapon = gameData.weaponNames[Random.Range(0, gameData.weaponNames.Count)];
+
+        file = deck.GetCaseFile(goalCharacter, goalWeapon, goalRoom);
     }
 
     //Check to see if we won
@@ -69,6 +73,7 @@ public class GameManager : MonoBehaviour
         LoadCharacters();
         LoadRooms();
         //LoadWeapons();
+        deck.LoadDeck(gameData.characterNames, gameData.weaponNames, gameData.roomNames);
     }
 
     // Loads all the characters
@@ -96,5 +101,45 @@ public class GameManager : MonoBehaviour
         {
             //weaponObjs[i].GetComponent<TextMeshProUGUI>().text = gameData.roomNames[i];
         }
+    }
+}
+
+public class Deck
+{
+    private List<string> cards;
+    private List<string> characters;
+
+    public void LoadDeck(List<string> characters, List<string> weapons, List<string> rooms)
+    {
+        cards.AddRange(characters);
+        cards.AddRange(weapons);
+        cards.AddRange(rooms);
+    }
+
+    public CaseFile GetCaseFile (string character, string weapon, string room)
+    {
+        cards.Remove(character);
+        cards.Remove(weapon);
+        cards.Remove(room);
+
+        CaseFile file = new CaseFile();
+        file.setCharacter(character);
+        file.setWeapon(weapon);
+        file.setRoom(weapon);
+
+        return file;
+    }
+
+    public List<string> DealRandom(int num)
+    {
+        List<string> returnCards = new List<string>();
+        for(int i = 0; i < num; i++)
+        {
+            int index = Random.Range(0, cards.Count);
+            returnCards.Add(cards[index]);
+            cards.RemoveAt(index);
+        }
+
+        return returnCards;
     }
 }

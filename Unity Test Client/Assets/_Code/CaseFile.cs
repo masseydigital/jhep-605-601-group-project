@@ -2,31 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class CaseFile : MonoBehaviour
+public class CaseFile : MonoBehaviour
 {
-    private static string mCharacter;
-    private static string mRoom;
-    private static string mWeapon;
+    private string mCharacter;
+    private string mRoom;
+    private string mWeapon;
 
-    public static bool setCharacter(string character)
+    public bool setCharacter(string character)
     {
         mCharacter = character;
         return true;
     }
 
-    public static bool setRoom(string room)
+    public bool setRoom(string room)
     {
         mRoom = room;
         return true;
     }
 
-    public static bool setWeapon(string weapon)
+    public bool setWeapon(string weapon)
     {
         mWeapon = weapon;
         return true;
     }
 
-    public static bool compareAll(string character, string room, string weapon)
+    public bool compareAll(string character, string room, string weapon)
     {
         if (mCharacter.Equals(character) && mRoom.Equals(room) && mWeapon.Equals(weapon))
         {
@@ -38,7 +38,7 @@ public static class CaseFile : MonoBehaviour
         }
     }
 
-    public static bool compareCharacter(string character)
+    public bool compareCharacter(string character)
     {
         if (mCharacter.Equals(character))
         {
@@ -50,7 +50,7 @@ public static class CaseFile : MonoBehaviour
         }
     }
 
-    public static bool compareRoom(string room)
+    public bool compareRoom(string room)
     {
         if (mRoom.Equals(room))
         {
@@ -62,7 +62,7 @@ public static class CaseFile : MonoBehaviour
         }
     }
 
-    public static bool compareWeapon(string weapon)
+    public bool compareWeapon(string weapon)
     {
         if (mWeapon.Equals(weapon))
         {
