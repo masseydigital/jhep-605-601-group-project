@@ -9,10 +9,6 @@ using UnityEngine;
     public const int maxRow = GameDefines.MAX_GAMEBOARD_ROWS;
     public const int maxColumn = GameDefines.MAX_GAMEBOARD_COLS;
 
-    //TODO: FIX THIS
-    int row;
-    int column;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -23,31 +19,111 @@ using UnityEngine;
     {
     }
 
+    public Room getRoom(int row, int column)
+    {
+        if (row < 0 || column < 0 || row >= maxRow || column >= maxColumn)
+        {
+            Debug.Log("getRoom: Invalid parameter(s)");
+            return null;
+        }
+
+        foreach (Room room in rooms)
+        {
+            if (room.row == row && room.column == column)
+            {
+                return room;
+            }
+        }
+        return null;
+    }
+
+    public Hallway getHallway(int row, int column)
+    {
+        if (row < 0 || column < 0 || row >= maxRow || column >= maxColumn)
+        {
+            Debug.Log("getHallway: Invalid parameter(s)");
+            return null;
+        }
+
+        foreach (Hallway hallway in hallways)
+        {
+            if (hallway.row == row && hallway.column == column)
+            {
+                return hallway;
+            }
+        }
+
+        return null;
+    }
+
     public bool move(Player player, Room destinationRoom, Hallway destinationHallway)
     {
-        string msg = "Tried to move to row:" + row.ToString() + " column:" + column.ToString();
+        string msg = "Tried to move to room" + destinationRoom.roomName + " through hallway" + destinationHallway.row + ":"+ destinationHallway.column;
         Debug.Log(msg);
-        // TODO: Logic that updates location
-
-        // passing the message up to broadcast...
-        //broadcast = GameObject.Find("Broadcast");
         Broadcast.Instance.EnqueueMsg("MSG_FROM_LOCATION: "+msg);
+
+        // Go through hallway to get to room
+
         return true;
     }
 
     // Returns True if successfully used secret passage; false otherwise
-    public bool useSecretPassage(Player player, Room destinationRoom)
+    public bool showSecretPassages(Player player)
     {
         Debug.Log("You tried to use a secret passage...\n");
-        //foreach (Position pos in positions)
+        Broadcast.Instance.EnqueueMsg("MSG_FROM_LOCATION: " + "player tried to use a secret passage!\n");
+
+        int startRow = 0, startColumn = 0;
+        // available room that can be used for passage
+        int secretRow = 0, secretColumn = 0;
+        Room currentRoom = null;
+
+        // find where the player is located for our starting point
+        foreach (Hallway hallway in hallways)
         {
-            //if(pos.player == player)
+            if(hallway.player == player)
             {
-                // TODO: check diagonals and see if there's an open position
+                startRow = hallway.row;
+                startColumn = hallway.column;
             }
         }
 
-        Broadcast.Instance.EnqueueMsg("MSG_FROM_LOCATION: " + "player tried to use a secret passage!\n");
+        foreach (Room room in rooms)
+        {
+            if(room.player == player)
+            {
+                startRow = room.row;
+                startColumn = room.column;
+            }
+        }
+
+        // check diagonals for an available empty room
+        if (((currentRoom = getRoom(startRow + 1, startColumn - 1)) != null) && currentRoom.player == null)
+        {
+            Debug.Log("showSecret: found a secret passage to top-left room");
+        }
+        else if(((currentRoom = getRoom(startRow + 1, startColumn + 1)) != null) && currentRoom.player == null)
+        {
+            Debug.Log("showSecret: found a secret passage to top-right room");
+        }
+        else if (((currentRoom = getRoom(startRow - 1, startColumn - 1)) != null) && currentRoom.player == null)
+        {
+            Debug.Log("showSecret: found a secret passage to bottom-left room");
+        }
+        else if (((currentRoom = getRoom(startRow - 1, startColumn + 1)) != null) && currentRoom.player == null)
+        {
+            Debug.Log("showSecret: found a secret passage to bottom-right room");
+        }
+        else
+        {
+            return false;
+        }
+
+        secretRow = currentRoom.row;
+        secretColumn = currentRoom.column;
+
+        // Illuminate room
+
         return true;
     }
 

@@ -23,11 +23,16 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        GameObject obj = GameObject.Find("DynamoDB Connection");
+        if (obj != null)
+            database = obj.GetComponent<DBConnection>();
+        else
+            Debug.Log("Failed to find DynamoDB Connection");
 
-        database = GameObject.Find("DynamoDB Connection").GetComponent<DBConnection>();
-
-        if(database!= null)
+        if (database != null)
             gameData = database.gameData;
+        else
+            Debug.Log("Failed to get database gameData");
     }
 
     // Start is called before the first frame update
@@ -47,6 +52,11 @@ public class GameManager : MonoBehaviour
     // Select a random set of win conditions for testing
     public void SelectRandomWinConditions()
     {
+        if(gameData ==  null)
+        {
+            Debug.Log("SelectRandomWinConditions: Failed to get game data");
+            return;
+        }
         goalCharacter = gameData.characterNames[Random.Range(0, gameData.characterNames.Count)];
         goalRoom = gameData.roomNames[Random.Range(0, gameData.roomNames.Count)];
         goalWeapon = gameData.weaponNames[Random.Range(0, gameData.weaponNames.Count)];
@@ -88,6 +98,12 @@ public class GameManager : MonoBehaviour
     // Loads all of the room data on start
     public void LoadRooms()
     {
+        if(gameData == null)
+        {
+            Debug.Log("Cannot get game data\n");
+            return;
+        }
+
         for (int i = 0; i < roomObjs.Count; i++)
         {
             roomObjs[i].GetComponent<TextMeshProUGUI>().text = gameData.roomNames[i];

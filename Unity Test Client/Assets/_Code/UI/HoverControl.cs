@@ -34,7 +34,6 @@ public class HoverControl : MonoBehaviour
             default:
                 break;
         }
-
     }
 
     // When the mouse hovers over the icon

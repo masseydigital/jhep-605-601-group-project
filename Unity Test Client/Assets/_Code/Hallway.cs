@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Hallway : MonoBehaviour
 {
-    public int room1Row;
-    public int room1Column;
-    public int room2Row;
-    public int room2Column;
+    public int row;
+    public int column;
+    // There can be a player in the Hallway
     public Player player;
 
     // Start is called before the first frame update
