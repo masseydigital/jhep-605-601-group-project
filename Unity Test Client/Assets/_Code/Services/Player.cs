@@ -34,10 +34,7 @@ public class Player : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (isClient)
-        {
-            Debug.Log($":: I AM CLIENT: {GetComponent<NetworkIdentity>().playerControllerId} ::");
-        }
+        
     }
 
     // Update is called once per frame

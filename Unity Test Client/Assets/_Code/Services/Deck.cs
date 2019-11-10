@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Deck
 {
-    private List<string> cards;
-    private List<string> characters;
+    private List<string> cards = new List<string>();
+
+    public List<string> Cards
+    {
+        get { return cards; }
+        set { cards = value; }
+    }
 
     public void LoadDeck(List<string> characters, List<string> weapons, List<string> rooms)
     {
@@ -14,16 +19,16 @@ public class Deck
         cards.AddRange(rooms);
     }
 
-    public CaseFile GetCaseFile(string character, string weapon, string room)
+    public CaseData GetCaseFile(string character, string weapon, string room)
     {
         cards.Remove(character);
         cards.Remove(weapon);
         cards.Remove(room);
 
-        CaseFile file = new CaseFile();
-        file.Character = character;
-        file.Weapon = weapon;
-        file.Room = room; ;
+        CaseData file = new CaseData();
+        file.character = character;
+        file.weapon = weapon;
+        file.room = room;
 
         return file;
     }

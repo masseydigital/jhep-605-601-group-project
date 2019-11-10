@@ -7,44 +7,51 @@ using UnityEngine.Networking.Match;
 
 public class GameServer : NetworkManager
 {
-    public List<NetworkClient> connectedPlayers = new List<NetworkClient>();
-    public List<GameObject> players = new List<GameObject>();
+    public List<NetworkPlayer> players = new List<NetworkPlayer>();
     public int connections = 0;
 
     public string playerName;
-    public GameManager gameManager;
-
-    public void Start()
-    {
-        gameManager = GetComponent<GameManager>();
-    }
+    public GameManagerService gameManager;
 
     public void ServerStart()
     {
         StartServer();
     }
 
-    public void StartGame()
-    {
 
+    // This hook occurs when the client is started
+    public override void OnStartClient(NetworkClient client)
+    {
+        //gameManager = Instantiate(spawnPrefabs[0], transform.position, transform.rotation).GetComponent<GameManagerService>();
     }
 
     public void ClientStart()
     {
         NetworkClient client = StartClient();
+    }
 
-        connectedPlayers.Add(client);
+    public override void OnServerSceneChanged(string sceneName)
+    {
+        base.OnServerSceneChanged(sceneName);
+
+        // The is the official game manager
+        gameManager = Instantiate(spawnPrefabs[0], transform.position, transform.rotation).GetComponent<GameManagerService>();
+
+        NetworkServer.Spawn(gameManager.gameObject);
     }
 
     // When the server adds a player
     public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
     {
         var player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-        players.Add(player);
 
-        players[connections].GetComponent<NetworkPlayer>().id = connections;
+        players.Add(player.GetComponent<NetworkPlayer>());
+
+        players[connections].id = connections;
 
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
+
+        gameManager.players.Add(player.GetComponent<NetworkPlayer>());
 
         connections++;
     }

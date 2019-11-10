@@ -7,16 +7,18 @@ public class NetworkPlayer : NetworkBehaviour
 {
     [SyncVar(hook = "OnPlayerNameChanged")] public string playerName;
     [SyncVar(hook = "OnPlayerIdChanged")] public int id;
-    //[SyncVar(hook = "OnPlayerPlayerMove")] public int roomId;
-    //[SyncVar(hook = "OnPlayerPlayerTurn")] public bool isTurn;
-    //[SyncVar(hook = "OnPlayerPlayerSuggest")] public CaseFile suggestion;
+    //[SyncVar(hook = "OnPlayerMove")] public int roomId;
+    //[SyncVar(hook = "OnPlayerTurn")] public bool isTurn;
+    //[SyncVar(hook = "OnPlayerSuggest")] public CaseData suggestion;
+    [SyncVar(hook = "OnPlayerAccuse")] public CaseData accusation;
 
     public GameServer server;
+    public GameManagerService gameManager;
     public GameboardUi gameUi;
 
     public void Awake()
     {
-        DontDestroyOnLoad(this);  
+        DontDestroyOnLoad(this);
     }
 
     public void Start()
@@ -59,7 +61,7 @@ public class NetworkPlayer : NetworkBehaviour
             gameUi.ShowPlayerBar(id);
             gameUi.UpdatePlayerName(id, playerName);
             gameUi.ShowPlayerMarker(id);
-        }   
+        }
     }
 
     [Command]
@@ -83,7 +85,19 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     void Cmd_MovePlayer()
     {
-        
+
+    }
+
+    [Command]
+    void Cmd_Accuse(CaseData accuse)
+    {
+
+    }
+
+    [Command]
+    void Cmd_Suggest()
+    {
+
     }
 
     // Changes the player name

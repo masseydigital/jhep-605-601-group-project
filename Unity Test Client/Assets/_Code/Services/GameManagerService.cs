@@ -1,31 +1,176 @@
-﻿using System.Collections;
+﻿/*GameManagerService.cs 
+ * Brief:   This class controls the game state and
+ *          synchronizes that state across the network.
+ *          Each client will have one of these, but the
+ *          server is ultimately responsbile for managing state.
+ */ 
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class GameManagerService : MonoBehaviour
+public class GameManagerService : NetworkBehaviour
 {
-    private List<Player> players = new List<Player>();
+    [SyncVar(hook = "OnSetWinConditions")] public CaseData winConditions;
+    [SyncVar(hook = "OnGameStateUpdate")] public int gameState;
+    [SyncVar] public SyncListString cards;
+    [SyncVar] public SyncListString playerNames;
+
+    public List<NetworkPlayer> players = new List<NetworkPlayer>();        // These are the networked players in the game
     private Player playerTurn;
+    private DBConnection database;
+                                                      // This is the deck of cards (6 characters, 6 weapons, 9 rooms)
+    public GameData gameData;
+
+    public List<string> characters;
+    public List<string> weapons;
+    public List<string> rooms;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+
+        database = GameObject.Find("DynamoDB Connection").GetComponent<DBConnection>();
+
+        if (database != null)
+            gameData = database.gameData;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        characters = gameData.characterNames;
+        weapons = gameData.weaponNames;
+        rooms = gameData.roomNames;
+
+        // We only want the server to set state
+        if(isServer)
+        //if (NetworkServer.active)
+        {
+
+        }
+        else 
+        {
+            // We want to get the servers information
+            
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // If we are the server
+        //if (NetworkServer.active)
+        if(isServer)
+        {
+            switch (gameState)
+            {
+                // Waiting for game to start
+                case (0):
+                    // Game Start Conditions
+                    if (players.Count > 1)
+                    {
+                        gameState = 1;
+                    }
+                    break;
+
+                // Initializing game data
+                case (1):
+                    Deck deck = new Deck();
+                    deck.LoadDeck(characters, weapons, rooms);
+
+                    for (int i = 0; i < deck.Cards.Count; i++)
+                    {
+                        cards.Add(deck.Cards[i]);
+                    }
+
+                    // Select random win conditions
+                    winConditions = deck.GetCaseFile(
+                       characters[Random.Range(0, characters.Count)],
+                       weapons[Random.Range(0, weapons.Count)],
+                       rooms[Random.Range(0, rooms.Count)]
+                       );
+
+                    gameState = 2;
+                    break;
+                // Game is ongoing
+                case (2):
+
+                    break;
+            }
+        }
     }
 
+    #region RPCs
+    void RpcSendWinner()
+    {
+
+    }
+    #endregion RPCs
+
+    #region SyncEvents
+    void OnSuggestion(CaseData suggestion)
+    {
+        if (suggestion.character == winConditions.character &&
+            suggestion.weapon == winConditions.weapon &&
+            suggestion.room == winConditions.room)
+        {
+            // You win!
+        }
+        else
+        {
+            // You lose!
+        }
+    }
+
+    void OnAccusation(CaseData accusation)
+    {
+        if(accusation.character == winConditions.character &&
+            accusation.weapon == winConditions.weapon &&
+            accusation.room == winConditions.room)
+        {
+            // You win!
+        }
+        else
+        {
+            // You lose!
+        }
+    }
+
+    /// <summary>
+    /// Sets the case file.  This happens at the beginning of the game.
+    /// </summary>
+    void OnSetWinConditions(CaseData caseData)
+    {
+        winConditions.character = caseData.character;
+        winConditions.weapon = caseData.weapon;
+        winConditions.room = caseData.room;
+    }
+
+    /// <summary>
+    /// Whenever we update the game state
+    /// </summary>
+    /// <param name="state"></param>
+    void OnGameStateUpdate(int state)
+    {
+        Debug.Log($":: Transitioning state from {gameState} to {state} ::");
+
+        gameState = state;
+    }
+    #endregion SyncEvents
+
+    #region Local Methods
+
+
+    /*
     public bool addPlayer(Player player)
     {
         if (players.Count <= GameDefines.PARTY_SIZE_LIMIT)
         {
             // TODO: Alert others that a player has joined the game
 
-            players.Add(player);
+            //players.Add(player);
 
             return true;
         }
@@ -145,4 +290,16 @@ public class GameManagerService : MonoBehaviour
         if (player.winLoose != 1) return true;
         else return false;
     }
+    */
+    #endregion Local Methods
 }
+
+// Game States
+public enum GameStates
+{
+    waiting = 0,
+    init,
+    ongoing,
+    complete
+};
+

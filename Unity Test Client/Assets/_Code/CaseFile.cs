@@ -2,34 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CaseFile : MonoBehaviour
+[System.Serializable]
+public struct CaseData
 {
-    private string mCharacter;
-    private string mRoom;
-    private string mWeapon;
+    public string character;
+    public string room;
+    public string weapon;
+}
+
+
+[System.Serializable]
+public class CaseFile
+{
+    CaseData caseData;
 
     public string Character
     {
-        get { return mCharacter; }
-        set { mCharacter = value; }
+        get { return caseData.character; }
+        set { caseData.character = value; }
     }
 
     public string Room
     {
-        get { return mRoom; }
-        set { mRoom = value; }
+        get { return caseData.room; }
+        set { caseData.room = value; }
     }
 
     public string Weapon
     {
-        get { return mWeapon; }
-        set { mWeapon = value; }
+        get { return caseData.weapon; }
+        set { caseData.weapon = value; }
     }
 
     #region Methods
     public bool compareAll(string character, string room, string weapon)
     {
-        if (mCharacter.Equals(character) && mRoom.Equals(room) && mWeapon.Equals(weapon))
+        if (caseData.character.Equals(character) && caseData.room.Equals(room) && caseData.weapon.Equals(weapon))
         {
             return true;
         }
@@ -41,7 +49,7 @@ public class CaseFile : MonoBehaviour
 
     public bool compareCharacter(string character)
     {
-        if (mCharacter.Equals(character))
+        if (caseData.character.Equals(character))
         {
             return true;
         }
@@ -53,7 +61,7 @@ public class CaseFile : MonoBehaviour
 
     public bool compareRoom(string room)
     {
-        if (mRoom.Equals(room))
+        if (caseData.room.Equals(room))
         {
             return true;
         }
@@ -65,7 +73,7 @@ public class CaseFile : MonoBehaviour
 
     public bool compareWeapon(string weapon)
     {
-        if (mWeapon.Equals(weapon))
+        if (caseData.weapon.Equals(weapon))
         {
             return true;
         }
