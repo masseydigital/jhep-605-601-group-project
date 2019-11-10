@@ -2,8 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
- public class Location : MonoBehaviour
+[System.Serializable]
+public struct LocationData
 {
+    public int[,] grid;
+}
+
+[System.Serializable]
+public class Location : MonoBehaviour
+{
+    LocationData locationData;
+
+    public int[,] Grid
+    {
+        get { return locationData.grid; }
+        set { locationData.grid = value; }
+    }
+
     public List<Room> rooms = new List<Room>();
     public List<Hallway> hallways = new List<Hallway>();
     public const int maxRow = GameDefines.MAX_GAMEBOARD_ROWS;
@@ -12,6 +27,19 @@ using UnityEngine;
     // Start is called before the first frame update
     void Start()
     {
+        locationData.grid = new int[GameDefines.MAX_GAMEBOARD_COLS + GameDefines.MAX_GAMEBOARD_ROWS,
+            GameDefines.MAX_GAMEBOARD_COLS + GameDefines.MAX_GAMEBOARD_ROWS];
+        int i = 0;
+        int j = 0;
+
+        for(; i < GameDefines.MAX_GAMEBOARD_COLS + GameDefines.MAX_GAMEBOARD_ROWS; i++)
+        {
+            for(; j < GameDefines.MAX_GAMEBOARD_COLS + GameDefines.MAX_GAMEBOARD_ROWS; j++)
+            {
+                // Empty
+                locationData.grid[i,j] = 0;
+            }
+        }
     }
 
     // Update is called once per frame
