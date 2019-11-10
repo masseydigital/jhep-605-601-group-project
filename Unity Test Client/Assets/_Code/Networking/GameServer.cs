@@ -12,6 +12,12 @@ public class GameServer : NetworkManager
     public int connections = 0;
 
     public string playerName;
+    public GameManager gameManager;
+
+    public void Start()
+    {
+        gameManager = GetComponent<GameManager>();
+    }
 
     public void ServerStart()
     {

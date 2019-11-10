@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 7667803115732911386}
   - component: {fileID: 3839560763046807381}
   m_Layer: 5
-  m_Name: Player 1 Prefab
+  m_Name: Player UI Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,7 +188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44.04001, y: -8.600003}
+  m_AnchoredPosition: {x: -64, y: -8.600003}
   m_SizeDelta: {x: 131.14, y: 17.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &926905089511439906
@@ -345,7 +345,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44.04, y: 10.69}
+  m_AnchoredPosition: {x: -64, y: 10.69}
   m_SizeDelta: {x: 131.14, y: 17.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3409204743204838297

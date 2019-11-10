@@ -7,6 +7,9 @@ public class NetworkPlayer : NetworkBehaviour
 {
     [SyncVar(hook = "OnPlayerNameChanged")] public string playerName;
     [SyncVar(hook = "OnPlayerIdChanged")] public int id;
+    //[SyncVar(hook = "OnPlayerPlayerMove")] public int roomId;
+    //[SyncVar(hook = "OnPlayerPlayerTurn")] public bool isTurn;
+    //[SyncVar(hook = "OnPlayerPlayerSuggest")] public CaseFile suggestion;
 
     public GameServer server;
     public GameboardUi gameUi;
@@ -77,6 +80,12 @@ public class NetworkPlayer : NetworkBehaviour
         id = n;
     }
 
+    [Command]
+    void Cmd_MovePlayer()
+    {
+        
+    }
+
     // Changes the player name
     void OnPlayerNameChanged(string newName)
     {
@@ -93,5 +102,11 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log($"OnPlayerNameChanged:: Old Name: {playerName} New Name: {newId}");
 
         id = newId;
+    }
+
+    // Send Player Move
+    void OnPlayerMove()
+    {
+        Debug.Log($":: OnPlayerMove ::");
     }
 }
