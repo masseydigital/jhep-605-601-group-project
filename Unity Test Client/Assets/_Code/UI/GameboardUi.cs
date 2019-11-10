@@ -26,8 +26,14 @@ public class GameboardUi : MonoBehaviour
     public List<GameObject> playerBars;
     public List<GameObject> playerMarkers;
 
+    public GameObject actionButtons;
+
     public GameObject cardWindow;
     public List<GameObject> playerCards;
+    public NetworkPlayer networkPlayer;
+    public GameManagerService gameManager;
+
+    public CaseData caseData;
 
     // Start is called before the first frame update
     void Start()
@@ -165,6 +171,16 @@ public class GameboardUi : MonoBehaviour
         }
     }
 
+    public void HideActionButtons()
+    {
+        actionButtons.SetActive(false);
+    }
+
+    public void ShowActionButtons()
+    {
+        actionButtons.SetActive(true);
+    }
+
     //Performs accuse action
     public void Accuse()
     {
@@ -176,6 +192,7 @@ public class GameboardUi : MonoBehaviour
             $"in {roomDropdown.options[roomDropdown.value].text} " +
             $"with a {weaponDropdown.options[weaponDropdown.value].text}";
 
+        /*
         bool win = GameManager.instance.CheckWin(
             characterDropdown.options[characterDropdown.value].text,
             roomDropdown.options[roomDropdown.value].text,
@@ -191,5 +208,30 @@ public class GameboardUi : MonoBehaviour
             resultText.text = "Try Again!";
             resultText.color = Color.red;
         }
+        */
+
+        // Make the case
+        caseData.character = characterDropdown.options[characterDropdown.value].text;
+        caseData.room = roomDropdown.options[roomDropdown.value].text;
+        caseData.weapon = weaponDropdown.options[weaponDropdown.value].text;
+
+        // Send the accusation over the network
+        networkPlayer.MakeAccusation(caseData);
+    }
+
+    // Make a suggestion
+    public void Suggest()
+    {
+        Debug.Log($"Suggesting: {characterDropdown.options[characterDropdown.value].text} " +
+           $"in {roomDropdown.options[roomDropdown.value].text} " +
+           $"with a {weaponDropdown.options[weaponDropdown.value].text}");
+        
+        // Make the case
+        caseData.character = characterDropdown.options[characterDropdown.value].text;
+        caseData.room = roomDropdown.options[roomDropdown.value].text;
+        caseData.weapon = weaponDropdown.options[weaponDropdown.value].text;
+
+        // Send the accusation over the network
+        networkPlayer.MakeSuggestion(caseData);
     }
 }

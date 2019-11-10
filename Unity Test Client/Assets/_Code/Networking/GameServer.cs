@@ -18,13 +18,6 @@ public class GameServer : NetworkManager
         StartServer();
     }
 
-
-    // This hook occurs when the client is started
-    public override void OnStartClient(NetworkClient client)
-    {
-        //gameManager = Instantiate(spawnPrefabs[0], transform.position, transform.rotation).GetComponent<GameManagerService>();
-    }
-
     public void ClientStart()
     {
         NetworkClient client = StartClient();
@@ -52,6 +45,7 @@ public class GameServer : NetworkManager
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 
         gameManager.players.Add(player.GetComponent<NetworkPlayer>());
+        gameManager.playerNames.Add(player.GetComponent<NetworkPlayer>().playerName);
 
         connections++;
     }

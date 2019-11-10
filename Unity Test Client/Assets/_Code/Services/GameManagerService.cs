@@ -14,14 +14,16 @@ public class GameManagerService : NetworkBehaviour
 {
     [SyncVar(hook = "OnSetWinConditions")] public CaseData winConditions;
     [SyncVar(hook = "OnGameStateUpdate")] public int gameState;
+    [SyncVar(hook = "OnTurnUpdate")] public int playerTurn;
     [SyncVar] public SyncListString cards;
     [SyncVar] public SyncListString playerNames;
 
     public List<NetworkPlayer> players = new List<NetworkPlayer>();        // These are the networked players in the game
-    private Player playerTurn;
+    //private Player playerTurn;
     private DBConnection database;
                                                       // This is the deck of cards (6 characters, 6 weapons, 9 rooms)
     public GameData gameData;
+    public GameboardUi gameUi;
 
     public List<string> characters;
     public List<string> weapons;
@@ -48,7 +50,7 @@ public class GameManagerService : NetworkBehaviour
         if(isServer)
         //if (NetworkServer.active)
         {
-
+            
         }
         else 
         {
@@ -96,18 +98,15 @@ public class GameManagerService : NetworkBehaviour
                     break;
                 // Game is ongoing
                 case (2):
-
+                    
                     break;
             }
         }
-    }
+        else // we are not the server, but we would like to make a move
+        {
 
-    #region RPCs
-    void RpcSendWinner()
-    {
-
+        }
     }
-    #endregion RPCs
 
     #region SyncEvents
     void OnSuggestion(CaseData suggestion)
@@ -157,6 +156,34 @@ public class GameManagerService : NetworkBehaviour
         Debug.Log($":: Transitioning state from {gameState} to {state} ::");
 
         gameState = state;
+    }
+
+    /// <summary>
+    /// Whenever we update the game state
+    /// </summary>
+    /// <param name="state"></param>
+    void OnTurnUpdate(int turn)
+    {
+        Debug.Log($":: Transitioning state from {playerTurn} to {turn} ::");
+
+        playerTurn = turn;
+
+        if (playerTurn >= playerNames.Count)
+        {
+            playerTurn = 0;
+        }
+    }
+
+    public void EndTurn(int nextTurn)
+    {
+        Debug.Log("Ending turn: " + nextTurn);
+
+        playerTurn = nextTurn;
+
+        if(playerTurn >= playerNames.Count)
+        {
+            playerTurn = 0;
+        }
     }
     #endregion SyncEvents
 
