@@ -21,6 +21,8 @@ public class Player : NetworkBehaviour
     public TMP_InputField msg_input;
     public TMP_InputField playerName_input;
     public TextMeshProUGUI playerName_Tmpro;
+
+    public int winLoose=0;
     
     public Player()
     {

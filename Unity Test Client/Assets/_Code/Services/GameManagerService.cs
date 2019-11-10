@@ -21,7 +21,7 @@ public class GameManagerService : MonoBehaviour
 
     public bool addPlayer(Player player)
     {
-        if (players.Count <= PARTY_SIZE_LIMIT)
+        if (players.Count <= GameDefines.PARTY_SIZE_LIMIT)
         {
             // TODO: Alert others that a player has joined the game
 
@@ -38,7 +38,8 @@ public class GameManagerService : MonoBehaviour
 
     public bool removePlayer(Player player)
     {
-        if (players.Exists(player))
+        //if (players.Exists(player))
+        if(player != null)
         {
             if (playerTurn == player)
             {
@@ -61,12 +62,13 @@ public class GameManagerService : MonoBehaviour
 
     public int getNumPlayers()
     {
-        return players.Count();
+        return players.Count;
     }
 
     public bool setPlayerTurn(Player player)
     {
-        if (players.Exists(player))
+        //if (players.Exists(player))
+        if(player != null)
         {
             playerTurn = player;
 
@@ -101,7 +103,8 @@ public class GameManagerService : MonoBehaviour
         }
         else
         {
-            if (players.Exists(playerTurn))
+            //if (players.Exists(playerTurn))
+            if(playerTurn != null)
             {
                 playerTurnIndex = players.IndexOf(playerTurn);
 
@@ -117,6 +120,8 @@ public class GameManagerService : MonoBehaviour
 
             }
         }
+
+        return false;
     }
 
     public List<Player> GetPlayers()
