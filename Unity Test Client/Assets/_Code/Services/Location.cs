@@ -75,7 +75,7 @@ using UnityEngine;
 
         int startRow = 0, startColumn = 0;
         // available room that can be used for passage
-        int secretRow = 0, secretColumn = 0;
+        int secretRow = -1, secretColumn = -1;
         Room currentRoom = null;
 
         // find where the player is located for our starting point
@@ -100,29 +100,47 @@ using UnityEngine;
         // check diagonals for an available empty room
         if (((currentRoom = getRoom(startRow + 1, startColumn - 1)) != null) && currentRoom.player == null)
         {
+            secretRow = currentRoom.row;
+            secretColumn = currentRoom.column;
+
+            // Illuminate room
+
             Debug.Log("showSecret: found a secret passage to top-left room");
         }
-        else if(((currentRoom = getRoom(startRow + 1, startColumn + 1)) != null) && currentRoom.player == null)
+
+        if(((currentRoom = getRoom(startRow + 1, startColumn + 1)) != null) && currentRoom.player == null)
         {
+            secretRow = currentRoom.row;
+            secretColumn = currentRoom.column;
+
+            // Illuminate room
+
             Debug.Log("showSecret: found a secret passage to top-right room");
         }
-        else if (((currentRoom = getRoom(startRow - 1, startColumn - 1)) != null) && currentRoom.player == null)
+
+        if (((currentRoom = getRoom(startRow - 1, startColumn - 1)) != null) && currentRoom.player == null)
         {
+            secretRow = currentRoom.row;
+            secretColumn = currentRoom.column;
+
+            // Illuminate room
             Debug.Log("showSecret: found a secret passage to bottom-left room");
         }
-        else if (((currentRoom = getRoom(startRow - 1, startColumn + 1)) != null) && currentRoom.player == null)
+
+        if (((currentRoom = getRoom(startRow - 1, startColumn + 1)) != null) && currentRoom.player == null)
         {
+            secretRow = currentRoom.row;
+            secretColumn = currentRoom.column;
+
+            // Illuminate room
+
             Debug.Log("showSecret: found a secret passage to bottom-right room");
         }
-        else
+
+        if(secretRow == -1 || secretColumn == -1)
         {
             return false;
         }
-
-        secretRow = currentRoom.row;
-        secretColumn = currentRoom.column;
-
-        // Illuminate room
 
         return true;
     }
