@@ -26,6 +26,9 @@ public class GameboardUi : MonoBehaviour
     public List<GameObject> playerBars;
     public List<GameObject> playerMarkers;
 
+    public GameObject cardWindow;
+    public List<GameObject> playerCards;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -130,6 +133,36 @@ public class GameboardUi : MonoBehaviour
     public void UpdatePlayerName(int id, string pname)
     {
         playerBars[id].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = pname;
+    }
+
+    /// <summary>
+    /// Opens the card window
+    /// </summary>
+    public void OpenCardWindow()
+    {
+        cardWindow.SetActive(true);
+    }
+
+    /// <summary>
+    /// Closes the card window
+    /// </summary>
+    public void CloseCardWindow()
+    {
+        cardWindow.SetActive(false);
+    }
+
+    /// <summary>
+    /// Sets the number of cards that the player has
+    /// TODO: Link to Game Manager
+    /// </summary>
+    public void InitializeCards(int num)
+    {
+        // Activate the number of cards you have
+        for(int i=0; i<num; i++)
+        {
+            playerCards[i].SetActive(true);
+            //TODO: Add method to polymorph card
+        }
     }
 
     //Performs accuse action
