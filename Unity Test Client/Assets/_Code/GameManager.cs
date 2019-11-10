@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         goalRoom = gameData.roomNames[Random.Range(0, gameData.roomNames.Count)];
         goalWeapon = gameData.weaponNames[Random.Range(0, gameData.weaponNames.Count)];
 
-        file = deck.GetCaseFile(goalCharacter, goalWeapon, goalRoom);
+        //file = deck.GetCaseFile(goalCharacter, goalWeapon, goalRoom);
     }
 
     //Check to see if we won
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         LoadCharacters();
         LoadRooms();
         //LoadWeapons();
-        deck.LoadDeck(gameData.characterNames, gameData.weaponNames, gameData.roomNames);
+        //deck.LoadDeck(gameData.characterNames, gameData.weaponNames, gameData.roomNames);
     }
 
     // Loads all the characters
