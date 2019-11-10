@@ -8,24 +8,25 @@ public class CaseFile : MonoBehaviour
     private string mRoom;
     private string mWeapon;
 
-    public bool setCharacter(string character)
+    public string Character
     {
-        mCharacter = character;
-        return true;
+        get { return mCharacter; }
+        set { mCharacter = value; }
     }
 
-    public bool setRoom(string room)
+    public string Room
     {
-        mRoom = room;
-        return true;
+        get { return mRoom; }
+        set { mRoom = value; }
     }
 
-    public bool setWeapon(string weapon)
+    public string Weapon
     {
-        mWeapon = weapon;
-        return true;
+        get { return mWeapon; }
+        set { mWeapon = value; }
     }
 
+    #region Methods
     public bool compareAll(string character, string room, string weapon)
     {
         if (mCharacter.Equals(character) && mRoom.Equals(room) && mWeapon.Equals(weapon))
@@ -73,4 +74,5 @@ public class CaseFile : MonoBehaviour
             return false;
         }
     }
+    #endregion Methods
 }

@@ -123,9 +123,9 @@ public class Deck
         cards.Remove(room);
 
         CaseFile file = new CaseFile();
-        file.setCharacter(character);
-        file.setWeapon(weapon);
-        file.setRoom(weapon);
+        file.Character = character;
+        file.Weapon = weapon;
+        file.Room = room; ;
 
         return file;
     }
