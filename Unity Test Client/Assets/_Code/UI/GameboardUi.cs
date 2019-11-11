@@ -6,18 +6,20 @@ using TMPro;
 
 public class GameboardUi : MonoBehaviour
 {
+    // Dropdowns for suggestions/accussations
     public TMP_Dropdown characterDropdown;
     public TMP_Dropdown weaponDropdown;
     public TMP_Dropdown roomDropdown;
 
-    public TextMeshProUGUI playerNameText;
-    public TextMeshProUGUI debugAccuseText;
-    public TextMeshProUGUI resultText;
+    public TextMeshProUGUI debugAccuseText; // this is the text at the bottom for debugging
+    public TextMeshProUGUI resultText;      // more debug text for win/lose
 
+    //These are the images on the left for the suggestions/accusations
     public Image playerAccuseImage;
     public Image roomAccuseImage;
     public Image weaponAccuseImage;
 
+    // These are all of the image option objects that can be accessed
     public ImageOptions playerImages;
     public ImageOptions roomImages;
     public ImageOptions weaponImages;
@@ -26,15 +28,44 @@ public class GameboardUi : MonoBehaviour
     public List<GameObject> playerBars;
     public List<GameObject> playerMarkers;
 
+    // Suggestion/Accusation Butttons
     public GameObject actionButtons;
 
+    // Card/Suggestion Windows
     public GameObject cardWindow;
     public GameObject suggestionWindow;
-    public List<GameObject> playerCards;
-    public NetworkPlayer networkPlayer;
-    public GameManagerService gameManager;
+    public List<GameObject> playerCards;        // Cards in the card window
+    public List<GameObject> suggestionCards;    // Cards in the suggestion window
+
+    // This is all of the board rooms and hallways
+    // This is where players can move their icon too
+    // 0 - Study
+    // 1 - Hallway
+    // 2 - Library
+    // 3 - Hallway
+    // 4 - Conservatory
+    // 5 - Hallway
+    // 6 - Hallway
+    // 7 - Hallway
+    // 8 - Hall
+    // 9 - Hallway 
+    // 10 - Biliard Room
+    // 11 - Hallway
+    // 12 - Ball Rooom
+    // 13 - Hallway
+    // 14 - Hallway 
+    // 15 - Hallway 
+    // 16 - Lounge
+    // 17 - Hallway
+    // 18 - Dining Room
+    // 19 - Hallway
+    // 20 - Kitchen
+    public List<Image> boardImages;
 
     public CaseData caseData;
+
+    public NetworkPlayer networkPlayer;
+    public GameManagerService gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -42,20 +73,6 @@ public class GameboardUi : MonoBehaviour
         FillDropdowns();
 
         debugAccuseText.text = "";
-
-        SetPlayerName();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    // Gives the player a random name
-    public void SetPlayerName()
-    {
-        //playerNameText.text = GameManager.gameData.characterNames[Random.Range(0, GameManager.gameData.characterNames.Count)];
     }
 
     // Fills the dropdowns
@@ -68,6 +85,15 @@ public class GameboardUi : MonoBehaviour
         characterDropdown.AddOptions(GameManager.gameData.characterNames);
         weaponDropdown.AddOptions(GameManager.gameData.weaponNames);
         roomDropdown.AddOptions(GameManager.gameData.roomNames);
+    }
+
+    /// <summary>
+    /// Moves the player from one location to another
+    /// </summary>
+    public void MovePlayerMarker(int player, int to, int from)
+    {
+        boardImages[to].sprite = playerImages.images[player];
+        boardImages[from].sprite = playerImages.nullImage;
     }
 
     /// <summary>
