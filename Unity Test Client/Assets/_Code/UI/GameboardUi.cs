@@ -27,6 +27,8 @@ public class GameboardUi : MonoBehaviour
     // The bars in the upper left
     public List<GameObject> playerBars;
     public List<GameObject> playerMarkers;
+    public List<GameObject> playerCrowns;
+    public List<GameObject> playerCardIcons;
 
     // Suggestion/Accusation Butttons
     public GameObject actionButtons;
@@ -139,6 +141,26 @@ public class GameboardUi : MonoBehaviour
     public void HidePlayerMarker(int id)
     {
         playerMarkers[id].SetActive(false);
+    }
+
+    /// <summary>
+    /// Shows the player crown for a specific player
+    /// Player crowns coorelate to the player whose turn it is
+    /// </summary>
+    /// <param name="id"></param>
+    public void ShowPlayerCrown(int id)
+    {
+        playerCrowns[id].SetActive(true);
+    }
+
+    /// <summary>
+    /// Hides the player crown for a specific player
+    /// Player crowns coorelate to the player whose turn it is
+    /// </summary>
+    /// <param name="id"></param>
+    public void HidePlayerCrown(int id)
+    {
+        playerCrowns[id].SetActive(true);
     }
 
     /// <summary>
