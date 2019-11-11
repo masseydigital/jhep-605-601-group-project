@@ -210,6 +210,7 @@ public class GameboardUi : MonoBehaviour
     public void OpenCardWindow()
     {
         cardWindow.SetActive(true);
+        InitializeCards(networkPlayer.hand.Count);
     }
 
     /// <summary>
@@ -240,13 +241,52 @@ public class GameboardUi : MonoBehaviour
     /// Sets the number of cards that the player has
     /// TODO: Link to Game Manager
     /// </summary>
-    public void InitializeCards(int num)
+    public void InitializeCards(int numCards)
     {
         // Activate the number of cards you have
-        for(int i=0; i<num; i++)
+        for(int i=0; i<playerCards.Count; i++)
         {
-            playerCards[i].SetActive(true);
-            //TODO: Add method to polymorph card
+            if (i < numCards)
+            {
+                playerCards[i].SetActive(true);
+                SetPlayerCard(i, networkPlayer.hand[i]);
+            }
+            else
+            {
+                playerCards[i].SetActive(false);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Sets the player card based on the name
+    /// </summary>
+    /// <param name="cardName"></param>
+    public void SetPlayerCard(int cardIndex, string cardName)
+    {
+        int index = 0;
+        for(int i=0; i<gameManager.allCards.Count; i++)
+        {
+            // We found our card
+            if (cardName == gameManager.allCards[i])
+            {
+                index = i;
+                break;
+            }
+        }
+
+        // it's a player card
+        if(index <= 5)
+        {
+            playerCards[cardIndex].GetComponent<Image>().sprite = playerImages.images[index];
+        }
+        else if(index <= 11) // it's a weapon
+        {
+            playerCards[cardIndex].GetComponent<Image>().sprite = weaponImages.images[index - 6];
+        }
+        else if(index <= 21) // it's a room
+        {
+            playerCards[cardIndex].GetComponent<Image>().sprite = roomImages.images[index - 12];
         }
     }
 

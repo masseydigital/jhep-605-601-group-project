@@ -44,8 +44,7 @@ public class GameServer : NetworkManager
 
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 
-        gameManager.players.Add(player.GetComponent<NetworkPlayer>());
-        gameManager.playerNames.Add(player.GetComponent<NetworkPlayer>().playerName);
+        gameManager.networkPlayers.Add(player.GetComponent<NetworkPlayer>());
 
         connections++;
     }

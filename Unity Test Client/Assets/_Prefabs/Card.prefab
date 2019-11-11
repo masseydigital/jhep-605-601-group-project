@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  hoverImage: {fileID: 1850508007501333760}
+  hoverImage: {fileID: 5039090736224375398}
   transparencyAmount: 45
 --- !u!1 &4171489481593403644
 GameObject:

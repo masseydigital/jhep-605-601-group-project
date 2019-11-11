@@ -7,10 +7,9 @@ public class NetworkPlayer : NetworkBehaviour
 {
     [SyncVar(hook = "OnPlayerNameChanged")] public string playerName;
     [SyncVar(hook = "OnPlayerIdChanged")] public int id;
-    //[SyncVar(hook = "OnPlayerMove")] public int roomId;
-    //[SyncVar(hook = "OnPlayerTurn")] public bool isTurn;
     [SyncVar(hook = "OnPlayerSuggest")] public CaseData suggestion;
     [SyncVar(hook = "OnPlayerAccuse")] public CaseData accusation;
+    [SyncVar(hook = "OnDrawHand")] public SyncListString hand;
 
     public GameServer server;
     public GameManagerService gameManager;
@@ -40,10 +39,13 @@ public class NetworkPlayer : NetworkBehaviour
         {
             // Get our local network manager (server)
             server = GameObject.Find("NetworkManager").GetComponent<GameServer>();
+
+            gameManager.networkPlayers.Add(this);
             
             gameUi.networkPlayer = this;
             gameUi.gameManager = gameManager;
             gameManager.gameUi = gameUi;
+            gameManager.myNetworkPlayer = this;
 
             // Sync the names across the network
             Cmd_ChangePlayerName(server.playerName);
@@ -76,6 +78,9 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    #region Commands
+    // The command attribute is called by a client and executed on the server on that same object.
+    // The client canonly call this on objects it has authority over
     [Command]
     void Cmd_ChangePlayerName(string n)
     {
@@ -84,6 +89,8 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log($"Cmd_ChangePlayerName {n}");
 
         playerName = n;
+
+        gameManager.playerNames.Add(playerName);
     }
 
     [Command]
@@ -118,6 +125,35 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log($"Cmd_EndTurn -- Player: {id} ending turn: {turn}");
         gameManager.EndTurn(turn);
     }
+
+    [Command]
+    void Cmd_DrawHand(int numDrawn)
+    {
+        Debug.Log($"Cmd_DrawHand -- Player: {id} Drawing");
+        List<string> h = gameManager.deck.DealRandom(numDrawn);
+
+        // Convert to our list string
+        for(int i=0; i<h.Count; i++)
+        {
+            hand.Add(h[i]);
+            gameManager.cards.Remove(h[i]);
+        }
+    }
+    #endregion Commands
+
+    #region Rpcs
+    //The ClientRpc attribute is called on the server and executed on all other clients that are currently connected to the server
+    // for the given object.  
+    #endregion Rpcs
+
+    #region TargetRpcs
+    // The TargetRpc is only exected on a specific client when called on the server
+    [TargetRpc]
+    public void TargetRpc_DealCards(NetworkConnection conn)
+    {
+
+    }
+    #endregion TargetRpcs
 
     public void MakeAccusation(CaseData caseData)
     {
@@ -167,5 +203,19 @@ public class NetworkPlayer : NetworkBehaviour
     void OnPlayerSuggest(CaseData player)
     {
         Debug.Log($":: OnPlayerSuggest ::");
+    }
+
+    // When suggestion is made
+    void OnDrawHand(SyncListString newHand)
+    {
+        Debug.Log($":: OnDrawHand ::");
+
+        hand = newHand;
+    }
+
+    //Sends the command to draw cards
+    public void DrawHand(int i)
+    {
+        Cmd_DrawHand(i);
     }
 }
