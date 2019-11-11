@@ -17,6 +17,7 @@ public class GameManagerService : NetworkBehaviour
     [SyncVar(hook = "OnTurnUpdate")] public int playerTurn;
     [SyncVar] public SyncListString cards;
     [SyncVar] public SyncListString playerNames;
+    [SyncVar] public SyncListString gameboardState;
 
 
     public List<NetworkPlayer> players = new List<NetworkPlayer>();        // These are the networked players in the game

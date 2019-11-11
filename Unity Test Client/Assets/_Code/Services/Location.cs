@@ -37,6 +37,9 @@ public class Location : MonoBehaviour
     // 19 - Hallway
     // 20 - Kitchen
 
+    // -1 =  unoccupied
+    // 0-5 = playerId
+
     public List<int> Grid
     {
         get { return locationData.grid; }
@@ -51,19 +54,42 @@ public class Location : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        locationData.grid = new List<int>(GameDefines.GRID_SIZE);
-        int i = 0;
-
-        for(; i < GameDefines.GRID_SIZE; i++)
+        // initialize the grid with all unoccupied
+        locationData.grid = new List<int>();
+        for(int i = 0; i < GameDefines.GRID_SIZE; i++)
         {
-            // start off empty
-            locationData.grid[i] = 0;
+            // assign the room size
+            locationData.grid.Add(-1);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    // Check if a room is occupied and return
+    // This gets tied to the hover control
+    public bool CheckOccupied(int roomNum)
     {
+        if(Grid[roomNum] != -1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    // Moves the player to a given room
+    // Returns true if successful or false if not
+    public bool MoverPlayer(int playerId, int to, int from)
+    {
+        //Can't move into a room that is occupied
+        if (CheckOccupied(to))
+            return false;
+
+        // Swap players
+        Grid[to] = playerId;
+        Grid[from] = -1;
+
+        return true;
     }
 
     public Room getRoom(int row, int column)
