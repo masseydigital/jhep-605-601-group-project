@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public struct LocationData
 {
-    public int[,] grid;
+    public int[] grid;
 }
 
 [System.Serializable]
@@ -13,7 +13,31 @@ public class Location : MonoBehaviour
 {
     LocationData locationData;
 
-    public int[,] Grid
+    // This is all of the board rooms and hallways
+    // This is where players can move their icon too
+    // 0 - Study
+    // 1 - Hallway
+    // 2 - Library
+    // 3 - Hallway
+    // 4 - Conservatory
+    // 5 - Hallway
+    // 6 - Hallway
+    // 7 - Hallway
+    // 8 - Hall
+    // 9 - Hallway 
+    // 10 - Billard Room
+    // 11 - Hallway
+    // 12 - Ball Rooom
+    // 13 - Hallway
+    // 14 - Hallway 
+    // 15 - Hallway 
+    // 16 - Lounge
+    // 17 - Hallway
+    // 18 - Dining Room
+    // 19 - Hallway
+    // 20 - Kitchen
+
+    public int[] Grid
     {
         get { return locationData.grid; }
         set { locationData.grid = value; }
@@ -27,18 +51,13 @@ public class Location : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        locationData.grid = new int[GameDefines.MAX_GAMEBOARD_COLS + GameDefines.MAX_GAMEBOARD_ROWS,
-            GameDefines.MAX_GAMEBOARD_COLS + GameDefines.MAX_GAMEBOARD_ROWS];
+        locationData.grid = new int[GameDefines.GRID_SIZE];
         int i = 0;
-        int j = 0;
 
-        for(; i < GameDefines.MAX_GAMEBOARD_COLS + GameDefines.MAX_GAMEBOARD_ROWS; i++)
+        for(; i < GameDefines.GRID_SIZE; i++)
         {
-            for(; j < GameDefines.MAX_GAMEBOARD_COLS + GameDefines.MAX_GAMEBOARD_ROWS; j++)
-            {
-                // Empty
-                locationData.grid[i,j] = 0;
-            }
+            // start off empty
+            locationData.grid[i] = 0;
         }
     }
 
@@ -91,7 +110,7 @@ public class Location : MonoBehaviour
         Broadcast.Instance.EnqueueMsg("MSG_FROM_LOCATION: "+msg);
 
         // Go through hallway to get to room
-
+        
         return true;
     }
 

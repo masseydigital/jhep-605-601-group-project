@@ -8,4 +8,5 @@ public static class GameDefines
 
     public const int MAX_GAMEBOARD_ROWS = 3;
     public const int MAX_GAMEBOARD_COLS = 3;
+    public const int GRID_SIZE = 21;
 }

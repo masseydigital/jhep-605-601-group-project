@@ -39,6 +39,8 @@ public class GameboardUi : MonoBehaviour
     public List<GameObject> playerCards;        // Cards in the card window
     public List<GameObject> suggestionCards;    // Cards in the suggestion window
 
+    public LocationData locationData;
+
     // This is all of the board rooms and hallways
     // This is where players can move their icon too
     // 0 - Study
@@ -94,6 +96,19 @@ public class GameboardUi : MonoBehaviour
     /// </summary>
     public void MovePlayerMarker(int player, int to, int from)
     {
+        // check if position is taken
+        if(locationData.grid[to] != 0)
+        {
+            // currently occupied
+            return;
+        }
+        else
+        {
+            locationData.grid[from] = 0;
+            locationData.grid[to] = player;
+        }
+
+        // update images
         boardImages[to].sprite = playerImages.images[player];
         boardImages[from].sprite = playerImages.nullImage;
     }
