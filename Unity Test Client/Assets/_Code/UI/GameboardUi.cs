@@ -29,6 +29,7 @@ public class GameboardUi : MonoBehaviour
     public GameObject actionButtons;
 
     public GameObject cardWindow;
+    public GameObject suggestionWindow;
     public List<GameObject> playerCards;
     public NetworkPlayer networkPlayer;
     public GameManagerService gameManager;
@@ -155,6 +156,22 @@ public class GameboardUi : MonoBehaviour
     public void CloseCardWindow()
     {
         cardWindow.SetActive(false);
+    }
+
+    /// <summary>
+    /// Closes the card window
+    /// </summary>
+    public void CloseSuggestionWindow()
+    {
+        suggestionWindow.SetActive(false);
+    }
+
+    /// <summary>
+    /// Opens the card window
+    /// </summary>
+    public void OpenSuggestionWindow()
+    {
+        suggestionWindow.SetActive(true);
     }
 
     /// <summary>

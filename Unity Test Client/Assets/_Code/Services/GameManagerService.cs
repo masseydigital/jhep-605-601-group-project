@@ -18,6 +18,7 @@ public class GameManagerService : NetworkBehaviour
     [SyncVar] public SyncListString cards;
     [SyncVar] public SyncListString playerNames;
 
+
     public List<NetworkPlayer> players = new List<NetworkPlayer>();        // These are the networked players in the game
     //private Player playerTurn;
     private DBConnection database;
@@ -98,7 +99,7 @@ public class GameManagerService : NetworkBehaviour
                     break;
                 // Game is ongoing
                 case (2):
-                    
+
                     break;
             }
         }

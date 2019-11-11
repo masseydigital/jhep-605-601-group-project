@@ -7,17 +7,21 @@ public class HoverControl : MonoBehaviour
 {
     public HoverState state;
     public Image hoverImage;
+    public int transparencyAmount = 45;
 
     private Color goodColor = Color.green;
     private Color badColor = Color.red;
     private Color transparentColor = new Color(0, 0, 0, 0);
-    private Color visibleColor = new Color(255, 255, 255, 255);
+    private Color visibleColor = new Color(255, 255, 255, 45);
 
     // Start is called before the first frame update
     void Start()
     {
         state = HoverState.bad;
         hoverImage.color = transparentColor;
+
+        goodColor = new Color(goodColor.r, goodColor.g, goodColor.b, transparencyAmount);
+        badColor = new Color(badColor.r, badColor.g, badColor.b, badColor.a);
     }
 
     // Checks the state and changes the image based on result
@@ -48,6 +52,12 @@ public class HoverControl : MonoBehaviour
     {
         // Make the image invisible
         hoverImage.color = transparentColor;
+    }
+
+    // When the mouse is clicked over the object
+    public void Click()
+    {
+        
     }
 }
 
