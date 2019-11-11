@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public struct LocationData
 {
-    public int[] grid;
+    public List<int> grid;
 }
 
 [System.Serializable]
@@ -37,7 +37,7 @@ public class Location : MonoBehaviour
     // 19 - Hallway
     // 20 - Kitchen
 
-    public int[] Grid
+    public List<int> Grid
     {
         get { return locationData.grid; }
         set { locationData.grid = value; }
@@ -51,7 +51,7 @@ public class Location : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        locationData.grid = new int[GameDefines.GRID_SIZE];
+        locationData.grid = new List<int>(GameDefines.GRID_SIZE);
         int i = 0;
 
         for(; i < GameDefines.GRID_SIZE; i++)
