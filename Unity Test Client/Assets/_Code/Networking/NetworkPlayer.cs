@@ -29,7 +29,7 @@ public class NetworkPlayer : NetworkBehaviour
         // But we want to set up the board for all
         gameUi.ShowPlayerBar(id);
         gameUi.UpdatePlayerName(id, playerName);
-        gameUi.ShowPlayerMarker(id);
+        gameUi.MovePlayerMarker(id, id*4, 0);
 
         // We only want to control our own session
         if (!isLocalPlayer)
@@ -52,9 +52,10 @@ public class NetworkPlayer : NetworkBehaviour
 
     public void Update()
     {
-        gameUi.ShowPlayerBar(id);
+        //gameUi.ShowPlayerBar(id);
+        //gameUi.UpdatePlayerName(id, playerName);
+        //gameUi.MovePlayerMarker(id, id*4, 0);
         gameUi.UpdatePlayerName(id, playerName);
-        gameUi.ShowPlayerMarker(id);
 
         // If we do not have local control over the player
         if (!isLocalPlayer)
@@ -96,7 +97,7 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     void Cmd_MovePlayer()
     {
-
+        
     }
 
     [Command]

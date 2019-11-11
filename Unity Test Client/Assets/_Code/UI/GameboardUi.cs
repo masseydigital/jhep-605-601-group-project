@@ -26,7 +26,7 @@ public class GameboardUi : MonoBehaviour
 
     // The bars in the upper left
     public List<GameObject> playerBars;
-    public List<GameObject> playerMarkers;
+    //public List<GameObject> playerMarkers; //Replaces by room ui
     public List<GameObject> playerCrowns;
     public List<GameObject> playerCardIcons;
 
@@ -39,6 +39,7 @@ public class GameboardUi : MonoBehaviour
     public List<GameObject> playerCards;        // Cards in the card window
     public List<GameObject> suggestionCards;    // Cards in the suggestion window
 
+    public Location locationService;
     public LocationData locationData;
 
     // This is all of the board rooms and hallways
@@ -64,7 +65,7 @@ public class GameboardUi : MonoBehaviour
     // 18 - Dining Room
     // 19 - Hallway
     // 20 - Kitchen
-    public List<Image> boardImages;
+    public List<RoomUi> roomUis;
 
     public CaseData caseData;
 
@@ -96,21 +97,19 @@ public class GameboardUi : MonoBehaviour
     /// </summary>
     public void MovePlayerMarker(int player, int to, int from)
     {
-        // check if position is taken
-        if(locationData.grid[to] != 0)
+        bool succes = locationService.MoverPlayer(player, to, from);
+
+        // We moved
+        if(succes)
         {
-            // currently occupied
-            return;
-        }
-        else
-        {
-            locationData.grid[from] = 0;
-            locationData.grid[to] = player;
+            roomUis[to].AddMarker(player);
         }
 
+
         // update images
-        boardImages[to].sprite = playerImages.images[player];
-        boardImages[from].sprite = playerImages.nullImage;
+        
+        //boardImages[to].sprite = playerImages.images[player];
+        //boardImages[from].sprite = playerImages.nullImage;
     }
 
     /// <summary>
@@ -153,10 +152,19 @@ public class GameboardUi : MonoBehaviour
     /// Hides the given player bar
     /// </summary>
     /// <param name="id"></param>
-    public void HidePlayerMarker(int id)
-    {
-        playerMarkers[id].SetActive(false);
-    }
+    //public void HidePlayerMarker(int id)
+    //{
+    //    playerMarkers[id].SetActive(false);
+    //}
+
+    /// <summary>
+    /// Shows the given player bar
+    /// </summary>
+    /// <param name="id"></param>
+    //public void ShowPlayerMarker(int id)
+    //{
+    //    playerMarkers[id].SetActive(true);
+    //}
 
     /// <summary>
     /// Shows the player crown for a specific player
@@ -176,15 +184,6 @@ public class GameboardUi : MonoBehaviour
     public void HidePlayerCrown(int id)
     {
         playerCrowns[id].SetActive(true);
-    }
-
-    /// <summary>
-    /// Shows the given player bar
-    /// </summary>
-    /// <param name="id"></param>
-    public void ShowPlayerMarker(int id)
-    {
-        playerMarkers[id].SetActive(true);
     }
 
     /// <summary>

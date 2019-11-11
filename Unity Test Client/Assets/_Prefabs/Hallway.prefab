@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5590203256849691641}
+  - component: {fileID: 146467719303974142}
   m_Layer: 5
   m_Name: Hallway
   m_TagString: Untagged
@@ -161,6 +162,27 @@ RectTransform:
   m_AnchoredPosition: {x: -370, y: 102}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &146467719303974142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5108934370496006394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e209e827f353143bcb3bc3a03cf08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomData:
+    roomNum: 0
+    roomName: Hallway
+    occupants: 
+    maxOccupancy: 1
+  markerImages:
+  - {fileID: 4320048259534992115}
+  hoverControl: {fileID: 6658788108687055319}
+  markerOptions: {fileID: 0}
 --- !u!1 &5328722789595172414
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   hoverImage: {fileID: 342770434207649447}
+  transparencyAmount: 45
 --- !u!1001 &5485664876607600053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -321,22 +344,22 @@ PrefabInstance:
     - target: {fileID: 8329574484525950779, guid: e88e021761272614797f61de19d4c3a6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8329574484525950779, guid: e88e021761272614797f61de19d4c3a6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.8
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 8329574484525950779, guid: e88e021761272614797f61de19d4c3a6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 48.6
+      value: 32.81
       objectReference: {fileID: 0}
     - target: {fileID: 8329574484525950779, guid: e88e021761272614797f61de19d4c3a6,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 48.6
+      value: 33.3
       objectReference: {fileID: 0}
     - target: {fileID: 8329574484525950779, guid: e88e021761272614797f61de19d4c3a6,
         type: 3}
@@ -368,10 +391,30 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6087734254050490930, guid: e88e021761272614797f61de19d4c3a6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00000095367
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087734254050490930, guid: e88e021761272614797f61de19d4c3a6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0000085831
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087734254050490930, guid: e88e021761272614797f61de19d4c3a6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 20.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087734254050490930, guid: e88e021761272614797f61de19d4c3a6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20.07
+      objectReference: {fileID: 0}
     - target: {fileID: 7625828412785521061, guid: e88e021761272614797f61de19d4c3a6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e88e021761272614797f61de19d4c3a6, type: 3}
@@ -381,3 +424,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5485664876607600053}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4320048259534992115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8634273656633608006, guid: e88e021761272614797f61de19d4c3a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 5485664876607600053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

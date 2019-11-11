@@ -17,7 +17,7 @@ public class GameManagerService : NetworkBehaviour
     [SyncVar(hook = "OnTurnUpdate")] public int playerTurn;
     [SyncVar] public SyncListString cards;
     [SyncVar] public SyncListString playerNames;
-    [SyncVar] public SyncListString gameboardState;
+    [SyncVar] public SyncListInt gameboardState;
 
 
     public List<NetworkPlayer> players = new List<NetworkPlayer>();        // These are the networked players in the game
@@ -30,6 +30,9 @@ public class GameManagerService : NetworkBehaviour
     public List<string> characters;
     public List<string> weapons;
     public List<string> rooms;
+
+    private float gameStartTimer = 0.0f;        // Keeps track of when the game will start
+    private float startTime = 10.0f;            // Game will start after 10 seconds
 
     private void Awake()
     {

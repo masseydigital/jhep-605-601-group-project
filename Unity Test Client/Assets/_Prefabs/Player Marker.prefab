@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2706134852642219042}
   - component: {fileID: 4150740267998475839}
   m_Layer: 5
-  m_Name: Mrs Peacock Marker
+  m_Name: Player Marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -57, y: 153}
-  m_SizeDelta: {x: 48.6, y: 48.6}
+  m_AnchoredPosition: {x: -72.822, y: 137.178}
+  m_SizeDelta: {x: 16.956, y: 16.956}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2706134852642219042
 CanvasRenderer:
@@ -110,8 +110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.0000038146973}
-  m_SizeDelta: {x: 36.9, y: 36.905}
+  m_AnchoredPosition: {x: 0.5, y: 0.000012219}
+  m_SizeDelta: {x: 20.21, y: 20.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &694338178390373420
 CanvasRenderer:

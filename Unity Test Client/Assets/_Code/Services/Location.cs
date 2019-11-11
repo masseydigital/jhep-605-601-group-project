@@ -102,7 +102,7 @@ public class Location : MonoBehaviour
 
         foreach (Room room in rooms)
         {
-            if (room.row == row && room.column == column)
+            //if (room.roomData.id && room.column == column)
             {
                 return room;
             }
@@ -131,7 +131,7 @@ public class Location : MonoBehaviour
 
     public bool move(Player player, Room destinationRoom, Hallway destinationHallway)
     {
-        string msg = "Tried to move to room" + destinationRoom.roomName + " through hallway" + destinationHallway.row + ":"+ destinationHallway.column;
+        string msg = "Tried to move to room" + destinationRoom.roomData.roomName + " through hallway" + destinationHallway.row + ":"+ destinationHallway.column;
         Debug.Log(msg);
         Broadcast.Instance.EnqueueMsg("MSG_FROM_LOCATION: "+msg);
 
@@ -163,47 +163,47 @@ public class Location : MonoBehaviour
 
         foreach (Room room in rooms)
         {
-            if(room.player == player)
+            if(room.roomData.occupants.Count != 0)
             {
-                startRow = room.row;
-                startColumn = room.column;
+                //startRow = room.row;
+                //startColumn = room.column;
             }
         }
 
         // check diagonals for an available empty room
-        if (((currentRoom = getRoom(startRow + 1, startColumn - 1)) != null) && currentRoom.player == null)
+        if (((currentRoom = getRoom(startRow + 1, startColumn - 1)) != null) && currentRoom.roomData.occupants.Count!= 0)
         {
-            secretRow = currentRoom.row;
-            secretColumn = currentRoom.column;
+            //secretRow = currentRoom.row;
+            //secretColumn = currentRoom.column;
 
             // Illuminate room
 
             Debug.Log("showSecret: found a secret passage to top-left room");
         }
 
-        if(((currentRoom = getRoom(startRow + 1, startColumn + 1)) != null) && currentRoom.player == null)
+        if(((currentRoom = getRoom(startRow + 1, startColumn + 1)) != null) && currentRoom.roomData.occupants.Count != 0)
         {
-            secretRow = currentRoom.row;
-            secretColumn = currentRoom.column;
+            //secretRow = currentRoom.row;
+            //secretColumn = currentRoom.column;
 
             // Illuminate room
 
             Debug.Log("showSecret: found a secret passage to top-right room");
         }
 
-        if (((currentRoom = getRoom(startRow - 1, startColumn - 1)) != null) && currentRoom.player == null)
+        if (((currentRoom = getRoom(startRow - 1, startColumn - 1)) != null) && currentRoom.roomData.occupants.Count != 0)
         {
-            secretRow = currentRoom.row;
-            secretColumn = currentRoom.column;
+            //secretRow = currentRoom.row;
+            //secretColumn = currentRoom.column;
 
             // Illuminate room
             Debug.Log("showSecret: found a secret passage to bottom-left room");
         }
 
-        if (((currentRoom = getRoom(startRow - 1, startColumn + 1)) != null) && currentRoom.player == null)
+        if (((currentRoom = getRoom(startRow - 1, startColumn + 1)) != null) && currentRoom.roomData.occupants.Count != 0)
         {
-            secretRow = currentRoom.row;
-            secretColumn = currentRoom.column;
+            //secretRow = currentRoom.row;
+            //secretColumn = currentRoom.column;
 
             // Illuminate room
 
