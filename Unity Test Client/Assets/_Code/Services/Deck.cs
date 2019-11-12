@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class Deck
 {
@@ -39,11 +40,70 @@ public class Deck
         for (int i = 0; i < num; i++)
         {
             int index = Random.Range(0, cards.Count);
-            Debug.Log("Index is: " + index);
             returnCards.Add(cards[index]);
             cards.RemoveAt(index);
         }
 
         return returnCards;
+    }
+
+    /// <summary>
+    /// Deals a random set of cards passing
+    /// overloaded to pass in a num and deck of cards
+    /// </summary>
+    /// <param name="num"></param>
+    /// <param name="deckCards"></param>
+    /// <returns></returns>
+    public List<string> DealRandom(int num, ref SyncListString deckCards)
+    {
+        List<string> returnCards = new List<string>();
+
+        for (int i = 0; i < num; i++)
+        {
+            int index = Random.Range(0, deckCards.Count);
+
+            returnCards.Add(deckCards[index]);
+
+            deckCards.Remove(deckCards[index]);
+        }
+
+        return returnCards;
+    }
+
+    /// <summary>
+    /// Deals a single card from the deck
+    /// </summary>
+    /// <returns></returns>
+    public string DealCard()
+    {
+        string retCard;
+
+        int index = Random.Range(0, cards.Count);
+
+        retCard = cards[index];
+
+        //Remove the card from the deck
+        cards.Remove(retCard);
+
+        return retCard;
+    }
+
+    /// <summary>
+    /// Deals a single card from the deck
+    /// overloaded to pass in a deck
+    /// </summary>
+    /// <returns></returns>
+    public string DealCard(List<string> deckCards)
+    {
+        string retCard;
+
+        int index = Random.Range(0, deckCards.Count);
+
+        retCard = deckCards[index];
+
+        //Remove the card from the deck
+        cards.Remove(retCard);
+
+        return retCard;
     }
 }

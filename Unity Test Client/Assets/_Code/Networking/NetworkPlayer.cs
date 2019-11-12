@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -155,13 +156,14 @@ public class NetworkPlayer : NetworkBehaviour
     void Cmd_DrawHand(int numDrawn)
     {
         Debug.Log($"Cmd_DrawHand -- Player: {id} Drawing");
-        List<string> h = gameManager.deck.DealRandom(numDrawn);
+
+        List<string> h = gameManager.deck.DealRandom(numDrawn, ref gameManager.cards);
 
         // Convert to our list string
         for(int i=0; i<h.Count; i++)
         {
             hand.Add(h[i]);
-            gameManager.cards.Remove(h[i]);
+            //gameManager.cards.Remove(h[i]);
         }
     }
     #endregion Commands

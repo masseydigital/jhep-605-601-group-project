@@ -141,11 +141,11 @@ public class GameManagerService : NetworkBehaviour
                 // Initializing game data
                 case (1):
                     Debug.Log("My hand is: +" + myNetworkPlayer.hand.Count);
-                    if(playerTurn == myNetworkPlayer.id && myNetworkPlayer.hand.Count == 0)
+                    if(myNetworkPlayer.hand.Count == 0)
                     {
                         int numToDraw = 18 / playerNames.Count;
                         myNetworkPlayer.DrawHand(numToDraw);
-                        EndTurn(playerTurn + 1);
+                        //EndTurn(playerTurn + 1);
                     }
                     
                     break;
