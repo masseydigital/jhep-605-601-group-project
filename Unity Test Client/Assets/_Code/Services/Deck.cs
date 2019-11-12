@@ -39,6 +39,7 @@ public class Deck
         for (int i = 0; i < num; i++)
         {
             int index = Random.Range(0, cards.Count);
+            Debug.Log("Index is: " + index);
             returnCards.Add(cards[index]);
             cards.RemoveAt(index);
         }

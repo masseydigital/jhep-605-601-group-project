@@ -10,6 +10,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar(hook = "OnPlayerSuggest")] public CaseData suggestion;
     [SyncVar(hook = "OnPlayerAccuse")] public CaseData accusation;
     [SyncVar(hook = "OnDrawHand")] public SyncListString hand;
+    [SyncVar(hook = "OnSuggestResult")] public string suggestResult;
 
     public GameServer server;
     public GameManagerService gameManager;
@@ -114,9 +115,33 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [Command]
-    void Cmd_Suggest(CaseData suggest)
+    void Cmd_Suggest(CaseData caseData)
     {
+        suggestResult = null;
+
         Debug.Log($"Cmd_Acusse -- Player {id} making Suggestion");
+
+        string proof = gameManager.MakeSuggestion(caseData);
+
+        if (proof == null)
+        {
+            suggestResult = "No proof available";
+        }
+        else if (proof.Equals(caseData.character))
+        {
+            suggestResult = "Proof character is: " + proof;
+        }
+        else if (proof.Equals(caseData.room))
+        {
+            suggestResult = "Proof room is: " + proof;
+        }
+        else if (proof.Equals(caseData.weapon))
+        {
+            suggestResult = "Proof weapon is: " + proof;
+        }
+
+        int nextTurn = gameManager.playerTurn + 1;
+        Cmd_EndTurn(nextTurn);
     }
 
     [Command]
@@ -165,8 +190,6 @@ public class NetworkPlayer : NetworkBehaviour
     public void MakeSuggestion(CaseData caseData)
     {
         Cmd_Suggest(caseData);
-        int nextTurn = gameManager.playerTurn + 1;
-        Cmd_EndTurn(nextTurn);
     }
 
     // Changes the player name
@@ -185,6 +208,18 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log($"OnPlayerNameChanged:: Old Name: {playerName} New Name: {newId}");
 
         id = newId;
+    }
+
+    void OnSuggestResult(string s)
+    {
+        suggestResult = s;
+        if(s != null)
+        {
+            gameUi.debugAccuseText.text = s;
+        } else
+        {
+            gameUi.debugAccuseText.text = "";
+        }
     }
 
     // Send Player Move

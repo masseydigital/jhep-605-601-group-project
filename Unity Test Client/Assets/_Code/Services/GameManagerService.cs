@@ -130,7 +130,7 @@ public class GameManagerService : NetworkBehaviour
 
         else if (localPlayerAuthority) // we are not the server, but we would like to make a move
         {
-            Debug.Log("I am the local Player");
+            //Debug.Log("I am the local Player");
            
             switch (gameState)
             {
@@ -141,10 +141,11 @@ public class GameManagerService : NetworkBehaviour
                 // Initializing game data
                 case (1):
                     Debug.Log("My hand is: +" + myNetworkPlayer.hand.Count);
-                    if(myNetworkPlayer.hand.Count == 0)
+                    if(playerTurn == myNetworkPlayer.id && myNetworkPlayer.hand.Count == 0)
                     {
                         int numToDraw = 18 / playerNames.Count;
                         myNetworkPlayer.DrawHand(numToDraw);
+                        EndTurn(playerTurn + 1);
                     }
                     
                     break;
@@ -263,6 +264,28 @@ public class GameManagerService : NetworkBehaviour
 
     #region Local Methods
 
+    public string MakeSuggestion(CaseData caseData)
+    {
+        foreach(NetworkPlayer player in networkPlayers)
+        {
+            // don't check the current player for proof
+            if(player.id != playerTurn)
+            {
+                if(player.hand.Contains(caseData.character))
+                {
+                    return caseData.character;
+                } else if(player.hand.Contains(caseData.room))
+                {
+                    return caseData.room;
+                } else if(player.hand.Contains(caseData.weapon))
+                {
+                    return caseData.weapon;
+                }
+            }
+        }
+
+        return null;
+    }
 
     /*
     public bool addPlayer(Player player)
