@@ -7,9 +7,10 @@ namespace Clueless
 {
     public class Player : NetworkBehaviour
     {
-        public SyncListCard hand = new SyncListCard();
         [SyncVar(hook = "OnPlayerNameChanged")] public string playerName;
+        public SyncListCard hand = new SyncListCard();
 
+        // Deck is a networked object that every player has access to
         Deck deck;
 
         public void Start()
@@ -18,14 +19,16 @@ namespace Clueless
 
             deck = GameObject.Find("Deck").GetComponent<Deck>();
 
+            // Let me control my own player only
             if (isLocalPlayer)
             {
                 Cmd_ChangePlayerName("Player " + Random.Range(0, 1000));
 
-                Card c = deck.DrawCard();
-
-                hand.Add(c);
-                //Cmd_AddCard(c);
+                Cmd_DrawCard();
+            }
+            else
+            {
+                OnPlayerNameChanged(playerName);
             }
         }
 
@@ -46,17 +49,43 @@ namespace Clueless
         /// </summary>
         /// <param name="card"></param>
         [Command]
-        public void Cmd_AddCard(Card card)
+        public void Cmd_DrawCard()
         {
             Debug.Log("Cmd_AddCard");
 
-            hand.Add(card);
+            hand.Add(deck.DrawCard());
         }
 
         #region Callbacks
-        void OnHandChanged(SyncListStruct<Card>.Operation op, int itemIndex)
+        void OnHandChanged(SyncListCard.Operation op, int itemIndex)
         {
-            Debug.Log("OnHandChanged: " + op);    
+            Debug.Log("OnHandChanged: " + op);
+
+            switch (op)
+            { 
+                // Add operation
+                case SyncList<Card>.Operation.OP_ADD:
+                    break;
+                // Clear Operation
+                case SyncList<Card>.Operation.OP_CLEAR:
+                    hand.Clear();
+                    break;
+                //Insert Operation
+                case SyncList<Card>.Operation.OP_INSERT:
+                    break;
+                // Remove operation
+                case SyncList<Card>.Operation.OP_REMOVE:
+                    
+                    break;
+                // RemoveAt Operation
+                case SyncList<Card>.Operation.OP_REMOVEAT:
+                    hand.RemoveAt(itemIndex);
+                    break;
+                // Set Operation
+                case SyncList<Card>.Operation.OP_SET:
+                    break;
+            }
+
         }
 
         // Changes the player name

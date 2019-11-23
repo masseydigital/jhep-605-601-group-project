@@ -20,7 +20,7 @@ namespace Clueless
     {
         public SyncListCard cards = new SyncListCard();  // a synced list of all the cards in the deck
 
-        public TextMeshProUGUI displayText;
+        //public TextMeshProUGUI displayText;
 
         public override void OnStartServer()
         {
@@ -48,24 +48,11 @@ namespace Clueless
         }
 
         [Command]
-        public void Cmd_AddNewCard(int id, string name, int category)
+        public void Cmd_DrawCard(SyncListCard hand)
         {
-            Debug.Log("Cmd_AddNewCard");
-            cards.Add(new Card(id, name, category));
-        }
+            Card c = DrawCard();
 
-        [Command]
-        public void Cmd_AddCard(Card card)
-        {
-            Debug.Log("Cmd_AddCard");
-            cards.Add(card);
-        }
-
-        [Command]
-        public void Cmd_RemoveCard(Card card)
-        {
-            Debug.Log("Cmd_RemoveCard");
-            cards.Remove(card);
+            hand.Add(c);
         }
 
         /// <summary>
@@ -107,11 +94,13 @@ namespace Clueless
             Debug.Log("OnDeckChanged:" + op);
 
             // For testing
+            /*
             displayText.text = "";
             for(int i=0; i<cards.Count; i++)
             {
                 displayText.text += cards[i].name + "\n";
             }
+            */
         }
 
         public void GenerateTest()
@@ -143,5 +132,3 @@ namespace Clueless
         #endregion Methods
     }
 }
-
-

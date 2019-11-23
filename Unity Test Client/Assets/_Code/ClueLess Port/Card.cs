@@ -43,10 +43,7 @@ namespace Clueless
     }
 
     // Casting the struct to a useable class
-    public class SyncListCard : SyncListStruct<Card>
-    {
-
-    }
+    public class SyncListCard : SyncListStruct<Card>{}
 }
 
 
