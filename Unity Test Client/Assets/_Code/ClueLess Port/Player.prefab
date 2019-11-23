@@ -77,3 +77,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10bf140dc8072f04aa78a315c8cc7cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: 
+  currentRoom: {fileID: 0}

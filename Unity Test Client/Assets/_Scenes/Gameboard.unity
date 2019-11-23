@@ -2007,7 +2007,7 @@ Transform:
   - {fileID: 239115148}
   - {fileID: 597053028}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &272464606
 GameObject:
@@ -2665,7 +2665,7 @@ RectTransform:
   m_Children:
   - {fileID: 84355922}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4385,7 +4385,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &566596272
 MonoBehaviour:
@@ -4448,7 +4448,7 @@ MonoBehaviour:
   - {fileID: 141615569}
   - {fileID: 1783948195}
   - {fileID: 873802124}
-  locationService: {fileID: 1446559857}
+  locationService: {fileID: 0}
   locationData:
     grid: 
   roomUis:
@@ -7857,7 +7857,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1081147251
 GameObject:
@@ -10373,9 +10373,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1446559858}
+  - component: {fileID: 1446559859}
   - component: {fileID: 1446559857}
   m_Layer: 0
-  m_Name: LocationService
+  m_Name: Gameboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10390,11 +10391,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1446559856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd27caff001466e4899570eb9eab8c37, type: 3}
+  m_Script: {fileID: 11500000, guid: 154d204dc2fc9bc46b352e2474dc78d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rooms: []
-  hallways: []
+  gameboardUi: {fileID: 566596272}
 --- !u!4 &1446559858
 Transform:
   m_ObjectHideFlags: 0
@@ -10407,8 +10407,41 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1446559859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446559856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8258ea15b8f74c4889ce485d21cbbb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!1001 &1468864525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12198,6 +12231,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955717364}
   m_CullTransparentMesh: 0
+--- !u!1001 &1966247186
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8165333187317358291, guid: 2d95fc8dea5c917428b1e30dfdf15c08,
+        type: 3}
+      propertyPath: m_Name
+      value: Deck
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165333187317358290, guid: 2d95fc8dea5c917428b1e30dfdf15c08,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 455.75565
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165333187317358290, guid: 2d95fc8dea5c917428b1e30dfdf15c08,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 298.5952
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165333187317358290, guid: 2d95fc8dea5c917428b1e30dfdf15c08,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -222.625
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165333187317358290, guid: 2d95fc8dea5c917428b1e30dfdf15c08,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165333187317358290, guid: 2d95fc8dea5c917428b1e30dfdf15c08,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165333187317358290, guid: 2d95fc8dea5c917428b1e30dfdf15c08,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165333187317358290, guid: 2d95fc8dea5c917428b1e30dfdf15c08,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165333187317358290, guid: 2d95fc8dea5c917428b1e30dfdf15c08,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165333187317358290, guid: 2d95fc8dea5c917428b1e30dfdf15c08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165333187317358290, guid: 2d95fc8dea5c917428b1e30dfdf15c08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165333187317358290, guid: 2d95fc8dea5c917428b1e30dfdf15c08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2d95fc8dea5c917428b1e30dfdf15c08, type: 3}
 --- !u!1001 &1967593385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15151,11 +15253,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 88.1
       objectReference: {fileID: 0}
-    - target: {fileID: 4042890940782817715, guid: 41c317a94d49f224f961355b4a863425,
-        type: 3}
-      propertyPath: m_Name
-      value: Hallway 3
-      objectReference: {fileID: 0}
     - target: {fileID: 9004372149680945176, guid: 41c317a94d49f224f961355b4a863425,
         type: 3}
       propertyPath: roomData.roomNum
@@ -15186,6 +15283,11 @@ PrefabInstance:
       propertyPath: markerOptions
       value: 
       objectReference: {fileID: 1973408088}
+    - target: {fileID: 4042890940782817715, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Name
+      value: Hallway 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41c317a94d49f224f961355b4a863425, type: 3}
 --- !u!114 &9150662836766519039 stripped

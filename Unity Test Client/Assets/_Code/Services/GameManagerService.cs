@@ -204,6 +204,16 @@ public class GameManagerService : NetworkBehaviour
         }
     }
 
+
+    
+    /// <summary>
+    /// When the location is updated
+    /// </summary>
+    void OnLocationUpdate()
+    {
+
+    }
+
     /// <summary>
     /// Sets the case file.  This happens at the beginning of the game.
     /// </summary>
@@ -239,14 +249,6 @@ public class GameManagerService : NetworkBehaviour
         {
             playerTurn = 0;
         }
-    }
-    
-    /// <summary>
-    /// When the location is updated
-    /// </summary>
-    void OnLocationUpdate()
-    {
-
     }
 
     public void EndTurn(int nextTurn)

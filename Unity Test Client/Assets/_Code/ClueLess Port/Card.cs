@@ -18,7 +18,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Clueless
+namespace ClueLess
 {
     [System.Serializable]
     public struct Card

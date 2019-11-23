@@ -14,13 +14,11 @@ using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
 
-namespace Clueless
+namespace ClueLess
 {
     public class Deck : NetworkBehaviour
     {
         public SyncListCard cards = new SyncListCard();  // a synced list of all the cards in the deck
-
-        //public TextMeshProUGUI displayText;
 
         public override void OnStartServer()
         {
@@ -69,6 +67,29 @@ namespace Clueless
         }
 
         /// <summary>
+        /// Gets a specific card
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        public Card GetCard(int category)
+        {
+            Card c;
+
+            for(int i=0; i<cards.Count; i++)
+            {
+                if(cards[i].category == category)
+                {
+                    c = cards[i];
+                    cards.Remove(c);
+                    return c;
+                }
+            }
+
+            // We don't have any of this type of card :(
+            return new Card(-1, "NULL", -1);
+        }
+
+        /// <summary>
         /// Shuffles the cards in the deck
         /// </summary>
         public void Shuffle()
@@ -92,15 +113,6 @@ namespace Clueless
         public void OnDeckChanged(SyncListStruct<Card>.Operation op, int itemIndex)
         {
             Debug.Log("OnDeckChanged:" + op);
-
-            // For testing
-            /*
-            displayText.text = "";
-            for(int i=0; i<cards.Count; i++)
-            {
-                displayText.text += cards[i].name + "\n";
-            }
-            */
         }
 
         public void GenerateTest()
