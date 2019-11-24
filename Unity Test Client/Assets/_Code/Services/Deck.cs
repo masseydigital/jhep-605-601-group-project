@@ -61,12 +61,12 @@ public class Deck
         if (deckCards.Count == 0)
         {
             Debug.Log("Deck.DealRandom: The deck is empty!");
-            return null;
+            return returnCards;
         }
         if (deckCards.Count < num)
         {
             Debug.Log("Deck.DealRandom: Requested to deal more cards than exists in the deck!");
-            return null;
+            return returnCards;
         }
 
         for (int i = 0; i < num; i++)
