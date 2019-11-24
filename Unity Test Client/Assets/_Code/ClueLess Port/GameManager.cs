@@ -82,9 +82,11 @@ namespace ClueLess
         /// </summary>
         void OnSetWinConditions(SyncListCard cards)
         {
+            // TODO: do we have to remove these cards after setting the case file?
             winConditions[0] = cards[0];    // Character
             winConditions[1] = cards[1];    // Weapon
             winConditions[2] = cards[2];    // Room
+
         }
 
         /// <summary>

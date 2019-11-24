@@ -31,6 +31,20 @@ namespace ClueLess
             return id.ToString() + " : " + name + " : " + occupants.Length + " : " + Occupancy(); 
         }
 
+        // Adds a player to the room
+        public bool addPlayer(int id)
+        {
+            int occupancy = Occupancy();
+
+            if(occupancy >= this.maxOccupancy)
+            {
+                return false;
+            }
+
+            this.occupants[occupancy] = id;
+            return true;
+        }
+
         public int Occupancy()
         {
             int num = 0;
