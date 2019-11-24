@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using ClueLess;
 
 public class GameboardUi : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class GameboardUi : MonoBehaviour
     public List<GameObject> playerCards;        // Cards in the card window
     public List<GameObject> suggestionCards;    // Cards in the suggestion window
 
-    public Location locationService;
+    public Gameboard gameboard;
     public LocationData locationData;
 
     // This is all of the board rooms and hallways
@@ -97,14 +98,8 @@ public class GameboardUi : MonoBehaviour
     /// </summary>
     public void MovePlayerMarker(int player, int to, int from)
     {
-        bool succes = locationService.MoverPlayer(player, to, from);
-
-        // We moved
-        if(succes)
-        {
-            roomUis[to].AddMarker(player);
-        }
-
+        gameboard.move(player, to, from);
+        roomUis[to].AddMarker(player);
 
         // update images
         

@@ -4448,7 +4448,7 @@ MonoBehaviour:
   - {fileID: 141615569}
   - {fileID: 1783948195}
   - {fileID: 873802124}
-  locationService: {fileID: 0}
+  gameboard: {fileID: 1446559857}
   locationData:
     grid: 
   roomUis:
