@@ -34,16 +34,33 @@ namespace ClueLess
         // Adds a player to the room
         public bool addPlayer(int id)
         {
-            int occupancy = Occupancy();
-
-            if(occupancy >= this.maxOccupancy)
+            int i = 0;
+            for(; i < occupants.Length; i++)
             {
-                return false;
+                if(occupants[i] == -1)
+                {
+                    occupants[i] = id;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Remove a player to the room
+        public bool removePlayer(int id)
+        {
+            for(int i = 0; i < occupants.Length; i++)
+            {
+                if(occupants[i] == id)
+                {
+                    occupants[i] = -1;
+                    return true;
+                }
             }
 
-            this.occupants[occupancy] = id;
-            return true;
+            return false;
         }
+
 
         public int Occupancy()
         {

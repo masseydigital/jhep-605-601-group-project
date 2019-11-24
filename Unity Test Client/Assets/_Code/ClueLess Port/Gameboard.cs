@@ -85,5 +85,19 @@ namespace ClueLess
             rooms.Add(new Room(19, "Hallway", 1));
             rooms.Add(new Room(20, "Kitchen", 6));
         }
+
+        public void move(int playerid, int from, int to)
+        {
+            if(!rooms[to].addPlayer(playerid))
+            {
+                Debug.Log("Failed to add player to room!");
+                return;
+            }
+
+            if(!rooms[from].removePlayer(playerid))
+            {
+                Debug.Log("Failed to remove player from room!");
+            }
+        }
     }
 }
