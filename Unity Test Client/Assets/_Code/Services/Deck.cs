@@ -58,9 +58,20 @@ public class Deck
     {
         List<string> returnCards = new List<string>();
 
+        if (deckCards.Count == 0)
+        {
+            Debug.Log("Deck.DealRandom: The deck is empty!");
+            return null;
+        }
+        if (deckCards.Count < num)
+        {
+            Debug.Log("Deck.DealRandom: Requested to deal more cards than exists in the deck!");
+            return null;
+        }
+
         for (int i = 0; i < num; i++)
         {
-            int index = Random.Range(0, deckCards.Count);
+            int index = Random.Range(0, deckCards.Count - 1);
 
             returnCards.Add(deckCards[index]);
 

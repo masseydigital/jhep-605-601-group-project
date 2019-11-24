@@ -270,153 +270,34 @@ public class GameManagerService : NetworkBehaviour
     {
         foreach(NetworkPlayer player in networkPlayers)
         {
+            List<string> proofCards = new List<string>();
             // don't check the current player for proof
             if(player.id != playerTurn)
             {
                 if(player.hand.Contains(caseData.character))
                 {
-                    return caseData.character;
-                } else if(player.hand.Contains(caseData.room))
+                    proofCards.Add(caseData.character);
+                }
+                if(player.hand.Contains(caseData.room))
                 {
-                    return caseData.room;
-                } else if(player.hand.Contains(caseData.weapon))
+                    proofCards.Add(caseData.room);
+                }
+                if(player.hand.Contains(caseData.weapon))
                 {
-                    return caseData.weapon;
+                    proofCards.Add(caseData.weapon);
+                }
+
+                if (proofCards.Count > 0)
+                {
+                    // TODO: Have user select a card for their proof
+
+                    return proofCards[0];
                 }
             }
         }
 
         return null;
     }
-
-    /*
-    public bool addPlayer(Player player)
-    {
-        if (players.Count <= GameDefines.PARTY_SIZE_LIMIT)
-        {
-            // TODO: Alert others that a player has joined the game
-
-            //players.Add(player);
-
-            return true;
-        }
-        else
-        {
-            // TODO: Alert player that party size limit has been reached
-            return false;
-        }
-    }
-
-    public bool removePlayer(Player player)
-    {
-        //if (players.Exists(player))
-        if(player != null)
-        {
-            if (playerTurn == player)
-            {
-                // Go to next player turn
-                incrementTurn();
-            }
-
-            // TODO: Alert other players that someone is leaving
-
-            players.Remove(player);
-
-            return true;
-        }
-        else
-        {
-            // Requested player not in game
-            return false;
-        }
-    }
-
-    public int getNumPlayers()
-    {
-        return players.Count;
-    }
-
-    public bool setPlayerTurn(Player player)
-    {
-        //if (players.Exists(player))
-        if(player != null)
-        {
-            playerTurn = player;
-
-            // TODO: Alert players of change in turn
-
-            return true;
-        }
-        else
-        {
-            // The player is not in the game
-            return false;
-        }
-    }
-
-    public bool incrementTurn()
-    {
-        int playerTurnIndex = 0;
-        int playerCount = getNumPlayers();;
-        
-        if (playerCount == 1)
-        {
-            // Only one player in game so make it their turn
-            playerTurn = players[0];
-
-            // TODO: Alert players of change in turn
-
-            return true;
-        }
-        else if (playerCount <= 0)
-        {
-            return false;
-        }
-        else
-        {
-            //if (players.Exists(playerTurn))
-            if(playerTurn != null)
-            {
-                playerTurnIndex = players.IndexOf(playerTurn);
-
-                // Set player turn to next player in players list
-                playerTurn = players[(playerTurnIndex + 1) % playerCount];
-
-                // TODO: Alert players of change in turn
-
-                return true;
-            }
-            else
-            {
-
-            }
-        }
-
-        return false;
-    }
-
-    public List<Player> GetPlayers()
-    {
-        return players;
-    }
-
-    public Player getTurn()
-    {
-        return playerTurn;
-    }
-
-    public bool checkWinner(Player player)
-    {
-        if (player.winLoose == 1) return true;
-        else return false;
-    }
-
-    public bool checkLoser(Player player)
-    {
-        if (player.winLoose != 1) return true;
-        else return false;
-    }
-    */
     #endregion Local Methods
 }
 

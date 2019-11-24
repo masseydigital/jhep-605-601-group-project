@@ -127,6 +127,8 @@ public class NetworkPlayer : NetworkBehaviour
         if (proof == null)
         {
             suggestResult = "No proof available";
+
+            // TODO: Give player option to end their turn or make an accusation
         }
         else if (proof.Equals(caseData.character))
         {
@@ -163,7 +165,6 @@ public class NetworkPlayer : NetworkBehaviour
         for(int i=0; i<h.Count; i++)
         {
             hand.Add(h[i]);
-            //gameManager.cards.Remove(h[i]);
         }
     }
     #endregion Commands

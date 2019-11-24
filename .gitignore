@@ -34,3 +34,10 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+Unity Test Client/ClueLess.exe
+Unity Test Client/ClueLess_Data/
+Unity Test Client/MonoBleedingEdge/
+Unity Test Client/UnityCrashHandler32.exe
+Unity Test Client/UnityCrashHandler64.exe
+Unity Test Client/UnityPlayer.dll
