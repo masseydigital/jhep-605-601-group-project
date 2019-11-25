@@ -254,6 +254,25 @@ public class GameboardUi : MonoBehaviour
     }
 
     /// <summary>
+    /// Initializes the player's cards that are available for making a proof.
+    /// </summary>
+    public void InitializeProofCards(string character, string room, string weapon)
+    {
+        // Activate the number of cards you have
+        for(int i=0; i<playerCards.Count; i++)
+        {
+            if (networkPlayer.hand[i].Equals(character) || networkPlayer.hand[i].Equals(room) || networkPlayer.hand[i].Equals(weapon))
+            {
+                playerCards[i].SetActive(true);
+            }
+            else
+            {
+                playerCards[i].SetActive(false);
+            }
+        }
+    }
+
+    /// <summary>
     /// Sets the player card based on the name
     /// </summary>
     /// <param name="cardName"></param>

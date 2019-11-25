@@ -79,6 +79,9 @@ public class GameManagerService : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        int playerIndex = 0;
+        string tmpCard = "";
+
         // If we are the server
         //if (NetworkServer.active)
         if(isServer)
@@ -110,8 +113,20 @@ public class GameManagerService : NetworkBehaviour
                         cards.Remove(winConditions.room);
                     }
                     
-                    for(int i = 0; i<networkPlayers.Count; i++)
+                    // Deal cards one at a time to the players until all cards are delt
+                    while (cards.Count > 0)
                     {
+                        playerIndex = playerIndex % networkPlayers.Count;
+
+                        tmpCard = cards[Random.Range(0, cards.Count - 1)];
+                        networkPlayers[playerIndex].hand.Add(tmpCard);
+                        cards.Remove(tmpCard);
+                        
+                        playerIndex++;
+                    }
+
+                    for(int i = 0; i<networkPlayers.Count; i++)
+                    {                        
                         if(networkPlayers[i].hand.Count == 0)
                         {
                             // if we have someone equal to 0, we need to wiat
@@ -139,16 +154,9 @@ public class GameManagerService : NetworkBehaviour
                     break;
 
                 // Initializing game data
-                case (1):
-                    Debug.Log("My hand is: +" + myNetworkPlayer.hand.Count);
-                    if(myNetworkPlayer.hand.Count == 0)
-                    {
-                        int numToDraw = 18 / playerNames.Count;
-                        myNetworkPlayer.DrawHand(numToDraw);
-                        //EndTurn(playerTurn + 1);
-                    }
-                    
+                case (1):                    
                     break;
+
                 // Game is ongoing
                 case (2):
                     break;
@@ -270,28 +278,24 @@ public class GameManagerService : NetworkBehaviour
     {
         foreach(NetworkPlayer player in networkPlayers)
         {
-            List<string> proofCards = new List<string>();
             // don't check the current player for proof
             if(player.id != playerTurn)
             {
+                // TODO: Have user select a card for their proof
+                // player.gameUi.cardWindow.SetActive(true);
+                // player.gameUi.InitializeProofCards(caseData.character, caseData.room, caseData.weapon);
+
                 if(player.hand.Contains(caseData.character))
                 {
-                    proofCards.Add(caseData.character);
+                    return (caseData.character);
                 }
                 if(player.hand.Contains(caseData.room))
                 {
-                    proofCards.Add(caseData.room);
+                    return (caseData.room);
                 }
                 if(player.hand.Contains(caseData.weapon))
                 {
-                    proofCards.Add(caseData.weapon);
-                }
-
-                if (proofCards.Count > 0)
-                {
-                    // TODO: Have user select a card for their proof
-
-                    return proofCards[0];
+                    return (caseData.weapon);
                 }
             }
         }

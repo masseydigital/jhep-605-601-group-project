@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/LoadingScreen.unity
     guid: f46f70aa53bfb5b47822df998f60aafd
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Gameboard.unity
     guid: c0646882ac6d7cf4bab0f6ba76b59e81
+  - enabled: 1
+    path: Assets/_Scenes/GameboardFinal.unity
+    guid: c705efd8d2cf39641b7b3a06b41c8d22
   m_configObjects: {}

@@ -218,6 +218,7 @@ public class NetworkPlayer : NetworkBehaviour
         suggestResult = s;
         if(s != null)
         {
+            // TODO: Proof should only be shown to the player who made the suggestion
             gameUi.debugAccuseText.text = s;
         } else
         {
