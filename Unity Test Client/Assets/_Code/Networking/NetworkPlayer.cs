@@ -44,8 +44,8 @@ public class NetworkPlayer : NetworkBehaviour
 
             gameManager.networkPlayers.Add(this);
             
-            gameUi.networkPlayer = this;
-            gameUi.gameManager = gameManager;
+            //gameUi.networkPlayer = this;
+            //gameUi.gameManager = gameManager;
             gameManager.gameUi = gameUi;
             gameManager.myNetworkPlayer = this;
 

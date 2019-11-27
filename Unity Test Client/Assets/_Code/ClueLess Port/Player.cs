@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 
 namespace ClueLess
 {
+    [System.Serializable]
     public struct Player
     {
         public int id;

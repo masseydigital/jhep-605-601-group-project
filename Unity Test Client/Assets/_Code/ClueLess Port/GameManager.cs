@@ -9,14 +9,42 @@ namespace ClueLess
     {
         [SyncVar(hook = "OnGameStateUpdate")] public int gameState;
         [SyncVar(hook = "OnTurnUpdate")] public int playerTurn;
-        [SyncVar] public SyncListInt gameboardState;
+        [SyncVar] public int gameboardState;
         public SyncListCard winConditions;      // Three cards of differing categories
-        public SyncListPlayer playerNames;      // List of all players
+
+        public Deck deck;
+        public GameServer server;
+        public GameboardUi gameboardUi;
+        public DBConnection database;
+        public GameData gameData;
+
+        private void Awake()
+        {
+            if (server == null)
+            {
+                server = GameObject.Find("NetworkManager").GetComponent<GameServer>();
+            }
+
+            if(database == null)
+            {
+               database = GameObject.Find("DynamoDB Connection").GetComponent<DBConnection>();
+               gameData = database.gameData;
+            }
+            else
+            {
+                gameData = database.gameData;
+            }                
+        }
 
         // Start is called before the first frame update
         void Start()
         {
 
+        }
+
+        public override void OnStartClient()
+        {
+            
         }
 
         // Update is called once per frame
@@ -31,7 +59,7 @@ namespace ClueLess
                     // Waiting for game to start
                     case (0):
                         // Game Start Conditions
-                        if (playerNames.Count > 2)
+                        if (server.players.Count >= 3)
                         {
                             gameState = 1;
                         }
@@ -41,8 +69,28 @@ namespace ClueLess
                     case (1):
                         if (winConditions.Count < 3)
                         {
-                            // Select the win conditions
-                            
+                            deck.Shuffle();
+                            // Select the win conditions... 0 is character, 1 is weapon, 2 is room
+                            winConditions.Add(deck.GetCard(0));
+                            winConditions.Add(deck.GetCard(1));
+                            winConditions.Add(deck.GetCard(2));
+                        }
+
+                        int p = 0;
+                        int d = deck.cards.Count;
+                        // Deal out the rest of the cards
+                        for(int i=0; i<d; i++)
+                        {
+                            Card c = deck.DrawCard();
+
+                            server.players[p].hand.Add(c);
+
+                            p++;
+
+                            if (p >= server.players.Count)
+                            {
+                                p = 0;
+                            }
                         }
 
                         gameState = 2;
@@ -110,7 +158,7 @@ namespace ClueLess
 
             playerTurn = turn;
 
-            if (playerTurn >= playerNames.Count)
+            if (playerTurn >= server.players.Count)
             {
                 playerTurn = 0;
             }

@@ -70,12 +70,18 @@ public class GameboardUi : MonoBehaviour
 
     public CaseData caseData;
 
-    public NetworkPlayer networkPlayer;
-    public GameManagerService gameManager;
+    public NetPlayer networkPlayer;
+    public ClueLess.GameManager gameManager;
+    public ClueLess.Deck deck;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(deck == null)
+        {
+            deck = GameObject.Find("Deck").GetComponent<ClueLess.Deck>();
+        }
+
         FillDropdowns();
 
         debugAccuseText.text = "";
@@ -244,7 +250,7 @@ public class GameboardUi : MonoBehaviour
             if (i < numCards)
             {
                 playerCards[i].SetActive(true);
-                SetPlayerCard(i, networkPlayer.hand[i]);
+                SetPlayerCard(i, networkPlayer.hand[i].name);
             }
             else
             {
@@ -279,10 +285,10 @@ public class GameboardUi : MonoBehaviour
     public void SetPlayerCard(int cardIndex, string cardName)
     {
         int index = 0;
-        for(int i=0; i<gameManager.allCards.Count; i++)
+        for(int i=0; i<deck.allCards.Count; i++)
         {
             // We found our card
-            if (cardName == gameManager.allCards[i])
+            if (cardName == deck.allCards[i].name)
             {
                 index = i;
                 break;
@@ -349,7 +355,7 @@ public class GameboardUi : MonoBehaviour
         caseData.weapon = weaponDropdown.options[weaponDropdown.value].text;
 
         // Send the accusation over the network
-        networkPlayer.MakeAccusation(caseData);
+        //networkPlayer.MakeAccusation(caseData);
     }
 
     // Make a suggestion
@@ -365,6 +371,6 @@ public class GameboardUi : MonoBehaviour
         caseData.weapon = weaponDropdown.options[weaponDropdown.value].text;
 
         // Send the accusation over the network
-        networkPlayer.MakeSuggestion(caseData);
+        //networkPlayer.MakeSuggestion(caseData);
     }
 }

@@ -7,10 +7,13 @@ namespace ClueLess
 {
     public class NetPlayer : NetworkBehaviour
     {
+        [SyncVar] public Player playerInfo;
         [SyncVar(hook = "OnPlayerNameChanged")] public string playerName;
         public SyncListCard hand = new SyncListCard();
 
         public Room currentRoom;
+        public GameboardUi gameboardUi;
+        public GameServer server;
 
         // Deck is a networked object that every player has access to
         Deck deck;
@@ -20,18 +23,23 @@ namespace ClueLess
             hand.Callback = OnHandChanged;
 
             deck = GameObject.Find("Deck").GetComponent<Deck>();
+            gameboardUi = GameObject.Find("Game Manager").GetComponent<GameboardUi>();
 
             // Let me control my own player only
             if (isLocalPlayer)
             {
-                Cmd_ChangePlayerName("Player " + Random.Range(0, 1000));
+                // Get our local network manager (server)
+                server = GameObject.Find("NetworkManager").GetComponent<GameServer>();
+                gameboardUi.networkPlayer = this;
 
-                Cmd_DrawCard();
+                Cmd_ChangePlayerName(server.playerName);
             }
             else
             {
                 OnPlayerNameChanged(playerName);
             }
+
+            gameboardUi.ShowPlayerBar(playerInfo.id);
         }
 
         // The command attribute is called by a client and executed on the server on that same object.
@@ -44,6 +52,10 @@ namespace ClueLess
             gameObject.name = $"{n}";
 
             playerName = n;
+
+            playerInfo.name = n;
+
+            gameboardUi.UpdatePlayerName(playerInfo.id, playerInfo.name);
         }
 
         /// <summary>
@@ -98,6 +110,10 @@ namespace ClueLess
             playerName = newName;
 
             gameObject.name = $"{newName}";
+
+            playerInfo.name = newName;
+
+            gameboardUi.UpdatePlayerName(playerInfo.id, playerInfo.name);
         }
         #endregion Callbacks
     }

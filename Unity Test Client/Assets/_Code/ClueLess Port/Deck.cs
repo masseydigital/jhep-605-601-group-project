@@ -18,11 +18,17 @@ namespace ClueLess
 {
     public class Deck : NetworkBehaviour
     {
-        public SyncListCard cards = new SyncListCard();  // a synced list of all the cards in the deck
+        // Current cards in the deck
+        public SyncListCard cards = new SyncListCard();  
+
+        // All original Cards
+        public SyncListCard allCards = new SyncListCard();
 
         public override void OnStartServer()
         {
             GenerateTest();
+
+            CreateDeck(cards);
         }
 
         public void Start()
@@ -36,12 +42,11 @@ namespace ClueLess
         /// there should be 21 cards in the deck.. 6 players, 6 weapons, and 9 rooms
         /// </summary>
         /// <param name="cardNames"></param>
-        public void CreateDeck(List<Card> cards)
+        public void CreateDeck(SyncListCard cards)
         {
             for(int i=0; i<cards.Count; i++)
             {
-                //Cmd_AddNewCard(i, cards[i].name, cards[i].category);
-                cards.Add(new Card(i, cards[i].name, cards[i].category));
+                allCards.Add(new Card(i, cards[i].name, cards[i].category));
             }
         }
 
@@ -119,17 +124,17 @@ namespace ClueLess
         {
             cards.Add(new Card(0, "Colonel Mustard", 0));
             cards.Add(new Card(1, "Ms Scarlet", 0));
-            cards.Add(new Card(2, "Professor Plum", 0));
-            cards.Add(new Card(3, "Mr Green", 0));
+            cards.Add(new Card(2, "Mr Green", 0));
+            cards.Add(new Card(3, "Mrs Peacock", 0));
             cards.Add(new Card(4, "Mrs White", 0));
-            cards.Add(new Card(5, "Ms Peacock", 0));
+            cards.Add(new Card(5, "Professor Plum", 0));
 
-            cards.Add(new Card(6, "Lead Pipe", 1));
-            cards.Add(new Card(7, "Gun", 1));
+            cards.Add(new Card(6, "Axe", 1));
+            cards.Add(new Card(7, "Goblet", 1));
             cards.Add(new Card(8, "Knife", 1));
-            cards.Add(new Card(9, "Goblet", 1));
-            cards.Add(new Card(10, "Rope", 1));
-            cards.Add(new Card(11, "Axe", 1));
+            cards.Add(new Card(9, "Pipe", 1));
+            cards.Add(new Card(10, "Pistol", 1));
+            cards.Add(new Card(11, "Rope", 1));
 
             cards.Add(new Card(12, "Ball Room", 2));
             cards.Add(new Card(13, "Billiard", 2));
