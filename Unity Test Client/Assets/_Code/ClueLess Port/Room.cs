@@ -32,10 +32,9 @@ namespace ClueLess
         }
 
         // Adds a player to the room
-        public bool addPlayer(int id)
+        public bool AddPlayer(int id)
         {
-            int i = 0;
-            for(; i < occupants.Length; i++)
+            for(int i = 0; i < occupants.Length; i++)
             {
                 if(occupants[i] == -1)
                 {
@@ -47,7 +46,7 @@ namespace ClueLess
         }
 
         // Remove a player to the room
-        public bool removePlayer(int id)
+        public bool RemovePlayer(int id)
         {
             for(int i = 0; i < occupants.Length; i++)
             {
@@ -57,7 +56,6 @@ namespace ClueLess
                     return true;
                 }
             }
-
             return false;
         }
 

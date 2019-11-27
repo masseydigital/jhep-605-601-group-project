@@ -98,7 +98,7 @@ public class GameboardUi : MonoBehaviour
     /// </summary>
     public void MovePlayerMarker(int player, int to, int from)
     {
-        gameboard.move(player, to, from);
+        gameboard.Move(player, to, from);
         roomUis[to].AddMarker(player);
 
         // update images

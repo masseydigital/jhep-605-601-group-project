@@ -58,6 +58,80 @@ namespace ClueLess
             GenerateTest();
         }
 
+        // Returns a list of available secret passages from room: roomid
+        // it's up to the caller to determine if the room is full before moving...
+        public List<int> GetSecretPassages(int roomid)
+        {
+            List<int> secretPassages = new List<int>();
+            switch(roomid)
+            {
+                // study --> billard room
+                case 0:
+                    secretPassages.Add(10);
+                    break;
+                // hallways
+                case 1: 
+                case 2:
+                case 3:
+                    break;
+                // conservatory --> billard room
+                case 4:
+                    secretPassages.Add(10);
+                    break;
+                case 5:
+                case 6:
+                case 7:
+                    break;
+                // hall --> library and dining room
+                case 8:
+                    secretPassages.Add(2);
+                    secretPassages.Add(18);
+                    break;
+                case 9:
+                    break;
+                // billard room --> study, conservatory, kitchen, lounge
+                case 10:
+                    secretPassages.Add(0);
+                    secretPassages.Add(4);
+                    secretPassages.Add(19);
+                    secretPassages.Add(16);
+                    break;
+                case 11:
+                    break;
+                // ballroom --> library, dining room
+                case 12:
+                    secretPassages.Add(2);
+                    secretPassages.Add(18);
+                    break;
+                case 13:
+                case 14:
+                case 15:
+                    break;
+                // lounge --> billard room
+                case 16:
+                    secretPassages.Add(10);
+                    break;
+                case 17:
+                    break;
+                // dining room --> hall, ballroom
+                case 18:
+                    secretPassages.Add(8);
+                    secretPassages.Add(12);
+                    break;
+                case 19:
+                    break;
+                // kitchen --> billard room
+                case 20:
+                    secretPassages.Add(10);
+                    break;
+                default:
+                    break;
+            }   
+
+            return secretPassages;
+            
+        }
+
         /// <summary>
         /// Test set of rooms
         /// </summary>
@@ -86,15 +160,44 @@ namespace ClueLess
             rooms.Add(new Room(20, "Kitchen", 6));
         }
 
-        public void move(int playerid, int from, int to)
+        /*
+         *
+         * Your options of moving are limited to the following:
+            o If you are in a room, you may do one of the following:
+                − Move through one of the doors to the hallway (if it is not blocked).
+
+                − Take a secret passage to a diagonally opposite room (if there is one) and make a
+                suggestion.
+
+                − If you were moved to the room by another player making a suggestion, you may, if
+                you wish, stay in that room and make a suggestion. Otherwise you may move
+                through a doorway or take a secret passage as described above.
+
+            o If you are in a hallway, you must do the following:
+                − Move to one of the two rooms accessible from that hallway and make a suggestion
+
+            If all of the exits are blocked (i.e., there are people in all of the hallways) and you are not in
+            one of the corner rooms (with a secret passage), and you weren’t moved to the room by
+            another player making a suggestion, you lose your turn (except for maybe making an
+            accusation)
+
+            Your first move must be to the hallway that is adjacent to your home square. The inactive
+            characters stay in their home squares until they are moved to a room by someone making a
+            suggestion. 
+         *
+         */
+
+        public void Move(int playerid, int from, int to)
         {
-            if(!rooms[to].addPlayer(playerid))
+            // TODO add more of the move logic...
+
+            if(!rooms[to].AddPlayer(playerid))
             {
                 Debug.Log("Failed to add player to room!");
                 return;
             }
 
-            if(!rooms[from].removePlayer(playerid))
+            if(!rooms[from].RemovePlayer(playerid))
             {
                 Debug.Log("Failed to remove player from room!");
             }
