@@ -21,7 +21,7 @@ namespace ClueLess
         public void Start()
         {
             hand.Callback = OnHandChanged;
-
+       
             deck = GameObject.Find("Deck").GetComponent<Deck>();
             gameboardUi = GameObject.Find("Game Manager").GetComponent<GameboardUi>();
 

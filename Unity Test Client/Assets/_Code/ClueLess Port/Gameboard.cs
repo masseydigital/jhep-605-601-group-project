@@ -48,9 +48,14 @@ namespace ClueLess
             rooms.Callback = OnRoomsChanged;
         }
 
+        #region Methods
+
+        // callback syncs this across the network???
         public void OnRoomsChanged(SyncListStruct<Room>.Operation op, int itemIndex)
         {
             Debug.Log("OnRoomChanged: " + op);
+            // TODO should we update the room images here?
+            gameboardUi.UpdateRoomImages();
         }
 
         public void InitializeBoard()
@@ -187,20 +192,44 @@ namespace ClueLess
          *
          */
 
-        public void Move(int playerid, int from, int to)
+        // commands come from the client, so as the server we need to determine if the move is legit
+        // synchvars will automatically sync (so the SyncListRoom should update whenever we change it)
+        [Command]
+        public void Cmd_MovePlayer(int playerid, int from, int to)
+        {
+            if(!Move(playerid, from, to))
+            {
+                Debug.Log("Failed to move player...");
+            }
+
+        }
+
+        /// <summary>
+        /// Moves player
+        /// </summary>
+        /// <param name="playerid"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
+        public bool Move(int playerid, int from, int to)
         {
             // TODO add more of the move logic...
 
             if(!rooms[to].AddPlayer(playerid))
             {
                 Debug.Log("Failed to add player to room!");
-                return;
+                return false;
             }
 
             if(!rooms[from].RemovePlayer(playerid))
             {
                 Debug.Log("Failed to remove player from room!");
+                return false;
             }
+
+            return true;
         }
+
+        #endregion Methods
     }
 }

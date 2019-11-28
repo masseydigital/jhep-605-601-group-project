@@ -106,11 +106,23 @@ public class GameboardUi : MonoBehaviour
     {
         gameboard.Move(player, to, from);
         roomUis[to].AddMarker(player);
+        roomUis[from].RemoveMarker(player);
 
         // update images
         
         //boardImages[to].sprite = playerImages.images[player];
         //boardImages[from].sprite = playerImages.nullImage;
+    }
+
+    /// <summary>
+    /// Updates all the room images
+    /// </summary>
+    public void UpdateRoomImages()
+    {
+        foreach(RoomUi room in roomUis)
+        {
+            room.UpdateMarkers();
+        }
     }
 
     /// <summary>
