@@ -16,6 +16,7 @@ namespace ClueLess
         public GameboardUi gameboardUi;
         public DBConnection database;
         public GameData gameData;
+        public NetPlayer myPlayer;
 
         private void Awake()
         {
@@ -58,7 +59,7 @@ namespace ClueLess
                     // Waiting for game to start
                     case (0):
                         // Game Start Conditions
-                        if (server.players.Count >= 3)
+                        if (server.players.Count >= 2)
                         {
                             gameState = 1;
                         }
@@ -157,11 +158,28 @@ namespace ClueLess
             playerTurn = turn;
 
             gameboardUi.UpdateCrowns(playerTurn);
+
+            // If it is our players turn then party
+            if (playerTurn == myPlayer.playerInfo.id)
+            {
+                gameboardUi.ShowActionButtons();
+            }
+            else
+            {
+                gameboardUi.HideActionButtons();
+            }
+        }
+
+        public void NextTurn()
+        {
+            playerTurn++;
+
+            TurnCheck();
         }
 
         public void TurnCheck()
         {
-            if(playerTurn > server.players.Count)
+            if(playerTurn > server.players.Count-1)
             {
                 playerTurn = 0;
             }

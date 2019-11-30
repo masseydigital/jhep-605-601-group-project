@@ -37,6 +37,8 @@ namespace ClueLess
                 gameboardUi.networkPlayer = this;
 
                 Cmd_ChangePlayerName(server.playerName);
+
+                gameManager.myPlayer = this;
             }
             else
             {
@@ -89,6 +91,14 @@ namespace ClueLess
             Debug.Log("Cmd_AddCard");
 
             hand.Add(deck.DrawCard());
+        }
+
+        [Command]
+        public void Cmd_EndTurn()
+        {
+            Debug.Log("Cmd_EndTurn");
+
+            gameManager.NextTurn();
         }
 
         #region Callbacks

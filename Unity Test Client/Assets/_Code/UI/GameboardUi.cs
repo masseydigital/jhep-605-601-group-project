@@ -401,4 +401,12 @@ public class GameboardUi : MonoBehaviour
         // Send the accusation over the network
         //networkPlayer.MakeSuggestion(caseData);
     }
+
+    /// <summary>
+    /// The button callback for endturn
+    /// </summary>
+    public void EndTurn()
+    {
+        networkPlayer.Cmd_EndTurn();
+    }
 }
