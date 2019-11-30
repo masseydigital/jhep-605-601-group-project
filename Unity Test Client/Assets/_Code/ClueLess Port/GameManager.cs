@@ -9,7 +9,6 @@ namespace ClueLess
     {
         [SyncVar(hook = "OnGameStateUpdate")] public int gameState;
         [SyncVar(hook = "OnTurnUpdate")] public int playerTurn;
-        [SyncVar] public int gameboardState;
         public SyncListCard winConditions;      // Three cards of differing categories
 
         public Deck deck;
@@ -63,6 +62,7 @@ namespace ClueLess
                         {
                             gameState = 1;
                         }
+                        playerTurn = -1;
                         break;
 
                     // Initializing game data
@@ -93,19 +93,19 @@ namespace ClueLess
                             }
                         }
 
+                        playerTurn = Random.Range(0, server.players.Count);
+                        TurnCheck();
+                        gameboardUi.UpdateCrowns(playerTurn);
                         gameState = 2;
                         break;
                     // Game is ongoing
                     case (2):
-
                         break;
                 }
             }
 
             else if (localPlayerAuthority) // we are not the server, but we would like to make a move
             {
-                //Debug.Log("I am the local Player");
-
                 switch (gameState)
                 {
                     // Waiting for game to start
@@ -130,11 +130,9 @@ namespace ClueLess
         /// </summary>
         void OnSetWinConditions(SyncListCard cards)
         {
-            // TODO: do we have to remove these cards after setting the case file?
             winConditions[0] = cards[0];    // Character
             winConditions[1] = cards[1];    // Weapon
             winConditions[2] = cards[2];    // Room
-
         }
 
         /// <summary>
@@ -154,11 +152,16 @@ namespace ClueLess
         /// <param name="state"></param>
         void OnTurnUpdate(int turn)
         {
-            Debug.Log($":: Transitioning state from {playerTurn} to {turn} ::");
+            Debug.Log($":: Transitioning turn from {playerTurn} to {turn} ::");
 
             playerTurn = turn;
 
-            if (playerTurn >= server.players.Count)
+            gameboardUi.UpdateCrowns(playerTurn);
+        }
+
+        public void TurnCheck()
+        {
+            if(playerTurn > server.players.Count)
             {
                 playerTurn = 0;
             }

@@ -193,7 +193,7 @@ namespace ClueLess
          */
 
         // commands come from the client, so as the server we need to determine if the move is legit
-        // synchvars will automatically sync (so the SyncListRoom should update whenever we change it)
+        // syncvars will automatically sync (so the SyncListRoom should update whenever we change it)
         [Command]
         public void Cmd_MovePlayer(int playerid, int from, int to)
         {

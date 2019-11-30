@@ -12,8 +12,10 @@ namespace ClueLess
         public SyncListCard hand = new SyncListCard();
 
         public Room currentRoom;
+        public Gameboard gameboard;
         public GameboardUi gameboardUi;
         public GameServer server;
+        public GameManager gameManager;
 
         // Deck is a networked object that every player has access to
         Deck deck;
@@ -24,6 +26,8 @@ namespace ClueLess
        
             deck = GameObject.Find("Deck").GetComponent<Deck>();
             gameboardUi = GameObject.Find("Game Manager").GetComponent<GameboardUi>();
+            gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+            gameboard = GameObject.Find("Gameboard").GetComponent<Gameboard>();
 
             // Let me control my own player only
             if (isLocalPlayer)
@@ -40,6 +44,23 @@ namespace ClueLess
             }
 
             gameboardUi.ShowPlayerBar(playerInfo.id);
+        }
+
+        public void Update()
+        {
+            // Only the local player can do things
+            if (isLocalPlayer)
+            {
+                // If it is our turn
+                if(gameManager.playerTurn == playerInfo.id)
+                {
+                    // We can choose to move somewhere
+
+                    // We can accuse someone
+
+                    // We can make a suggestion 
+                }
+            }
         }
 
         // The command attribute is called by a client and executed on the server on that same object.

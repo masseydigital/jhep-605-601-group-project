@@ -4290,6 +4290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   playerTurn: 0
+  gameboardState: 0
   deck: {fileID: 1966247187}
   server: {fileID: 0}
   gameboardUi: {fileID: 566596272}
@@ -4400,6 +4401,7 @@ MonoBehaviour:
     weapon: 
   networkPlayer: {fileID: 0}
   gameManager: {fileID: 0}
+  deck: {fileID: 0}
 --- !u!114 &566596273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14620,6 +14622,66 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7534509924511288845, guid: ca463d1df99a74b4880d3b5f1e689904,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914846687579193125, guid: ca463d1df99a74b4880d3b5f1e689904,
+        type: 3}
+      propertyPath: m_Name
+      value: Crown
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914846687579193125, guid: ca463d1df99a74b4880d3b5f1e689904,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192118656600420351, guid: ca463d1df99a74b4880d3b5f1e689904,
+        type: 3}
+      propertyPath: m_Name
+      value: Crown
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192118656600420351, guid: ca463d1df99a74b4880d3b5f1e689904,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192118656938279667, guid: ca463d1df99a74b4880d3b5f1e689904,
+        type: 3}
+      propertyPath: m_Name
+      value: Crown
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192118656938279667, guid: ca463d1df99a74b4880d3b5f1e689904,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192118655976559866, guid: ca463d1df99a74b4880d3b5f1e689904,
+        type: 3}
+      propertyPath: m_Name
+      value: Crown
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192118655976559866, guid: ca463d1df99a74b4880d3b5f1e689904,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192118656274939774, guid: ca463d1df99a74b4880d3b5f1e689904,
+        type: 3}
+      propertyPath: m_Name
+      value: Crown
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192118656274939774, guid: ca463d1df99a74b4880d3b5f1e689904,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192118655857957099, guid: ca463d1df99a74b4880d3b5f1e689904,
+        type: 3}
+      propertyPath: m_Name
+      value: Crown
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192118655857957099, guid: ca463d1df99a74b4880d3b5f1e689904,
         type: 3}
       propertyPath: m_IsActive
       value: 0

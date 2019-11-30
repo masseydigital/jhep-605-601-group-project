@@ -179,6 +179,22 @@ public class GameboardUi : MonoBehaviour
     //    playerMarkers[id].SetActive(true);
     //}
 
+        // Updates the crowns
+    public void UpdateCrowns(int turn)
+    {
+        for(int i=0; i<playerCrowns.Count; i++)
+        {
+            if (i == turn)
+            {
+                ShowPlayerCrown(turn);
+            }
+            else
+            {
+                HidePlayerCrown(i);
+            }
+        }
+    }
+
     /// <summary>
     /// Shows the player crown for a specific player
     /// Player crowns coorelate to the player whose turn it is
@@ -196,7 +212,7 @@ public class GameboardUi : MonoBehaviour
     /// <param name="id"></param>
     public void HidePlayerCrown(int id)
     {
-        playerCrowns[id].SetActive(true);
+        playerCrowns[id].SetActive(false);
     }
 
     /// <summary>
