@@ -50,11 +50,10 @@ namespace ClueLess
 
         #region Methods
 
-        // callback syncs this across the network???
+        // callback syncs this across the network
         public void OnRoomsChanged(SyncListStruct<Room>.Operation op, int itemIndex)
         {
             Debug.Log("OnRoomChanged: " + op);
-            // TODO should we update the room images here?
             gameboardUi.UpdateRoomImages();
         }
 
@@ -197,10 +196,45 @@ namespace ClueLess
         [Command]
         public void Cmd_MovePlayer(int playerid, int from, int to)
         {
-            if(!Move(playerid, from, to))
+            // check if the move is through an available secret passage
+            List<int> secretPassages = GetSecretPassages(from);
+            foreach (int room in secretPassages)
             {
-                Debug.Log("Failed to move player...");
+                if (room == to)
+                {
+                    Debug.Log("Using secret passage to move from " + from + " to " + to);
+                    if (!Move(playerid, from, to))
+                    {
+                        Debug.Log("Failed to move player...");
+                    }
+                    return;
+                }
             }
+
+            // check if the move is through doorway into a hallway
+            // hallways has a maxOccupancy of 1...
+            if(rooms[to].maxOccupancy == 1 && rooms[to].occupants[0] == -1)
+            {
+                Debug.Log("Moving from room " + from + " to hallway " + to);
+                if (!Move(playerid, from, to))
+                {
+                    Debug.Log("Failed to move player...");
+                }
+                return;
+            }
+
+            // if already in a hallway, the move must be to a room...
+            if(rooms[from].maxOccupancy == 1  && rooms[to].maxOccupancy > 1)
+            {
+                Debug.Log("Moving from hallway " + from + " to " + to);
+                if (!Move(playerid, from, to))
+                {
+                    Debug.Log("Failed to move player...");
+                }
+                return;
+            }
+
+            Debug.Log("Failed to move from " + from + " to " + to);
 
         }
 
@@ -213,8 +247,6 @@ namespace ClueLess
         /// <returns></returns>
         public bool Move(int playerid, int from, int to)
         {
-            // TODO add more of the move logic...
-
             if(!rooms[to].AddPlayer(playerid))
             {
                 Debug.Log("Failed to add player to room!");
