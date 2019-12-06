@@ -392,6 +392,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1485718766953396690, guid: 7be4a09c4e78ce245b6ce613bc20728f,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 566596272}
+    - target: {fileID: 1485718766953396690, guid: 7be4a09c4e78ce245b6ce613bc20728f,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ProveSuggestionCard2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7be4a09c4e78ce245b6ce613bc20728f, type: 3}
 --- !u!224 &68368565 stripped
@@ -3972,6 +3982,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1485718766953396690, guid: 7be4a09c4e78ce245b6ce613bc20728f,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 566596272}
+    - target: {fileID: 1485718766953396690, guid: 7be4a09c4e78ce245b6ce613bc20728f,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ProveSuggestionCard3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7be4a09c4e78ce245b6ce613bc20728f, type: 3}
 --- !u!224 &526266579 stripped
@@ -4420,6 +4440,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   playerTurn: 0
+  playerProofTurn: 0
+  currentSuggestion:
+    character: 
+    room: 
+    weapon: 
   deck: {fileID: 1966247187}
   server: {fileID: 0}
   gameboardUi: {fileID: 566596272}
@@ -6403,6 +6428,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485718766953396690, guid: 7be4a09c4e78ce245b6ce613bc20728f,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 566596272}
+    - target: {fileID: 1485718766953396690, guid: 7be4a09c4e78ce245b6ce613bc20728f,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ProveSuggestionCard1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7be4a09c4e78ce245b6ce613bc20728f, type: 3}

@@ -257,6 +257,30 @@ public class GameboardUi : MonoBehaviour
     {
         suggestionWindow.SetActive(false);
     }
+    /// <summary>
+    /// Make a proof with the first suggestion card and close the card window
+    /// </summary>
+    public void ProveSuggestionCard1()
+    {
+        suggestionWindow.SetActive(false);
+        //networkPlayer.Cmd_MakeProof(suggestionCards[0].name);
+    }
+    /// <summary>
+    /// Make a proof with the second suggestion card and close the card window
+    /// </summary>
+    public void ProveSuggestionCard2()
+    {
+        suggestionWindow.SetActive(false);
+        //networkPlayer.Cmd_MakeProof(suggestionCards[1].name);
+    }
+    /// <summary>
+    /// Make a proof with the third suggestion card and close the card window
+    /// </summary>
+    public void ProveSuggestionCard3()
+    {
+        suggestionWindow.SetActive(false);
+        //networkPlayer.Cmd_MakeProof(suggestionCards[2].name);
+    }
 
     /// <summary>
     /// Opens the card window
@@ -264,6 +288,7 @@ public class GameboardUi : MonoBehaviour
     public void OpenSuggestionWindow()
     {
         suggestionWindow.SetActive(true);
+        InitializeProofCards();
     }
 
     /// <summary>
@@ -290,18 +315,24 @@ public class GameboardUi : MonoBehaviour
     /// <summary>
     /// Initializes the player's cards that are available for making a proof.
     /// </summary>
-    public void InitializeProofCards(string character, string room, string weapon)
+    public void InitializeProofCards()
     {
+        int cardsInSuggestion = 0;
+        
+        suggestionCards[0].SetActive(false);
+        suggestionCards[1].SetActive(false);
+        suggestionCards[2].SetActive(false);
+        Debug.Log("GameboardUI.InitializeProofCards: " + gameManager.currentSuggestion.character + ", " + gameManager.currentSuggestion.room + ", " + gameManager.currentSuggestion.weapon);
+
         // Activate the number of cards you have
-        for(int i=0; i<playerCards.Count; i++)
+        for(int i = 0; i < networkPlayer.hand.Count; i++)
         {
-            if (networkPlayer.hand[i].Equals(character) || networkPlayer.hand[i].Equals(room) || networkPlayer.hand[i].Equals(weapon))
+            if (networkPlayer.hand[i].name == (gameManager.currentSuggestion.character) || networkPlayer.hand[i].name == (gameManager.currentSuggestion.room) || networkPlayer.hand[i].name == (gameManager.currentSuggestion.weapon))
             {
-                playerCards[i].SetActive(true);
-            }
-            else
-            {
-                playerCards[i].SetActive(false);
+                Debug.Log("GameboardUI.InitializeProofCards: player contains a card in the suggestion (" + cardsInSuggestion + ")");
+                suggestionCards[cardsInSuggestion].SetActive(true);
+                SetSuggestionCard(cardsInSuggestion, networkPlayer.hand[i].name);
+                cardsInSuggestion++;
             }
         }
     }
@@ -335,6 +366,41 @@ public class GameboardUi : MonoBehaviour
         else if(index <= 21) // it's a room
         {
             playerCards[cardIndex].GetComponent<Image>().sprite = roomImages.images[index - 12];
+        }
+    }
+
+    /// <summary>
+    /// Sets the suggestion card based on the name
+    /// </summary>
+    /// <param name="cardName"></param>
+    public void SetSuggestionCard(int cardIndex, string cardName)
+    {
+        int index = -1;
+
+        for(int i = 0; i < deck.allCards.Count; i++)
+        {
+            if (cardName == deck.allCards[i].name)
+            {
+                index = i;
+                break;
+            }
+        }
+
+        if (index == -1)
+        {
+            return;
+        }
+        else if(index <= 5)
+        {
+            suggestionCards[cardIndex].GetComponent<Image>().sprite = playerImages.images[index];
+        }
+        else if(index <= 11) // it's a weapon
+        {
+            suggestionCards[cardIndex].GetComponent<Image>().sprite = weaponImages.images[index - 6];
+        }
+        else if(index <= 21) // it's a room
+        {
+            suggestionCards[cardIndex].GetComponent<Image>().sprite = roomImages.images[index - 12];
         }
     }
 
@@ -399,7 +465,7 @@ public class GameboardUi : MonoBehaviour
         caseData.weapon = weaponDropdown.options[weaponDropdown.value].text;
 
         // Send the accusation over the network
-        //networkPlayer.MakeSuggestion(caseData);
+        networkPlayer.Cmd_MakeSuggestion(caseData);
     }
 
     /// <summary>

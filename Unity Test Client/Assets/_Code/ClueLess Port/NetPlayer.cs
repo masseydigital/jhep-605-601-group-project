@@ -101,6 +101,24 @@ namespace ClueLess
             gameManager.NextTurn();
         }
 
+        [Command]
+        public void Cmd_MakeSuggestion(CaseData suggestion)
+        {
+            Debug.Log("NetPlayer.Cmd_MakeSuggestion: " + suggestion.character + ", " + suggestion.room + ", " + suggestion.weapon);
+
+            gameManager.UpdateCurrentSuggestion(suggestion);
+            gameManager.NextProofTurn(gameManager.playerTurn + 1);
+        }
+
+        [Command]
+        public void Cmd_MakeProof(string proofCard)
+        {
+            Debug.Log("NetPlayer.Cmd_MakeProof: Player " + gameManager.playerProofTurn + " proving " + proofCard + " to "
+            + gameManager.playerTurn);
+
+            gameManager.NextProofTurn(gameManager.playerProofTurn + 1);
+        }
+
         #region Callbacks
         void OnHandChanged(SyncListCard.Operation op, int itemIndex)
         {

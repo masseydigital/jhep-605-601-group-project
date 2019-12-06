@@ -9,6 +9,8 @@ namespace ClueLess
     {
         [SyncVar(hook = "OnGameStateUpdate")] public int gameState;
         [SyncVar(hook = "OnTurnUpdate")] public int playerTurn;
+        [SyncVar(hook = "OnProofTurnUpdate")] public int playerProofTurn;
+        [SyncVar(hook = "OnSetSuggestion")] public CaseData currentSuggestion;
         public SyncListCard winConditions;      // Three cards of differing categories
 
         public Deck deck;
@@ -64,6 +66,7 @@ namespace ClueLess
                             gameState = 1;
                         }
                         playerTurn = -1;
+                        playerProofTurn = -1;
                         break;
 
                     // Initializing game data
@@ -135,6 +138,14 @@ namespace ClueLess
             winConditions[1] = cards[1];    // Weapon
             winConditions[2] = cards[2];    // Room
         }
+        
+        /// <summary>
+        /// Sets the suggestion cards. This happens whenever a player makes a suggestion.
+        /// </summary>
+        void OnSetSuggestion(CaseData suggestion)
+        {
+            currentSuggestion = suggestion;
+        }
 
         /// <summary>
         /// Whenever we update the game state
@@ -170,6 +181,28 @@ namespace ClueLess
             }
         }
 
+        /// <summary>
+        /// Called when player proof turn updates
+        /// </summary>
+        /// <param name="proofTurn"></param>
+        void OnProofTurnUpdate(int proofTurn)
+        {
+            Debug.Log($":: Transitioning proof turn from {playerProofTurn} to {proofTurn} ::");
+            Debug.Log("GameManager.OnProofTurnUpdate: Proving current suggestion: " + currentSuggestion.character + "-"
+            + currentSuggestion.room + "-" + currentSuggestion.weapon);
+            playerProofTurn = proofTurn;
+
+            if (playerProofTurn == myPlayer.playerInfo.id && playerProofTurn != playerTurn)
+            {
+                gameboardUi.OpenSuggestionWindow();
+            }
+            else
+            {
+                gameboardUi.CloseSuggestionWindow();
+            }
+        }
+        #endregion
+
         public void NextTurn()
         {
             playerTurn++;
@@ -184,7 +217,30 @@ namespace ClueLess
                 playerTurn = 0;
             }
         }
-        #endregion
+
+        public void NextProofTurn(int nextProofTurn)
+        {
+            if (nextProofTurn >= server.players.Count)
+            {
+                nextProofTurn = 0;
+            }
+
+            if (nextProofTurn == playerTurn) {
+                Debug.Log("GameManager.NextProofTurn: No more proofs");
+                nextProofTurn = -1;
+            }
+
+            Debug.Log("GameManager.NextProofTurn: Next player turn " + nextProofTurn);
+            playerProofTurn = nextProofTurn;
+            Debug.Log("GameManager.NextProofTurn: Now it is player " + playerProofTurn + "'s turn to make a proof...");
+        }
+
+        public void UpdateCurrentSuggestion(CaseData suggestion)
+        {
+            Debug.Log("GameManager.UpdateCurrentSuggestion: " + suggestion.character + "," + suggestion.room
+            + "," + suggestion.weapon);
+            currentSuggestion = suggestion;
+        }        
     }
 
     public enum GameStates
