@@ -68,7 +68,8 @@ public class GameboardUi : MonoBehaviour
     // 20 - Kitchen
     public List<RoomUi> roomUis;
 
-    public CaseData caseData;
+    public CaseData caseData;       // Holds an accusation or suggestion
+    public CaseData proofCards;
 
     public NetPlayer networkPlayer;
     public ClueLess.GameManager gameManager;
@@ -263,7 +264,8 @@ public class GameboardUi : MonoBehaviour
     public void ProveSuggestionCard1()
     {
         suggestionWindow.SetActive(false);
-        //networkPlayer.Cmd_MakeProof(suggestionCards[0].name);
+        networkPlayer.Cmd_MakeProof(proofCards.character);
+        caseData = new CaseData();
     }
     /// <summary>
     /// Make a proof with the second suggestion card and close the card window
@@ -271,7 +273,8 @@ public class GameboardUi : MonoBehaviour
     public void ProveSuggestionCard2()
     {
         suggestionWindow.SetActive(false);
-        //networkPlayer.Cmd_MakeProof(suggestionCards[1].name);
+        networkPlayer.Cmd_MakeProof(proofCards.room);
+        caseData = new CaseData();
     }
     /// <summary>
     /// Make a proof with the third suggestion card and close the card window
@@ -279,16 +282,17 @@ public class GameboardUi : MonoBehaviour
     public void ProveSuggestionCard3()
     {
         suggestionWindow.SetActive(false);
-        //networkPlayer.Cmd_MakeProof(suggestionCards[2].name);
+        networkPlayer.Cmd_MakeProof(proofCards.weapon);
+        caseData = new CaseData();
     }
 
     /// <summary>
     /// Opens the card window
     /// </summary>
-    public void OpenSuggestionWindow()
+    public void OpenSuggestionWindow(CaseData suggestion)
     {
         suggestionWindow.SetActive(true);
-        InitializeProofCards();
+        InitializeProofCards(suggestion);
     }
 
     /// <summary>
@@ -315,23 +319,42 @@ public class GameboardUi : MonoBehaviour
     /// <summary>
     /// Initializes the player's cards that are available for making a proof.
     /// </summary>
-    public void InitializeProofCards()
+    public void InitializeProofCards(CaseData suggestion)
     {
         int cardsInSuggestion = 0;
-        
+
         suggestionCards[0].SetActive(false);
         suggestionCards[1].SetActive(false);
         suggestionCards[2].SetActive(false);
-        Debug.Log("GameboardUI.InitializeProofCards: " + gameManager.currentSuggestion.character + ", " + gameManager.currentSuggestion.room + ", " + gameManager.currentSuggestion.weapon);
 
         // Activate the number of cards you have
         for(int i = 0; i < networkPlayer.hand.Count; i++)
         {
-            if (networkPlayer.hand[i].name == (gameManager.currentSuggestion.character) || networkPlayer.hand[i].name == (gameManager.currentSuggestion.room) || networkPlayer.hand[i].name == (gameManager.currentSuggestion.weapon))
+            // Debug.Log("GameboardUI.InitializeProofCards: " + i + "/" + networkPlayer.hand.Count
+            // + " - " + networkPlayer.hand[i].name + " - suggestion(" + suggestion.character + ","
+            // + suggestion.room + "," + suggestion.weapon + ")");
+            if (networkPlayer.hand[i].name == (suggestion.character))
             {
                 Debug.Log("GameboardUI.InitializeProofCards: player contains a card in the suggestion (" + cardsInSuggestion + ")");
                 suggestionCards[cardsInSuggestion].SetActive(true);
                 SetSuggestionCard(cardsInSuggestion, networkPlayer.hand[i].name);
+                proofCards.character = networkPlayer.hand[i].name;
+                cardsInSuggestion++;
+            }
+            else if (networkPlayer.hand[i].name == (suggestion.room))
+            {
+                Debug.Log("GameboardUI.InitializeProofCards: player contains a card in the suggestion (" + cardsInSuggestion + ")");
+                suggestionCards[cardsInSuggestion].SetActive(true);
+                SetSuggestionCard(cardsInSuggestion, networkPlayer.hand[i].name);
+                proofCards.room = networkPlayer.hand[i].name;
+                cardsInSuggestion++;
+            }
+            else if (networkPlayer.hand[i].name == (suggestion.weapon))
+            {
+                Debug.Log("GameboardUI.InitializeProofCards: player contains a card in the suggestion (" + cardsInSuggestion + ")");
+                suggestionCards[cardsInSuggestion].SetActive(true);
+                SetSuggestionCard(cardsInSuggestion, networkPlayer.hand[i].name);
+                proofCards.weapon = networkPlayer.hand[i].name;
                 cardsInSuggestion++;
             }
         }
@@ -455,14 +478,14 @@ public class GameboardUi : MonoBehaviour
     // Make a suggestion
     public void Suggest()
     {
-        Debug.Log($"Suggesting: {characterDropdown.options[characterDropdown.value].text} " +
-           $"in {roomDropdown.options[roomDropdown.value].text} " +
-           $"with a {weaponDropdown.options[weaponDropdown.value].text}");
+        Debug.Log($"Suggesting: {deck.allCards[characterDropdown.value].name} " +
+           $"in {deck.allCards[roomDropdown.value + 6].name} " +
+           $"with a {deck.allCards[weaponDropdown.value + 12].name}");
         
         // Make the case
-        caseData.character = characterDropdown.options[characterDropdown.value].text;
-        caseData.room = roomDropdown.options[roomDropdown.value].text;
-        caseData.weapon = weaponDropdown.options[weaponDropdown.value].text;
+        caseData.character = deck.allCards[characterDropdown.value].name;
+        caseData.room = deck.allCards[roomDropdown.value + 6].name;
+        caseData.weapon = deck.allCards[weaponDropdown.value + 12].name;
 
         // Send the accusation over the network
         networkPlayer.Cmd_MakeSuggestion(caseData);
