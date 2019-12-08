@@ -197,6 +197,7 @@ namespace ClueLess
         public void Cmd_MovePlayer(int playerid, int from, int to)
         {
             // check if the move is through an available secret passage
+            Debug.Log("Entered move player ... moving from " + from + " to " + to);
             List<int> secretPassages = GetSecretPassages(from);
             foreach (int room in secretPassages)
             {

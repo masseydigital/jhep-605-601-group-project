@@ -57,7 +57,7 @@ public class HoverControl : MonoBehaviour
     // When the mouse is clicked over the object
     public void Click()
     {
-        
+        Debug.Log("Clicked!");
     }
 }
 
