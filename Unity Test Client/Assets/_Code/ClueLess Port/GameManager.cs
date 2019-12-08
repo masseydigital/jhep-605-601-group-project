@@ -144,7 +144,7 @@ namespace ClueLess
         {
             currentSuggestion = suggestion;
 
-            Debug.Log("GameManager.OnSetSuggestion: Proving current suggestion: " + suggestion.character + "-"
+            Debug.Log("GameManager.OnSetSuggestion: Current suggestion: " + suggestion.character + "-"
             + suggestion.room + "-" + suggestion.weapon);
 
             if (playerTurn != myPlayer.playerInfo.id)
