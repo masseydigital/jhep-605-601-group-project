@@ -37,6 +37,7 @@ public class GameboardUi : MonoBehaviour
     // Card/Suggestion Windows
     public GameObject cardWindow;
     public GameObject suggestionWindow;
+    public GameObject helpWindow;
     public List<GameObject> playerCards;        // Cards in the card window
     public List<GameObject> suggestionCards;    // Cards in the suggestion window
 
@@ -160,6 +161,11 @@ public class GameboardUi : MonoBehaviour
     public void ShowPlayerBar(int id)
     {
         playerBars[id].SetActive(true);
+    }
+
+    public void ShowHelpBar()
+    {
+        helpWindow.SetActive(true);
     }
 
     /// <summary>
