@@ -9,6 +9,7 @@ namespace ClueLess
     {
         [SyncVar] public Player playerInfo;
         [SyncVar(hook = "OnPlayerNameChanged")] public string playerName;
+        [SyncVar] public bool hasLost;
         public SyncListCard hand = new SyncListCard();
 
         public Room currentRoom;
@@ -28,6 +29,8 @@ namespace ClueLess
             gameboardUi = GameObject.Find("Game Manager").GetComponent<GameboardUi>();
             gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
             gameboard = GameObject.Find("Gameboard").GetComponent<Gameboard>();
+
+            hasLost = false;
 
             // Let me control my own player only
             if (isLocalPlayer)

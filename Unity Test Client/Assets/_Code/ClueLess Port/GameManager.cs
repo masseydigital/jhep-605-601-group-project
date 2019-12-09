@@ -205,6 +205,11 @@ namespace ClueLess
             {
                 playerTurn = 0;
             }
+
+            if(server.players[playerTurn].hasLost)
+            {
+                NextTurn();
+            }
         }
 
         public void UpdateCurrentSuggestion(CaseData suggestion)
