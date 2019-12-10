@@ -533,4 +533,12 @@ public class GameboardUi : MonoBehaviour
             rulePages[currentRulePageIndex].SetActive(true);
         }
     }
+
+    public void UpdateRoomUis(SyncListRoom rooms)
+    {
+        for(int i=0; i<rooms.Count; i++)
+        {
+            roomUis[i].roomData = rooms[i];
+        }
+    }
 }

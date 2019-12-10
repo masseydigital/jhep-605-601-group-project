@@ -248,20 +248,24 @@ namespace ClueLess
         /// <returns></returns>
         public bool Move(int playerid, int from, int to)
         {
+            bool success = true;
+
             if(!rooms[to].AddPlayer(playerid))
             {
                 Debug.Log("Failed to add player to room!");
-                return false;
+                success = true;
             }
 
             if(!rooms[from].RemovePlayer(playerid))
             {
                 Debug.Log("Failed to remove player from room!");
-                return false;
+                success = false;
             }
 
-            return true;
+            gameboardUi.UpdateRoomUis(rooms);
+            return success;
         }
+
 
         #endregion Methods
     }
