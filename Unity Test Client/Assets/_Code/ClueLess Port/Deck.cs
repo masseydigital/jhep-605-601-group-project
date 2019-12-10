@@ -122,22 +122,22 @@ namespace ClueLess
 
         public void GenerateTest()
         {
-            cards.Add(new Card(0, "Colonel Mustard", 0));
-            cards.Add(new Card(1, "Ms Scarlet", 0));
+            cards.Add(new Card(0, "Col Mustard", 0));
+            cards.Add(new Card(1, "Miss Scarlet", 0));
             cards.Add(new Card(2, "Mr Green", 0));
             cards.Add(new Card(3, "Mrs Peacock", 0));
             cards.Add(new Card(4, "Mrs White", 0));
-            cards.Add(new Card(5, "Professor Plum", 0));
+            cards.Add(new Card(5, "Prof Plum", 0));
 
-            cards.Add(new Card(6, "Axe", 1));
-            cards.Add(new Card(7, "Goblet", 1));
-            cards.Add(new Card(8, "Knife", 1));
-            cards.Add(new Card(9, "Pipe", 1));
-            cards.Add(new Card(10, "Pistol", 1));
-            cards.Add(new Card(11, "Rope", 1));
+            cards.Add(new Card(6, "axe", 1));
+            cards.Add(new Card(7, "goblet", 1));
+            cards.Add(new Card(8, "knife", 1));
+            cards.Add(new Card(9, "lead pipe", 1));
+            cards.Add(new Card(10, "pistol", 1));
+            cards.Add(new Card(11, "rope", 1));
 
             cards.Add(new Card(12, "Ball Room", 2));
-            cards.Add(new Card(13, "Billiard", 2));
+            cards.Add(new Card(13, "Billiard Room", 2));
             cards.Add(new Card(14, "Conservatory", 2));
             cards.Add(new Card(15, "Dining Room", 2));
             cards.Add(new Card(16, "Hall", 2));
