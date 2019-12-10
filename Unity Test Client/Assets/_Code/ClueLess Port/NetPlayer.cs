@@ -121,10 +121,17 @@ namespace ClueLess
         }
 
         [Command]
-        public void Cmd_MakeProof(string proofCard)
+        public void Cmd_InitializeProof()
         {
-            Debug.Log("NetPlayer.Cmd_MakeProof: Player " + playerInfo.id + " proving " + proofCard + " to "
-            + gameManager.playerTurn);
+            gameManager.NextProofTurn();
+        }
+
+        [Command]
+        public void Cmd_MakeProof(int suggestionCardIndex)
+        {
+            Debug.Log($"NetPlayer.Cmd_MakeProof: Proving suggestion card {suggestionCardIndex}");
+            Debug.Log($"NetPlayer.Cmd_MakeProof: {playerInfo.name}({playerInfo.id}) proving suggeestion card {suggestionCardIndex}");
+            gameManager.MakeProof(suggestionCardIndex);
         }
 
         #region Callbacks
