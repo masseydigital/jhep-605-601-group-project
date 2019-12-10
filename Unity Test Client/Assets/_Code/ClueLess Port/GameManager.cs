@@ -9,7 +9,9 @@ namespace ClueLess
     {
         [SyncVar(hook = "OnGameStateUpdate")] public int gameState;
         [SyncVar(hook = "OnTurnUpdate")] public int playerTurn;
+        [SyncVar(hook = "OnProofTurnUpdate")] public int playerProofTurn;
         [SyncVar(hook = "OnSetSuggestion")] public CaseData currentSuggestion;
+        [SyncVar(hook = "OnBroadcast")] public string gameBroadcast;
         public SyncListCard winConditions;      // Three cards of differing categories
 
         public Deck deck;
@@ -65,6 +67,7 @@ namespace ClueLess
                             gameState = 1;
                         }
                         playerTurn = -1;
+                        playerProofTurn = -1;
                         break;
 
                     // Initializing game data
@@ -144,17 +147,9 @@ namespace ClueLess
         {
             currentSuggestion = suggestion;
 
-            Debug.Log("GameManager.OnSetSuggestion: Current suggestion: " + suggestion.character + "-"
-            + suggestion.room + "-" + suggestion.weapon);
+            Debug.Log($"GameManager.OnSetSuggestion: Current suggestion: {suggestion.character}-{suggestion.room}-{suggestion.weapon}");
 
-            if (playerTurn != myPlayer.playerInfo.id)
-            {
-                gameboardUi.OpenSuggestionWindow(currentSuggestion);
-            }
-            else
-            {
-                gameboardUi.CloseSuggestionWindow();
-            }
+            myPlayer.Cmd_InitializeProof();
         }
 
         /// <summary>
@@ -190,6 +185,49 @@ namespace ClueLess
                 gameboardUi.HideActionButtons();
             }
         }
+
+        void OnProofTurnUpdate(int proofTurn)
+        {
+            int proofCardCount = 0;
+
+            playerProofTurn = proofTurn;
+
+            Debug.Log($"GameManager.OnProofTurnUpdate: Player {playerProofTurn} turn to make a proof");
+            if (myPlayer.playerInfo.id == playerProofTurn)
+            {
+                Debug.Log($"GameManager.OnProofTurnUpdate: Player {playerProofTurn} has {myPlayer.hand.Count} cards");
+                for (int i = 0; i < myPlayer.hand.Count; i++)
+                {
+                    if (myPlayer.hand[i].name == currentSuggestion.character ||
+                        myPlayer.hand[i].name == currentSuggestion.room ||
+                        myPlayer.hand[i].name == currentSuggestion.weapon)
+                    {
+                        proofCardCount++;
+                        break;
+                    }
+                }
+                if (proofCardCount > 0)
+                {
+                    Debug.Log($"GameManager.OnProofTurnUpdate: {playerTurn} can make a proof");
+                    gameboardUi.OpenSuggestionWindow(currentSuggestion);                
+                }
+                else
+                {
+                    Debug.Log($"GameManager.OnProofTurnUpdate: {playerTurn} cannot make a proof");
+                    myPlayer.Cmd_InitializeProof();
+                }
+            }
+            else
+            {
+                gameboardUi.CloseSuggestionWindow();
+            }
+        }
+        
+        void OnBroadcast(string newBroadcast)
+        {
+            gameBroadcast = newBroadcast;
+            gameboardUi.SetBroadcastUI(gameBroadcast);
+        }
         #endregion
 
         public void NextTurn()
@@ -205,11 +243,21 @@ namespace ClueLess
             {
                 playerTurn = 0;
             }
+        }
 
-            if(server.players[playerTurn].hasLost)
+        public void NextProofTurn()
+        {
+            int nextProofTurn = playerProofTurn + 1;
+            Debug.Log($"GameManager.NextProofTurn: Next proof turn is {nextProofTurn}");
+            
+            if (nextProofTurn == playerTurn) nextProofTurn++;
+
+            if(nextProofTurn > server.players.Count-1)
             {
-                NextTurn();
+                nextProofTurn = 0;
             }
+
+            playerProofTurn = nextProofTurn;
         }
 
         public void UpdateCurrentSuggestion(CaseData suggestion)
@@ -217,6 +265,31 @@ namespace ClueLess
             Debug.Log("GameManager.UpdateCurrentSuggestion: " + suggestion.character + "," + suggestion.room
             + "," + suggestion.weapon);
             currentSuggestion = suggestion;
+        }
+
+        public void MakeProof(int suggestCardIndex)
+        {
+            string proofBroadcast = myPlayer.playerInfo.name + " made proof with ";
+
+            switch(suggestCardIndex)
+            {
+                case 0:
+                    proofBroadcast += currentSuggestion.character;
+                    break;
+                case 1:
+                    proofBroadcast += currentSuggestion.room;
+                    break;
+                case 2:
+                    proofBroadcast += currentSuggestion.weapon;
+                    break;
+                default:
+                    proofBroadcast = "Empty proof from " + myPlayer.playerInfo.name;
+                    break;
+            }
+            Debug.Log($"GameManager:MakeProof:{proofBroadcast}");
+
+            gameBroadcast = proofBroadcast;
+            gameboardUi.CloseSuggestionWindow();
         }
         
         public void CheckWinConditions(CaseData accusation)

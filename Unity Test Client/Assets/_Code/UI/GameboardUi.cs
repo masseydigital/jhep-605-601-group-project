@@ -105,6 +105,11 @@ public class GameboardUi : MonoBehaviour
         roomDropdown.AddOptions(GameManager.gameData.roomNames);
     }
 
+    public void SetBroadcastUI(string message)
+    {
+        debugAccuseText.text = message;
+    }
+
     /// <summary>
     /// Moves the player from one location to another
     /// </summary>
@@ -267,50 +272,48 @@ public class GameboardUi : MonoBehaviour
     }
 
     /// <summary>
-    /// Closes the card window
-    /// </summary>
-    public void CloseSuggestionWindow()
-    {
-        suggestionWindow.SetActive(false);
-    }
-    /// <summary>
-    /// Make a proof with the character suggestion card and close the card window
-    /// </summary>
-    public void ProveSuggestionCard1()
-    {
-        Debug.Log("GameboardUI:ProveSuggestionCard1: Proving " + caseData.character);
-        suggestionWindow.SetActive(false);
-        networkPlayer.Cmd_MakeProof(caseData.character);
-        caseData = new CaseData();
-    }
-    /// <summary>
-    /// Make a proof with the room suggestion card and close the card window
-    /// </summary>
-    public void ProveSuggestionCard2()
-    {
-        Debug.Log("GameboardUI:ProveSuggestionCard2: Proving " + caseData.room);
-        suggestionWindow.SetActive(false);
-        networkPlayer.Cmd_MakeProof(caseData.room);
-        caseData = new CaseData();
-    }
-    /// <summary>
-    /// Make a proof with the weapon suggestion card and close the card window
-    /// </summary>
-    public void ProveSuggestionCard3()
-    {
-        Debug.Log("GameboardUI:ProveSuggestionCard3: Proving " + caseData.weapon);
-        suggestionWindow.SetActive(false);
-        networkPlayer.Cmd_MakeProof(caseData.weapon);
-        caseData = new CaseData();
-    }
-
-    /// <summary>
     /// Opens the card window
     /// </summary>
     public void OpenSuggestionWindow(CaseData suggestion)
     {
         suggestionWindow.SetActive(true);
         InitializeProofCards(suggestion);
+    }
+
+    /// <summary>
+    /// Closes the card window
+    /// </summary>
+    public void CloseSuggestionWindow()
+    {
+        suggestionWindow.SetActive(false);
+        caseData = new CaseData();
+    }
+    /// <summary>
+    /// Make a proof with the character suggestion card and close the card window
+    /// </summary>
+    public void ProveSuggestionCard1()
+    {
+        Debug.Log("GameboardUI:ProveSuggestionCard1: Proving card 1");
+        suggestionWindow.SetActive(false);
+        networkPlayer.Cmd_MakeProof(0);
+    }
+    /// <summary>
+    /// Make a proof with the room suggestion card and close the card window
+    /// </summary>
+    public void ProveSuggestionCard2()
+    {
+        Debug.Log("GameboardUI:ProveSuggestionCard2: Proving card 2");
+        suggestionWindow.SetActive(false);
+        networkPlayer.Cmd_MakeProof(1);
+    }
+    /// <summary>
+    /// Make a proof with the weapon suggestion card and close the card window
+    /// </summary>
+    public void ProveSuggestionCard3()
+    {
+        Debug.Log("GameboardUI:ProveSuggestionCard3: Proving card 3");
+        suggestionWindow.SetActive(false);
+        networkPlayer.Cmd_MakeProof(2);
     }
 
     /// <summary>
