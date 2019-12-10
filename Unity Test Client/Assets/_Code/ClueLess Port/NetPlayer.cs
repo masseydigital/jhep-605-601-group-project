@@ -113,6 +113,14 @@ namespace ClueLess
         }
 
         [Command]
+        public void Cmd_MakeAccusation(CaseData accusation)
+        {
+            Debug.Log("NetPlayer.Cmd_MakeAccusation: " + accusation.character + ", " + accusation.room + ", " + accusation.weapon);
+
+            gameManager.CheckWinConditions(accusation);
+        }
+
+        [Command]
         public void Cmd_MakeProof(string proofCard)
         {
             Debug.Log("NetPlayer.Cmd_MakeProof: Player " + playerInfo.id + " proving " + proofCard + " to "

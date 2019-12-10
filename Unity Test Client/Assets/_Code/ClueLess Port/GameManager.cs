@@ -217,7 +217,23 @@ namespace ClueLess
             Debug.Log("GameManager.UpdateCurrentSuggestion: " + suggestion.character + "," + suggestion.room
             + "," + suggestion.weapon);
             currentSuggestion = suggestion;
-        }        
+        }
+        
+        public void CheckWinConditions(CaseData accusation)
+        {
+            Debug.Log("GameManager.CheckWinConditions: " + accusation.character + ", " + accusation.room + ", " + accusation.weapon);
+            
+            if(accusation.character.Equals(winConditions[0].name) && 
+                accusation.room.Equals(winConditions[2].name) && 
+                accusation.weapon.Equals(winConditions[1].name)) {
+                // the player won!
+                Debug.Log(server.players[playerTurn].playerName + "won!");
+                //TODO: update GameBoardUi with winner
+            } else {
+                server.players[playerTurn].hasLost = true;
+                NextTurn();
+            }
+        }
     }
 
     public enum GameStates
