@@ -41,6 +41,10 @@ public class GameboardUi : MonoBehaviour
     public List<GameObject> playerCards;        // Cards in the card window
     public List<GameObject> suggestionCards;    // Cards in the suggestion window
 
+    public GameObject rulesPanel;               // Game rules
+    public List<GameObject> rulePages;
+    public int currentRulePageIndex = 0;
+
     public Gameboard gameboard;
     public LocationData locationData;
 
@@ -479,5 +483,42 @@ public class GameboardUi : MonoBehaviour
     public void EndTurn()
     {
         networkPlayer.Cmd_EndTurn();
+    }
+
+    /// <summary>
+    /// Closes the rule panel
+    /// </summary>
+    public void CloseRulesPanel()
+    {
+        rulesPanel.SetActive(false);
+    }
+
+    /// <summary>
+    /// Closes the rule panel
+    /// </summary>
+    public void OpenRulesPanel()
+    {
+        rulesPanel.SetActive(true);
+    }
+
+
+    public void NextPage()
+    {
+        if(currentRulePageIndex < rulePages.Count-1)
+        {
+            rulePages[currentRulePageIndex].SetActive(false);
+            currentRulePageIndex++;
+            rulePages[currentRulePageIndex].SetActive(true);
+        }
+    }
+
+    public void PreviousPage()
+    {
+        if (currentRulePageIndex > 0)
+        {
+            rulePages[currentRulePageIndex].SetActive(false);
+            currentRulePageIndex--;
+            rulePages[currentRulePageIndex].SetActive(true);
+        }
     }
 }
