@@ -125,14 +125,14 @@ namespace ClueLess
         [Command]
         public void Cmd_InitializeProof()
         {
-            gameManager.NextProofTurn();
+            gameManager.InitializeProofTurn();
         }
 
         [Command]
         public void Cmd_MakeProof(int suggestionCardIndex)
         {
             Debug.Log($"NetPlayer.Cmd_MakeProof: Proving suggestion card {suggestionCardIndex}");
-            Debug.Log($"NetPlayer.Cmd_MakeProof: {playerInfo.name}({playerInfo.id}) proving suggeestion card {suggestionCardIndex}");
+            Debug.Log($"NetPlayer.Cmd_MakeProof: {playerInfo.name}({playerInfo.id}) proving suggestion card {suggestionCardIndex}");
             gameManager.MakeProof(suggestionCardIndex);
         }
 

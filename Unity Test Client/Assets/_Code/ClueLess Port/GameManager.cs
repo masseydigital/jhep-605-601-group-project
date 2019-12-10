@@ -149,7 +149,10 @@ namespace ClueLess
 
             Debug.Log($"GameManager.OnSetSuggestion: Current suggestion: {suggestion.character}-{suggestion.room}-{suggestion.weapon}");
 
-            myPlayer.Cmd_InitializeProof();
+            if (myPlayer.playerInfo.id == playerTurn)
+            {
+                myPlayer.Cmd_InitializeProof();
+            }
         }
 
         /// <summary>
@@ -245,6 +248,20 @@ namespace ClueLess
             }
         }
 
+        public void InitializeProofTurn()
+        {
+            int nextProofTurn = playerTurn + 1;
+            Debug.Log($"GameManager.NextProofTurn: Next proof turn is {nextProofTurn}");
+            
+            if (nextProofTurn == playerTurn) nextProofTurn++;
+
+            if(nextProofTurn > server.players.Count-1)
+            {
+                nextProofTurn = 0;
+            }
+
+            playerProofTurn = nextProofTurn;
+        }
         public void NextProofTurn()
         {
             int nextProofTurn = playerProofTurn + 1;
@@ -269,27 +286,30 @@ namespace ClueLess
 
         public void MakeProof(int suggestCardIndex)
         {
-            string proofBroadcast = myPlayer.playerInfo.name + " made proof with ";
-
-            switch(suggestCardIndex)
+            if (myPlayer.playerInfo.id == playerProofTurn)
             {
-                case 0:
-                    proofBroadcast += currentSuggestion.character;
-                    break;
-                case 1:
-                    proofBroadcast += currentSuggestion.room;
-                    break;
-                case 2:
-                    proofBroadcast += currentSuggestion.weapon;
-                    break;
-                default:
-                    proofBroadcast = "Empty proof from " + myPlayer.playerInfo.name;
-                    break;
-            }
-            Debug.Log($"GameManager:MakeProof:{proofBroadcast}");
+	            string proofBroadcast = myPlayer.playerInfo.name + " made proof with ";
 
-            gameBroadcast = proofBroadcast;
-            gameboardUi.CloseSuggestionWindow();
+	            switch(suggestCardIndex)
+	            {
+	                case 0:
+	                    proofBroadcast += currentSuggestion.character;
+	                    break;
+	                case 1:
+	                    proofBroadcast += currentSuggestion.room;
+	                    break;
+	                case 2:
+	                    proofBroadcast += currentSuggestion.weapon;
+	                    break;
+	                default:
+	                    proofBroadcast = "Empty proof from " + myPlayer.playerInfo.name;
+	                    break;
+	            }
+	            Debug.Log($"GameManager:MakeProof:{proofBroadcast}");
+
+	            gameBroadcast = proofBroadcast;
+	            gameboardUi.CloseSuggestionWindow();
+            }
         }
         
         public void CheckWinConditions(CaseData accusation)
