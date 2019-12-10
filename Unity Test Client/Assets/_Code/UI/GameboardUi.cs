@@ -108,12 +108,17 @@ public class GameboardUi : MonoBehaviour
     /// <summary>
     /// Moves the player from one location to another
     /// </summary>
-    public void MovePlayerMarker(int player, int to, int from)
+    public bool MovePlayerMarker(int player, int from, int to)
     {
-        gameboard.Move(player, to, from);
+        if(!gameboard.Move(player, to, from))
+        {
+            return false;
+        }
+
         roomUis[to].AddMarker(player);
         roomUis[from].RemoveMarker(player);
 
+        return true;
         // update images
         
         //boardImages[to].sprite = playerImages.images[player];
