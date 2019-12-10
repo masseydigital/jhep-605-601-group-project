@@ -64,8 +64,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 0f841502a4f24be419439a93d977774e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -104,8 +102,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -121,8 +117,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6658788108687055319}
+          m_MethodName: Click
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5108934370496006394
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,10 +184,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomData:
-    roomNum: 0
-    roomName: Hallway
-    occupants: 
+    id: 0
+    name: 
     maxOccupancy: 1
+    occupants: 
+    validMoves: 
   markerImages:
   - {fileID: 4320048259534992115}
   hoverControl: {fileID: 6658788108687055319}
@@ -247,8 +257,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d8fa09e15753b1143a57f5487b5a0bfa, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -274,6 +282,8 @@ MonoBehaviour:
   state: 0
   hoverImage: {fileID: 342770434207649447}
   transparencyAmount: 45
+  gameboard: {fileID: 0}
+  roomId: 0
 --- !u!1001 &5485664876607600053
 PrefabInstance:
   m_ObjectHideFlags: 0

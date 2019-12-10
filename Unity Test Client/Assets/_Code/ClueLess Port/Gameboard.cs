@@ -37,6 +37,7 @@ namespace ClueLess
         public SyncListRoom rooms = new SyncListRoom();
 
         public GameboardUi gameboardUi;
+        public GameManager gameManager;
 
         public override void OnStartServer()
         {
@@ -141,27 +142,27 @@ namespace ClueLess
         /// </summary>
         public void GenerateTest()
         {
-            rooms.Add(new Room(0, "Study", 6));
-            rooms.Add(new Room(1, "Hallway", 1));
-            rooms.Add(new Room(2, "Library", 6));
-            rooms.Add(new Room(3, "Hallway", 1));
-            rooms.Add(new Room(4, "Conservatory", 6));
-            rooms.Add(new Room(5, "Hallway", 1));
-            rooms.Add(new Room(6, "Hallway", 1));
-            rooms.Add(new Room(7, "Hallway", 1));
-            rooms.Add(new Room(8, "Hall", 6));
-            rooms.Add(new Room(9, "Hallway", 1));
-            rooms.Add(new Room(10, "Billiard Room", 6));
-            rooms.Add(new Room(11, "Hallway", 1));
-            rooms.Add(new Room(12, "Ball Room", 6));
-            rooms.Add(new Room(13, "Hallway", 1));
-            rooms.Add(new Room(14, "Hallway", 1));
-            rooms.Add(new Room(15, "Hallway", 1));
-            rooms.Add(new Room(16, "Lounge", 6));
-            rooms.Add(new Room(17, "Hallway", 1));
-            rooms.Add(new Room(18, "Dining Room", 6));
-            rooms.Add(new Room(19, "Hallway", 1));
-            rooms.Add(new Room(20, "Kitchen", 6));
+            rooms.Add(new Room(0, "Study", 6, new int[3] { 1, 5, 20}));
+            rooms.Add(new Room(1, "Hallway", 1, new int[2] { 0, 2}));
+            rooms.Add(new Room(2, "Library", 6, new int[3] {1, 3, 10 }));
+            rooms.Add(new Room(3, "Hallway", 1, new int[2] { 2, 4 }));
+            rooms.Add(new Room(4, "Conservatory", 6, new int[3] { 3, 7, 16 }));
+            rooms.Add(new Room(5, "Hallway", 1, new int[2] { 0, 8}));
+            rooms.Add(new Room(6, "Hallway", 1, new int[2] { 2, 10 }));
+            rooms.Add(new Room(7, "Hallway", 1, new int[2] { 4, 12 }));
+            rooms.Add(new Room(8, "Hall", 6, new int[3] { 5, 9, 13}));
+            rooms.Add(new Room(9, "Hallway", 1, new int[2] { 8, 10 }));
+            rooms.Add(new Room(10, "Billiard Room", 6, new int[4] { 6, 9, 11, 14 }));
+            rooms.Add(new Room(11, "Hallway", 1, new int[2] { 10, 12 }));
+            rooms.Add(new Room(12, "Ball Room", 6, new int[3] { 7,11, 15 }));
+            rooms.Add(new Room(13, "Hallway", 1, new int[2] { 8, 16 }));
+            rooms.Add(new Room(14, "Hallway", 1, new int[2] { 10, 18 }));
+            rooms.Add(new Room(15, "Hallway", 1, new int[2] { 12, 20 }));
+            rooms.Add(new Room(16, "Lounge", 6, new int[3] { 13, 17, 4 }));
+            rooms.Add(new Room(17, "Hallway", 1, new int[2] { 16, 18 }));
+            rooms.Add(new Room(18, "Dining Room", 6, new int[3] { 14, 17, 19 }));
+            rooms.Add(new Room(19, "Hallway", 1, new int[2] { 18, 20 }));
+            rooms.Add(new Room(20, "Kitchen", 6, new int[3] { 15, 19, 0 }));
         }
 
         /*
@@ -254,6 +255,8 @@ namespace ClueLess
             {
                 Debug.Log("Failed to add player to room!");
                 success = true;
+
+                gameboardUi.networkPlayer.currentRoom = to;
             }
 
             if(!rooms[from].RemovePlayer(playerid))
@@ -262,11 +265,45 @@ namespace ClueLess
                 success = false;
             }
 
+            if (isLocalPlayer)
+            {
+                Cmd_MovePlayer(gameboardUi.networkPlayer.playerInfo.id, from, to);
+            }
+
             gameboardUi.UpdateRoomUis(rooms);
+            gameboardUi.UpdateRoomImages();
             return success;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryMove(int to)
+        {
+            bool success = false;
 
+            // If it is not our turn then bounce out 
+            if(gameManager.playerTurn != gameboardUi.networkPlayer.playerInfo.id)
+            {
+                Debug.Log("It isn't your turn!");
+                return false;
+            }
+
+            // Check if the move is valid
+            if (!gameboardUi.roomUis[gameboardUi.networkPlayer.currentRoom].roomData.ChecKValidRoom(to))
+            {
+                Debug.Log("This is not a valid room!");
+                return false;
+            }
+
+            // We should also be in the space
+            if(!Move(gameboardUi.networkPlayer.playerInfo.id, gameboardUi.networkPlayer.currentRoom, to))
+            {
+                Debug.Log("Something went wrong with my move!");
+            }
+
+            return success;
+        }
         #endregion Methods
     }
 }

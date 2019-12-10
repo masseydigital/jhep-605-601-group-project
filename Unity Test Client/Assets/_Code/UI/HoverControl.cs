@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ClueLess;
 
 public class HoverControl : MonoBehaviour
 {
     public HoverState state;
     public Image hoverImage;
     public int transparencyAmount = 45;
+    public Gameboard gameboard;
+    public int roomId;
 
     private Color goodColor = Color.green;
     private Color badColor = Color.red;
@@ -57,7 +60,7 @@ public class HoverControl : MonoBehaviour
     // When the mouse is clicked over the object
     public void Click()
     {
-        Debug.Log("Clicked!");
+        bool success = gameboard.TryMove(roomId);
     }
 }
 

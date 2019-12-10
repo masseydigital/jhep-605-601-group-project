@@ -12,12 +12,14 @@ namespace ClueLess
         public string name;
         public int maxOccupancy;
         public int[] occupants;
+        public int[] validMoves;
 
-        public Room(int id, string name, int maxOccupancy)
+        public Room(int id, string name, int maxOccupancy, int[] vrooms)
         {
             this.id = id;
             this.name = name;
             this.maxOccupancy = maxOccupancy;
+            this.validMoves = vrooms;
 
             this.occupants = new int[maxOccupancy];
             for(int i=0; i<occupants.Length; i++)
@@ -85,6 +87,19 @@ namespace ClueLess
             }
 
             return num;
+        }
+
+        public bool ChecKValidRoom(int id)
+        {
+            for(int i=0;i<validMoves.Length; i++)
+            {
+                if(id==validMoves[i])
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 

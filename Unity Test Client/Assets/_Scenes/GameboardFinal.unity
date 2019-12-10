@@ -120,6 +120,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &26401303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4458946845707357655, guid: c3576c1f9f4890e43a559f54acc7f1da,
+    type: 3}
+  m_PrefabInstance: {fileID: 1350925704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070bbf0225f5944d852b2cc91b27f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &60096547
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +692,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91171026}
   m_CullTransparentMesh: 0
+--- !u!114 &96245977 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4458946846250949978, guid: c3576c1f9f4890e43a559f54acc7f1da,
+    type: 3}
+  m_PrefabInstance: {fileID: 138975919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070bbf0225f5944d852b2cc91b27f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &138975919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1539,6 +1563,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
       propertyPath: markerOptions
       value: 
       objectReference: {fileID: 1973408088}
@@ -1582,10 +1611,40 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[5]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Hall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[2]
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
@@ -1632,10 +1691,45 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[5]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Billiard Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[2]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[3]
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
@@ -1682,10 +1776,40 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[5]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Ball Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
@@ -1702,10 +1826,35 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[0]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Hallway
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
@@ -1721,6 +1870,186 @@ PrefabInstance:
         type: 3}
       propertyPath: roomData.occupants.Array.data[0]
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Hallway
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222182520834433612, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222182520834433612, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 6222182521040715082, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222182521040715082, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 6222182520527920678, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222182520527920678, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 4458946845707357655, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458946845707357655, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 4458946846250949978, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458946846250949978, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 5882211620887289362, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 933462409}
+    - target: {fileID: 5882211620887289362, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 5882211620186514040, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1264162497}
+    - target: {fileID: 5882211620186514040, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 5882211620361993598, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1354420807}
+    - target: {fileID: 5882211620361993598, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].eventID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1945963409}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].eventID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 96245977}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3576c1f9f4890e43a559f54acc7f1da, type: 3}
@@ -2139,6 +2468,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201380029}
   m_CullTransparentMesh: 0
+--- !u!114 &205684461 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6222182520834433612, guid: c3576c1f9f4890e43a559f54acc7f1da,
+    type: 3}
+  m_PrefabInstance: {fileID: 1350925704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070bbf0225f5944d852b2cc91b27f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &215962538
 GameObject:
   m_ObjectHideFlags: 0
@@ -3913,6 +4254,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388201359}
   m_CullTransparentMesh: 0
+--- !u!114 &390894373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4458946846250949978, guid: c3576c1f9f4890e43a559f54acc7f1da,
+    type: 3}
+  m_PrefabInstance: {fileID: 1350925704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070bbf0225f5944d852b2cc91b27f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &395271218 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3846060810708394742, guid: ca463d1df99a74b4880d3b5f1e689904,
@@ -5149,6 +5502,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9004372149680945176, guid: 41c317a94d49f224f961355b4a863425,
         type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149680945176, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
       propertyPath: roomData.roomNum
       value: 5
       objectReference: {fileID: 0}
@@ -5162,10 +5520,30 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[0]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 9004372149680945176, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149680945176, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.name
+      value: Hallway
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149680945176, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.id
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
         type: 3}
@@ -5182,10 +5560,35 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[0]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.name
+      value: Hallway
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.id
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
         type: 3}
@@ -5201,6 +5604,176 @@ PrefabInstance:
         type: 3}
       propertyPath: roomData.occupants.Array.data[0]
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.id
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.name
+      value: Hallway
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492016575389511529, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomId
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492016575389511529, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 2492016575950417201, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomId
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492016575950417201, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 2492016576049504414, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomId
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492016576049504414, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 4573175752409876464, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175752409876464, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175752409876464, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].eventID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175752409876464, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 807008993}
+    - target: {fileID: 4573175752409876464, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175752409876464, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175752409876464, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175752409876464, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750772966824, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750772966824, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750772966824, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].eventID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750772966824, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1093974592}
+    - target: {fileID: 4573175750772966824, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750772966824, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750772966824, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750772966824, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750944409607, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750944409607, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750944409607, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].eventID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750944409607, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 874628611}
+    - target: {fileID: 4573175750944409607, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750944409607, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750944409607, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573175750944409607, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41c317a94d49f224f961355b4a863425, type: 3}
@@ -7979,6 +8552,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &762074731 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6222182521040715082, guid: c3576c1f9f4890e43a559f54acc7f1da,
+    type: 3}
+  m_PrefabInstance: {fileID: 1350925704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070bbf0225f5944d852b2cc91b27f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &768554838
 GameObject:
   m_ObjectHideFlags: 0
@@ -8150,6 +8735,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 769583769}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &807008993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2492016575389511529, guid: 41c317a94d49f224f961355b4a863425,
+    type: 3}
+  m_PrefabInstance: {fileID: 524712128}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070bbf0225f5944d852b2cc91b27f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &819171259 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4559710589374603040, guid: ca463d1df99a74b4880d3b5f1e689904,
@@ -8880,6 +9477,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 526266578}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &874628611 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2492016576049504414, guid: 41c317a94d49f224f961355b4a863425,
+    type: 3}
+  m_PrefabInstance: {fileID: 524712128}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070bbf0225f5944d852b2cc91b27f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &897425447 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1850508007501333790, guid: 7be4a09c4e78ce245b6ce613bc20728f,
@@ -9120,6 +9729,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928495693}
   m_CullTransparentMesh: 0
+--- !u!114 &933462409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6222182520527920678, guid: c3576c1f9f4890e43a559f54acc7f1da,
+    type: 3}
+  m_PrefabInstance: {fileID: 138975919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070bbf0225f5944d852b2cc91b27f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &956634951
 GameObject:
   m_ObjectHideFlags: 0
@@ -9947,6 +10568,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7401074738912557433}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1067186155 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6222182520527920678, guid: c3576c1f9f4890e43a559f54acc7f1da,
+    type: 3}
+  m_PrefabInstance: {fileID: 1350925704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070bbf0225f5944d852b2cc91b27f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1074892095
 GameObject:
   m_ObjectHideFlags: 0
@@ -10328,6 +10961,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091840693}
   m_CullTransparentMesh: 0
+--- !u!114 &1093974592 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2492016575950417201, guid: 41c317a94d49f224f961355b4a863425,
+    type: 3}
+  m_PrefabInstance: {fileID: 524712128}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070bbf0225f5944d852b2cc91b27f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1097020237
 GameObject:
   m_ObjectHideFlags: 0
@@ -11617,6 +12262,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7401074738912557433}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1264162497 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6222182520834433612, guid: c3576c1f9f4890e43a559f54acc7f1da,
+    type: 3}
+  m_PrefabInstance: {fileID: 138975919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070bbf0225f5944d852b2cc91b27f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1284156487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12743,6 +13400,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
       propertyPath: markerOptions
       value: 
       objectReference: {fileID: 1973408088}
@@ -12781,10 +13443,35 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[5]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Study
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[2]
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
@@ -12831,10 +13518,40 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[5]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Library
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
@@ -12881,10 +13598,40 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[5]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Conservatory
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[2]
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
@@ -12901,10 +13648,35 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[0]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Hallway
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
@@ -12920,6 +13692,176 @@ PrefabInstance:
         type: 3}
       propertyPath: roomData.occupants.Array.data[0]
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Hallway
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222182520834433612, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 6222182521040715082, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222182521040715082, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 6222182520527920678, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222182520527920678, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 4458946845707357655, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458946845707357655, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 4458946846250949978, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458946846250949978, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 5882211620887289362, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1067186155}
+    - target: {fileID: 5882211620887289362, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 5882211620186514040, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 205684461}
+    - target: {fileID: 5882211620186514040, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 5882211620361993598, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 762074731}
+    - target: {fileID: 5882211620361993598, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].eventID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 26401303}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714143959573838, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].eventID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 390894373}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306714144487437763, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3576c1f9f4890e43a559f54acc7f1da, type: 3}
@@ -12987,6 +13929,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7e209e827f353143bcb3bc3a03cf08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1354420807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6222182521040715082, guid: c3576c1f9f4890e43a559f54acc7f1da,
+    type: 3}
+  m_PrefabInstance: {fileID: 138975919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070bbf0225f5944d852b2cc91b27f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1361836707
@@ -13602,6 +14556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameboardUi: {fileID: 566596272}
+  gameManager: {fileID: 566596270}
 --- !u!4 &1446559858
 Transform:
   m_ObjectHideFlags: 0
@@ -16341,6 +17296,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938334036}
   m_CullTransparentMesh: 0
+--- !u!114 &1945963409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4458946845707357655, guid: c3576c1f9f4890e43a559f54acc7f1da,
+    type: 3}
+  m_PrefabInstance: {fileID: 138975919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070bbf0225f5944d852b2cc91b27f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1955717364
 GameObject:
   m_ObjectHideFlags: 0
@@ -18842,6 +19809,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
       propertyPath: markerOptions
       value: 
       objectReference: {fileID: 1973408088}
@@ -18885,10 +19857,40 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[5]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Lounge
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713452714575, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
@@ -18935,10 +19937,40 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[5]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Dining Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149713564161353, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[2]
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
@@ -18985,10 +20017,35 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[5]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Kitchen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144149714093733413, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
@@ -19005,10 +20062,35 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[0]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Hallway
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122910070899, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
         type: 3}
@@ -19025,6 +20107,76 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[0]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.name
+      value: Hallway
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.id
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170227122348464382, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222182520834433612, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222182520834433612, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 6222182521040715082, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222182521040715082, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 6222182520527920678, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222182520527920678, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 4458946845707357655, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458946845707357655, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 4458946846250949978, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: roomId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458946846250949978, guid: c3576c1f9f4890e43a559f54acc7f1da,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3576c1f9f4890e43a559f54acc7f1da, type: 3}
 --- !u!114 &7028315858818165717 stripped
@@ -19838,6 +20990,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9004372149680945176, guid: 41c317a94d49f224f961355b4a863425,
         type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149680945176, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
       propertyPath: roomData.roomNum
       value: 13
       objectReference: {fileID: 0}
@@ -19851,10 +21008,35 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[0]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 9004372149680945176, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.name
+      value: Hallway
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149680945176, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.id
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149680945176, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149680945176, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
         type: 3}
@@ -19871,10 +21053,35 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[0]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.id
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.name
+      value: Hallway
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372150317954487, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
         type: 3}
       propertyPath: roomData.occupants.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
         type: 3}
@@ -19891,11 +21098,61 @@ PrefabInstance:
       propertyPath: roomData.occupants.Array.data[0]
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.id
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.name
+      value: Hallway
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004372149136652864, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomData.validMoves.Array.data[1]
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4042890940782817715, guid: 41c317a94d49f224f961355b4a863425,
         type: 3}
       propertyPath: m_Name
       value: Hallway 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2492016575389511529, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomId
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492016575389511529, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 2492016575950417201, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomId
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492016575950417201, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
+    - target: {fileID: 2492016576049504414, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: roomId
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492016576049504414, guid: 41c317a94d49f224f961355b4a863425,
+        type: 3}
+      propertyPath: gameboard
+      value: 
+      objectReference: {fileID: 1446559857}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41c317a94d49f224f961355b4a863425, type: 3}
 --- !u!114 &9150662836766519039 stripped

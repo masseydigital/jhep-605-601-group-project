@@ -12,7 +12,7 @@ namespace ClueLess
         [SyncVar] public bool hasLost;
         public SyncListCard hand = new SyncListCard();
 
-        public Room currentRoom;
+        public int currentRoom;
         public Gameboard gameboard;
         public GameboardUi gameboardUi;
         public GameServer server;
@@ -50,6 +50,7 @@ namespace ClueLess
 
             gameboardUi.ShowPlayerBar(playerInfo.id);
             gameboardUi.MovePlayerMarker(playerInfo.id, 20, playerInfo.id * 4);
+            currentRoom = playerInfo.id * 4;
         }
 
         public void Update()
