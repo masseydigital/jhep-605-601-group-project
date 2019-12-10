@@ -115,19 +115,21 @@ public class GameboardUi : MonoBehaviour
     /// </summary>
     public bool MovePlayerMarker(int player, int from, int to)
     {
-        if(!gameboard.Move(player, to, from))
+        /*
+        if(!)
         {
             return false;
         }
+        */
 
-        roomUis[to].AddMarker(player);
-        roomUis[from].RemoveMarker(player);
+        gameboard.Move(player, from, to);
+
+        UpdateRoomImages();
+
+        //roomUis[to].AddMarker(player);
+        //roomUis[from].RemoveMarker(player);
 
         return true;
-        // update images
-        
-        //boardImages[to].sprite = playerImages.images[player];
-        //boardImages[from].sprite = playerImages.nullImage;
     }
 
     /// <summary>
@@ -135,6 +137,8 @@ public class GameboardUi : MonoBehaviour
     /// </summary>
     public void UpdateRoomImages()
     {
+        Debug.Log("Updating the room images...");
+
         foreach(RoomUi room in roomUis)
         {
             room.UpdateMarkers();

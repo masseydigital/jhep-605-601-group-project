@@ -28,16 +28,28 @@ namespace ClueLess
 
         public override string ToString()
         {
-            return id.ToString() + " : " + name + " : " + occupants.Length + " : " + Occupancy(); 
+            return id.ToString() + " : " + name + " : " + occupants.Length + " : " + Occupancy() + " : " + occupants[0]; 
         }
 
         // Adds a player to the room
         public bool AddPlayer(int id)
         {
-            for(int i = 0; i < occupants.Length; i++)
+            //Make sure we are not already in the room
+            for (int j = 0; j < occupants.Length; j++)
+            {
+                if (occupants[j] == id)
+                {
+                    Debug.Log("Already in the room!");
+                    return false;
+                }
+            }
+
+            // Check to see if there is an open room
+            for (int i = 0; i < occupants.Length; i++)
             {
                 if(occupants[i] == -1)
                 {
+                    Debug.Log($"Adding player: {id} to room.");
                     occupants[i] = id;
                     return true;
                 }

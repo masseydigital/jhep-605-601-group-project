@@ -49,6 +49,7 @@ namespace ClueLess
             }
 
             gameboardUi.ShowPlayerBar(playerInfo.id);
+            gameboardUi.MovePlayerMarker(playerInfo.id, 20, playerInfo.id * 4);
         }
 
         public void Update()

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ClueLess;
 
 public class RoomUi : MonoBehaviour
 {
-    public RoomData roomData;
+    public ClueLess.Room roomData;
     public List<Image> markerImages;
     public HoverControl hoverControl;
     public ImageOptions markerOptions;
@@ -23,20 +24,18 @@ public class RoomUi : MonoBehaviour
 
     // Blanket update of the markers
     public void UpdateMarkers()
-    {
-        // If occupants is empty then this room is empty
-        if (roomData.occupants.Count == 0)
-        {
-            ClearMarkers();
-        }
-
+    { 
         //Go through the number of occupants
-        for (int i = 0; i < markerImages.Count; i++)
+        for (int i = 0; i < roomData.occupants.Length; i++)
         {
-            if(i < roomData.occupants.Count)
+            if(roomData.occupants[i] != -1)
+            {
                 markerImages[i].sprite = markerOptions.images[roomData.occupants[i]];
+            }
             else
+            {
                 markerImages[i].sprite = null;
+            }    
         }
     }
 
@@ -54,19 +53,25 @@ public class RoomUi : MonoBehaviour
     // Adds a new player to the room
     public void AddMarker(int playerId)
     {
-        // If we are at max capacity
-        if (roomData.occupants.Count >= roomData.maxOccupancy)
-            return;
+        for(int i=0; i<roomData.maxOccupancy; i++)
+        {
+            // If  we have an empty space
+            if(roomData.occupants[i] == -1)
+            {
+                roomData.AddPlayer(playerId);
+                UpdateMarkers();
+                return;
+            }
+        }
 
-        roomData.occupants.Add(playerId);
-        UpdateMarkers();
+        Debug.Log("Room is full!");
     }
 
 
     // Removes a player from the room
     public void RemoveMarker(int playerId)
     {
-        roomData.occupants.Remove(playerId);
+        roomData.RemovePlayer(playerId);
         UpdateMarkers();
     }
 }
