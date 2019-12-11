@@ -49,12 +49,18 @@ namespace ClueLess
             rooms.Callback = OnRoomsChanged;
         }
 
+        public override void OnStartClient()
+        {
+            rooms.Callback = OnRoomsChanged;
+        }
+
         #region Methods
 
         // callback syncs this across the network
         public void OnRoomsChanged(SyncListStruct<Room>.Operation op, int itemIndex)
         {
             Debug.Log("OnRoomChanged: " + op);
+            gameboardUi.UpdateRoomUis(rooms);
             gameboardUi.UpdateRoomImages();
         }
 
@@ -197,47 +203,10 @@ namespace ClueLess
         [Command]
         public void Cmd_MovePlayer(int playerid, int from, int to)
         {
-            // check if the move is through an available secret passage
-            Debug.Log("Entered move player ... moving from " + from + " to " + to);
-            List<int> secretPassages = GetSecretPassages(from);
-            foreach (int room in secretPassages)
-            {
-                if (room == to)
-                {
-                    Debug.Log("Using secret passage to move from " + from + " to " + to);
-                    if (!Move(playerid, from, to))
-                    {
-                        Debug.Log("Failed to move player...");
-                    }
-                    return;
-                }
-            }
+            Debug.Log(":: Cmd_MovePlayer ::");
 
-            // check if the move is through doorway into a hallway
-            // hallways has a maxOccupancy of 1...
-            if(rooms[to].maxOccupancy == 1 && rooms[to].occupants[0] == -1)
-            {
-                Debug.Log("Moving from room " + from + " to hallway " + to);
-                if (!Move(playerid, from, to))
-                {
-                    Debug.Log("Failed to move player...");
-                }
-                return;
-            }
-
-            // if already in a hallway, the move must be to a room...
-            if(rooms[from].maxOccupancy == 1  && rooms[to].maxOccupancy > 1)
-            {
-                Debug.Log("Moving from hallway " + from + " to " + to);
-                if (!Move(playerid, from, to))
-                {
-                    Debug.Log("Failed to move player...");
-                }
-                return;
-            }
-
-            Debug.Log("Failed to move from " + from + " to " + to);
-
+            rooms[from].occupants[0] = -1;
+            rooms[to].occupants[0] = playerid;
         }
 
         /// <summary>
@@ -281,6 +250,11 @@ namespace ClueLess
                 rooms[from] = new Room(rooms[from].id, rooms[from].name, rooms[from].maxOccupancy, rooms[from].occupants, rooms[from].validMoves);
             }
 
+            if(isLocalPlayer)
+            {
+                Cmd_MovePlayer(playerid, from, to);
+            }
+
             gameboardUi.UpdateRoomUis(rooms);
             gameboardUi.UpdateRoomImages();
             return success;
@@ -308,7 +282,7 @@ namespace ClueLess
             }
 
             // We should also be in the space
-            if(!Move(gameboardUi.networkPlayer.playerInfo.id, gameboardUi.networkPlayer.currentRoom, to))
+            if(!gameboardUi.MovePlayerMarker(gameboardUi.networkPlayer.playerInfo.id, gameboardUi.networkPlayer.currentRoom, to))
             {
                 Debug.Log("Something went wrong with my move!");
             }
