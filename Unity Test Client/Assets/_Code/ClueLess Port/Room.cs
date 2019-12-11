@@ -56,6 +56,7 @@ namespace ClueLess
                     return true;
                 }
             }
+
             return false;
         }
 

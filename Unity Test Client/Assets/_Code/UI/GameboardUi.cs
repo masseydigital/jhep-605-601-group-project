@@ -120,24 +120,13 @@ public class GameboardUi : MonoBehaviour
     /// </summary>
     public bool MovePlayerMarker(int player, int from, int to)
     {
-        /*
-        if(!)
-        {
-            return false;
-        }
-        */
-
         if(!gameboard.Move(player, from, to))
         {
             Debug.Log($"Invalid move {from} to {to}");
             return false;
         }
 
-        //gameManager.moveCount += 1;
         UpdateRoomImages();
-
-        //roomUis[to].AddMarker(player);
-        //roomUis[from].RemoveMarker(player);
 
         return true;
     }

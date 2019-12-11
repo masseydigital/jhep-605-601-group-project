@@ -251,9 +251,9 @@ namespace ClueLess
         {
             bool success = true;
 
-            if(gameManager.moveCount > 1)
+            if(!gameManager.canMove)
             {
-                Debug.Log("Already moved!");
+                Debug.Log("Already Moved");
                 return false;
             }
 
@@ -262,7 +262,10 @@ namespace ClueLess
                 Debug.Log("Failed to add player to room!");
                 success = true;
 
-                gameboardUi.networkPlayer.currentRoom = to;
+                if(isLocalPlayer)
+                {
+                    gameboardUi.networkPlayer.currentRoom = to;
+                }
             }
 
             if(!rooms[from].RemovePlayer(playerid))
@@ -271,7 +274,6 @@ namespace ClueLess
                 success = false;
             }
 
-            gameManager.moveCount += 1;
             if (isLocalPlayer)
             {
                 Cmd_MovePlayer(gameboardUi.networkPlayer.playerInfo.id, from, to);
