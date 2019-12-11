@@ -70,6 +70,7 @@ public class HoverControl : MonoBehaviour
 
         if(success)
         {
+            gameboard.gameboardUi.networkPlayer.currentRoom = roomId;
             gameboard.gameManager.canMove = false;
         }
     }

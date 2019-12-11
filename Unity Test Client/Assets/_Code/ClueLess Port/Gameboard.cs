@@ -260,9 +260,12 @@ namespace ClueLess
             if(!rooms[to].AddPlayer(playerid))
             {
                 Debug.Log("Failed to add player to room!");
-                success = true;
+            }
+            else
+            {
+                rooms[to] = new Room(rooms[to].id, rooms[to].name, rooms[to].maxOccupancy, rooms[to].occupants, rooms[to].validMoves);
 
-                if(isLocalPlayer)
+                if (isLocalPlayer)
                 {
                     gameboardUi.networkPlayer.currentRoom = to;
                 }
@@ -273,10 +276,9 @@ namespace ClueLess
                 Debug.Log("Failed to remove player from room!");
                 success = false;
             }
-
-            if (isLocalPlayer)
+            else
             {
-                Cmd_MovePlayer(gameboardUi.networkPlayer.playerInfo.id, from, to);
+                rooms[from] = new Room(rooms[from].id, rooms[from].name, rooms[from].maxOccupancy, rooms[from].occupants, rooms[from].validMoves);
             }
 
             gameboardUi.UpdateRoomUis(rooms);
@@ -309,6 +311,10 @@ namespace ClueLess
             if(!Move(gameboardUi.networkPlayer.playerInfo.id, gameboardUi.networkPlayer.currentRoom, to))
             {
                 Debug.Log("Something went wrong with my move!");
+            }
+            else
+            {
+                success = true;
             }
 
             return success;

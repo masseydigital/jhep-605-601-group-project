@@ -28,6 +28,20 @@ namespace ClueLess
             }
         }
 
+        public Room(int id, string name, int maxOccupancy, int[] occ, int[] vrooms)
+        {
+            this.id = id;
+            this.name = name;
+            this.maxOccupancy = maxOccupancy;
+            this.validMoves = vrooms;
+
+            this.occupants = new int[maxOccupancy];
+            for (int i = 0; i < occupants.Length; i++)
+            {
+                occupants[i] = occ[i];
+            }
+        }
+
         public override string ToString()
         {
             return id.ToString() + " : " + name + " : " + occupants.Length + " : " + Occupancy() + " : " + occupants[0]; 
