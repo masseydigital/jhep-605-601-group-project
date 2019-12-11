@@ -144,7 +144,7 @@ namespace ClueLess
         {
             rooms.Add(new Room(0, "Study", 6, new int[3] { 1, 5, 20}));
             rooms.Add(new Room(1, "Hallway", 1, new int[2] { 0, 2}));
-            rooms.Add(new Room(2, "Library", 6, new int[3] {1, 3, 10 }));
+            rooms.Add(new Room(2, "Library", 6, new int[3] {1, 3, 6 }));
             rooms.Add(new Room(3, "Hallway", 1, new int[2] { 2, 4 }));
             rooms.Add(new Room(4, "Conservatory", 6, new int[3] { 3, 7, 16 }));
             rooms.Add(new Room(5, "Hallway", 1, new int[2] { 0, 8}));

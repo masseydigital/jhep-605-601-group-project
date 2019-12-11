@@ -21,6 +21,8 @@ namespace ClueLess
         public GameData gameData;
         public NetPlayer myPlayer;
 
+        public int moveCount;
+
         private void Awake()
         {
             if (server == null)
@@ -42,7 +44,7 @@ namespace ClueLess
         // Start is called before the first frame update
         void Start()
         {
-
+            moveCount = 0;
         }
 
         public override void OnStartClient()
@@ -236,7 +238,7 @@ namespace ClueLess
         public void NextTurn()
         {
             playerTurn++;
-
+            moveCount = 0;
             TurnCheck();
         }
 
