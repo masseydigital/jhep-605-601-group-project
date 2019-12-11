@@ -25,6 +25,8 @@ public class HoverControl : MonoBehaviour
 
         goodColor = new Color(goodColor.r, goodColor.g, goodColor.b, transparencyAmount);
         badColor = new Color(badColor.r, badColor.g, badColor.b, badColor.a);
+        gameboard = GameObject.Find("Gameboard").GetComponent<ClueLess.Gameboard>();
+
     }
 
     // Checks the state and changes the image based on result
@@ -60,6 +62,12 @@ public class HoverControl : MonoBehaviour
     // When the mouse is clicked over the object
     public void Click()
     {
+        Debug.Log("Clicked");
+        if(gameboard == null)
+        {
+            Debug.Log("Gameboard is NULL?!");
+            return;
+        }
         bool success = gameboard.TryMove(roomId);
     }
 }

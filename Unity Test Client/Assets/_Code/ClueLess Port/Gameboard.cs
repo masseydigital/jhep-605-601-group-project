@@ -251,6 +251,12 @@ namespace ClueLess
         {
             bool success = true;
 
+            if(gameManager.moveCount > 1)
+            {
+                Debug.Log("Already moved!");
+                return false;
+            }
+
             if(!rooms[to].AddPlayer(playerid))
             {
                 Debug.Log("Failed to add player to room!");
@@ -265,6 +271,7 @@ namespace ClueLess
                 success = false;
             }
 
+            gameManager.moveCount += 1;
             if (isLocalPlayer)
             {
                 Cmd_MovePlayer(gameboardUi.networkPlayer.playerInfo.id, from, to);

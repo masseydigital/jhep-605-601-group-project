@@ -88,6 +88,11 @@ public class GameboardUi : MonoBehaviour
             deck = GameObject.Find("Deck").GetComponent<ClueLess.Deck>();
         }
 
+        if (gameboard == null)
+        {
+            gameboard = GameObject.Find("Gameboard").GetComponent<Gameboard>();
+        }
+
         FillDropdowns();
 
         debugAccuseText.text = "";
@@ -128,7 +133,7 @@ public class GameboardUi : MonoBehaviour
             return false;
         }
 
-        gameManager.moveCount += 1;
+        //gameManager.moveCount += 1;
         UpdateRoomImages();
 
         //roomUis[to].AddMarker(player);
