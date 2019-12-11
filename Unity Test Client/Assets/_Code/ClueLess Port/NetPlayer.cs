@@ -49,7 +49,7 @@ namespace ClueLess
             }
 
             gameboardUi.ShowPlayerBar(playerInfo.id);
-            gameboardUi.MovePlayerMarker(playerInfo.id, 20, playerInfo.id * 4);
+            gameboardUi.MovePlayerMarker(playerInfo.id, playerInfo.id + 1 * 3 - 1, playerInfo.id * 4);
             currentRoom = playerInfo.id * 4;
         }
 
@@ -134,6 +134,30 @@ namespace ClueLess
             Debug.Log($"NetPlayer.Cmd_MakeProof: Proving suggestion card {suggestionCardIndex}");
             Debug.Log($"NetPlayer.Cmd_MakeProof: {playerInfo.name}({playerInfo.id}) proving suggestion card {suggestionCardIndex}");
             gameManager.MakeProof(suggestionCardIndex);
+        }
+
+        [Command]
+        public void Cmd_Move(int from, int to)
+        {
+            Debug.Log(":: Cmd_MovePlayer ::");
+
+            gameboard.rooms[from].occupants[0] = -1;
+            gameboard.rooms[to].occupants[0] = playerInfo.id;
+
+            gameboardUi.UpdateRoomUis(gameboard.rooms);
+            gameboardUi.UpdateRoomImages();
+        }
+
+        [ClientRpc]
+        public void Rpc_MovePlayer(int from, int to)
+        {
+            Debug.Log(":: Rpc_MovePlayer ::");
+
+            gameboard.rooms[from].occupants[0] = -1;
+            gameboard.rooms[to].occupants[0] = playerInfo.id;
+
+            gameboardUi.UpdateRoomUis(gameboard.rooms);
+            gameboardUi.UpdateRoomImages();
         }
 
         #region Callbacks

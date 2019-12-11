@@ -59,7 +59,7 @@ namespace ClueLess
                     // Waiting for game to start
                     case (0):
                         // Game Start Conditions
-                        if (server.players.Count >= 2)
+                        if (server.players.Count >= 6)
                         {
                             gameState = 1;
                         }

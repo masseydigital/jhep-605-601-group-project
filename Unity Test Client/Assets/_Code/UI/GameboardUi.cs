@@ -126,8 +126,6 @@ public class GameboardUi : MonoBehaviour
             return false;
         }
 
-        UpdateRoomImages();
-
         return true;
     }
 

@@ -200,13 +200,33 @@ namespace ClueLess
 
         // commands come from the client, so as the server we need to determine if the move is legit
         // syncvars will automatically sync (so the SyncListRoom should update whenever we change it)
-        [Command]
-        public void Cmd_MovePlayer(int playerid, int from, int to)
+        [ClientRpc]
+        public void Rpc_MovePlayer(int playerid, int from, int to)
         {
-            Debug.Log(":: Cmd_MovePlayer ::");
+            Debug.Log(":: Rpc_MovePlayer ::");
 
             rooms[from].occupants[0] = -1;
             rooms[to].occupants[0] = playerid;
+
+            gameboardUi.UpdateRoomUis(rooms);
+            gameboardUi.UpdateRoomImages();
+        }
+
+        [ClientRpc]
+        public void Rpc_UpdateRoom(int id)
+        {
+            Debug.Log(":: Rpc_UpdateRoom ::");
+        }
+
+        [ClientRpc]
+        public void Rpc_UpdateRooms(SyncListRoom rs)
+        {
+            Debug.Log(":: Rpc_UpdateRooms ::");
+            
+            for(int i=0; i<rooms.Count; i++)
+            {
+                rooms[i] = rs[i];
+            }
         }
 
         /// <summary>
@@ -250,9 +270,19 @@ namespace ClueLess
                 rooms[from] = new Room(rooms[from].id, rooms[from].name, rooms[from].maxOccupancy, rooms[from].occupants, rooms[from].validMoves);
             }
 
-            if(isLocalPlayer)
+            if(localPlayerAuthority)
             {
-                Cmd_MovePlayer(playerid, from, to);
+                if(gameboardUi.networkPlayer != null)
+                {
+                    gameboardUi.networkPlayer.Cmd_Move(from, to);
+                }
+                
+                
+            }
+
+            if (isServer)
+            {
+                Rpc_MovePlayer(playerid, from, to);
             }
 
             gameboardUi.UpdateRoomUis(rooms);
