@@ -6405,6 +6405,7 @@ MonoBehaviour:
   gameboardUi: {fileID: 566596272}
   database: {fileID: 0}
   myPlayer: {fileID: 0}
+  canMove: 1
 --- !u!4 &566596271
 Transform:
   m_ObjectHideFlags: 0
@@ -6555,7 +6556,7 @@ MonoBehaviour:
     i14: 0
     i15: 0
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!1001 &567416557
 PrefabInstance:
   m_ObjectHideFlags: 0
